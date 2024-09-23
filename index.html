@@ -13,7 +13,7 @@
             --card-bg-color: #fff;
         }
 
-        [data-theme="dark"] {
+        .dark-theme {
             --primary-color: #4aa3df;
             --secondary-color: #34495e;
             --background-color: #1a1a1a;
@@ -45,6 +45,12 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         nav ul {
@@ -56,6 +62,7 @@
 
         nav ul li {
             margin-right: 20px;
+            transition: color 0.3s;
         }
 
         nav ul li a {
@@ -63,8 +70,13 @@
             text-decoration: none;
         }
 
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
         main {
             margin-top: 60px;
+            transition: margin-top 0.3s;
         }
 
         .hero {
@@ -72,15 +84,22 @@
             color: #fff;
             padding: 3rem 0;
             text-align: center;
+            animation: slideIn 0.5s;
         }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .section {
             padding: 3rem 0;
+            animation: fadeInUp 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .section h2 {
@@ -96,6 +115,11 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .skills-list:hover, .project:hover, .experience:hover {
+            transform: translateY(-5px);
         }
 
         .project h3, .experience h3 {
@@ -108,60 +132,7 @@
             text-align: center;
             padding: 1rem 0;
             margin-top: 2rem;
-        }
-
-        .theme-switch-wrapper {
-            display: flex;
-            align-items: center;
-        }
-
-        .theme-switch {
-            display: inline-block;
-            height: 34px;
-            position: relative;
-            width: 60px;
-        }
-
-        .theme-switch input {
-            display:none;
-        }
-
-        .slider {
-            background-color: #ccc;
-            bottom: 0;
-            cursor: pointer;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: .4s;
-        }
-
-        .slider:before {
-            background-color: #fff;
-            bottom: 4px;
-            content: "";
-            height: 26px;
-            left: 4px;
-            position: absolute;
-            transition: .4s;
-            width: 26px;
-        }
-
-        input:checked + .slider {
-            background-color: #66bb6a;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
+            animation: fadeIn 0.5s;
         }
 
         @media (max-width: 768px) {
@@ -174,7 +145,7 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-theme">
     <header>
         <nav class="container">
             <ul>
@@ -183,12 +154,6 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
-                <li class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider round"></div>
-                    </label>
-                </li>
             </ul>
         </nav>
     </header>
@@ -274,87 +239,18 @@
         <section id="education" class="section">
             <div class="container">
                 <h2>Education</h2>
-                <div class="experience">
-                    <h3>Bachelor of Engineering - Electronics & Telecommunication</h3>
-                    <p>Savitribai Phule Pune University, Pune, Maharashtra</p>
-                    <p><em>08/2019 – 08/2023</em></p>
-                    <p>CGPA: 9.02</p>
+                <div class="education">
+                    <h3>Bachelor of Science in Information Technology</h3>
+                    <p><em>Pune University | Graduated: 2023</em></p>
                 </div>
-            </div>
-        </section>
-
-        <section id="certifications" class="section">
-            <div class="container">
-                <h2>Certifications & Awards</h2>
-                <ul>
-                    <li>Google Data Analytics Professional Certificate: Data Analysis Techniques, SQL, Tableau, R, Excel.</li>
-                    <li>Data Analytics and Visualization Virtual Experience on Forge: Data Analysis</li>
-                    <li>1st Place, Best Project Paper, NCIE-2023 Conference: Awarded 1st place for Best Project Paper at the NCIE-2023 National Level conference on IoT Embedded Systems held at NIT Kurukshetra, competing nationwide</li>
-                </ul>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
+            <p>© 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Theme switcher
-        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-        const currentTheme = localStorage.getItem('theme');
-
-        if (currentTheme) {
-            document.documentElement.setAttribute('data-theme', currentTheme);
-        
-            if (currentTheme === 'dark') {
-                toggleSwitch.checked = true;
-            }
-        }
-
-        function switchTheme(e) {
-            if (e.target.checked) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            }
-            else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            }    
-        }
-
-        toggleSwitch.addEventListener('change', switchTheme, false);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Highlight active section in navigation
-        window.addEventListener('scroll', () => {
-            let current = '';
-            document.querySelectorAll('section').forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('nav ul li a').forEach(li => {
-                li.classList.remove('active');
-                if (li.getAttribute('href').slice(1) === current) {
-                    li.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
