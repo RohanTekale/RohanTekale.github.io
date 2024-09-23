@@ -55,13 +55,8 @@
             text-decoration: none;
         }
 
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-
         main {
             margin-top: 60px;
-            transition: margin-top 0.3s;
         }
 
         .hero {
@@ -71,40 +66,40 @@
             text-align: center;
         }
 
+        .hero img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem; /* Increased font size */
+            font-weight: bold; /* Made name bold */
+            margin-bottom: 1rem;
+        }
+
         .section {
             padding: 3rem 0;
         }
 
-        .tabs {
-            display: flex;
-            cursor: pointer;
+        .section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
 
-        .tab {
-            background-color: var(--secondary-color);
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px 5px 0 0;
-            margin-right: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .tab:hover {
-            background-color: var(--primary-color);
-        }
-
-        .tab-content {
-            display: none;
+        .skills-list, .project, .experience {
             background-color: var(--card-bg-color);
-            border-radius: 0 0 5px 5px;
+            border-radius: 5px;
             padding: 20px;
+            margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .active {
-            display: block;
+        .project h3, .experience h3 {
+            color: var(--primary-color);
         }
 
         footer {
@@ -115,10 +110,13 @@
             margin-top: 2rem;
         }
 
-        /* Additional styles for name */
-        h1 {
-            font-size: 2.5rem; /* Larger font size */
-            font-weight: bold;  /* Bold font */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -126,12 +124,11 @@
     <header>
         <nav class="container">
             <ul>
-                <li><a href="#home" onclick="showTab('home')">Home</a></li>
-                <li><a href="#about" onclick="showTab('about')">About Me</a></li>
-                <li><a href="#skills" onclick="showTab('skills')">Skills</a></li>
-                <li><a href="#experience" onclick="showTab('experience')">Experience</a></li>
-                <li><a href="#projects" onclick="showTab('projects')">Projects</a></li>
-                <li><a href="#education" onclick="showTab('education')">Education</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
             </ul>
         </nav>
     </header>
@@ -139,6 +136,7 @@
     <main>
         <section id="home" class="hero">
             <div class="container">
+                <img src="rohan.jpg" alt="Rohan Rajkumar Tekale">
                 <h1>Rohan Rajkumar Tekale</h1>
                 <p>Machine Learning Engineer | Data Analyst</p>
                 <p>Email: tekalerohan7@gmail.com | Phone: (+91) 9307802374</p>
@@ -146,15 +144,7 @@
             </div>
         </section>
 
-        <section id="about" class="section tab-content active">
-            <div class="container">
-                <h2>About Me</h2>
-                <p>I'm a passionate Machine Learning Engineer with a strong background in data analysis and a commitment to using technology for impactful solutions.</p>
-                <p>I have experience working on diverse projects, honing my skills in Python, SQL, and various machine learning frameworks.</p>
-            </div>
-        </section>
-
-        <section id="skills" class="section tab-content">
+        <section id="skills" class="section">
             <div class="container">
                 <h2>Skills</h2>
                 <div class="skills-list">
@@ -165,7 +155,7 @@
             </div>
         </section>
 
-        <section id="experience" class="section tab-content">
+        <section id="experience" class="section">
             <div class="container">
                 <h2>Work Experience</h2>
                 <div class="experience">
@@ -182,7 +172,7 @@
             </div>
         </section>
 
-        <section id="projects" class="section tab-content">
+        <section id="projects" class="section">
             <div class="container">
                 <h2>Projects</h2>
                 <div class="project">
@@ -202,42 +192,51 @@
                     <p><em>Technologies: Python, Power BI</em></p>
                     <ul>
                         <li>Data preprocessing: Removed duplicates, managed missing values, and selected relevant features.</li>
-                        <li>Visualized restaurant data trends, ratings, and pricing using Power BI.</li>
-                        <li>Analyzed the effect of online ratings on restaurant pricing, which helped to identify trends in the dining industry.</li>
+                        <li>Utilized various visualization techniques: bar charts, scatter plots, word clouds, box plots, and density plots.</li>
+                        <li>Analyzed various facets including restaurant chains, city demographics, and cuisine preferences to extract actionable insights.</li>
+                        <li>Investigated rating distribution, cost dynamics, and price range correlations, guiding informed decision-making processes through data-driven analysis.</li>
+                    </ul>
+                </div>
+                <div class="project">
+                    <h3>Olympics Data Analysis</h3>
+                    <p><em>Technologies: Python, Streamlit</em></p>
+                    <ul>
+                        <li>Conducted a comprehensive data analysis of historical Olympics data to uncover insights and trends.</li>
+                        <li>Medal Tally Analysis: Visualized the distribution of medals by countries over various Olympic editions.</li>
+                        <li>Overall Analysis: Identified trends and patterns in Olympic participation and performance.</li>
+                        <li>Country-wise Analysis: Examined medal counts and sports participation for individual countries.</li>
+                        <li>Athletes Analysis: Analyzed characteristics and performance of athletes, including participation and success rates.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="education" class="section tab-content">
+        <section id="education" class="section">
             <div class="container">
                 <h2>Education</h2>
-                <div class="education">
-                    <h3>Bachelor of Science in Information Technology</h3>
-                    <p><em>Pune University | Graduated: 2023</em></p>
+                <div class="experience">
+                    <h3>Bachelor of Engineering - Electronics & Telecommunication</h3>
+                    <p>Savitribai Phule Pune University, Pune, Maharashtra</p>
+                    <p><em>08/2019 – 08/2023</em></p>
+                    <p>CGPA: 9.02</p>
                 </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <div class="container">
+                <h2>Certifications & Awards</h2>
+                <ul>
+                    <li>Google Data Analytics Professional Certificate: Data Analysis Techniques, SQL, Tableau, R, Excel.</li>
+                    <li>Data Analytics and Visualization Virtual Experience on Forge: Data Analysis</li>
+                    <li>1st Place, Best Project Paper, NCIE-2023 Conference: Awarded 1st place for Best Project Paper at the NCIE-2023 Conference.</li>
+                </ul>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
     </footer>
-
-    <script>
-        function showTab(tabName) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            // Show the selected tab content
-            document.getElementById(tabName).classList.add('active');
-        }
-
-        // Show the about tab by default on page load
-        showTab('about');
-    </script>
 </body>
 </html>
