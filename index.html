@@ -5,40 +5,264 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohan Rajkumar Tekale - Portfolio</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #ecf0f1;
+            --text-color: #333;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
         }
-        h1, h2 {
-            color: #2c3e50;
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
         }
-        .contact-info {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
+
+        header {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            margin-top: 60px;
+        }
+
+        .hero {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
         .section {
-            margin-bottom: 30px;
+            padding: 3rem 0;
         }
-        .project, .experience {
+
+        .section h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
             margin-bottom: 20px;
+        }
+
+        .skills-list, .project, .experience {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .project h3, .experience h3 {
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Rohan Rajkumar Tekale</h1>
-        <div class="contact-info">
-            <p>Email: tekalerohan7@gmail.com | Phone: (+91) 9307802374</p>
-            <p><a href="https://github.com/RohanTekale">GitHub Profile</a> | <a href="#">LinkedIn</a></p>
-        </div>
+        <nav class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- The rest of the HTML remains the same as in the previous artifact -->
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Rohan Rajkumar Tekale</h1>
+                <p>Machine Learning Engineer | Data Analyst</p>
+                <p>Email: tekalerohan7@gmail.com | Phone: (+91) 9307802374</p>
+                <p><a href="https://github.com/RohanTekale" target="_blank">GitHub Profile</a> | <a href="#" target="_blank">LinkedIn</a></p>
+            </div>
+        </section>
 
+        <section id="skills" class="section">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skills-list">
+                    <p><strong>Languages:</strong> Python, SQL, HTML, CSS</p>
+                    <p><strong>Technologies & Tools:</strong> GenAI, LLM, Artificial Intelligence & Machine Learning, Power BI, EDA, Tableau, MySQL</p>
+                    <p><strong>Frameworks:</strong> FastAPI, Streamlit</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <h2>Work Experience</h2>
+                <div class="experience">
+                    <h3>Machine Learning Engineer Intern</h3>
+                    <p><em>ValueDx Technologies Pvt Ltd., Pune | Jan 2024 - Present</em></p>
+                    <ul>
+                        <li>Implemented machine learning algorithms in Python for data analysis and predictive modeling.</li>
+                        <li>Enhanced projects using Python, Machine Learning, and Deep Learning.</li>
+                        <li>Gained experience with neural networks and Deep Learning frameworks.</li>
+                        <li>Integrated Generative AI for innovative solutions.</li>
+                        <li>Developed and deployed Python-based machine learning solutions.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project">
+                    <h3>Audio Transcription and Summarization System</h3>
+                    <p><em>Technologies: Whisper-large-v3, FastAPI</em></p>
+                    <ul>
+                        <li>Developed an efficient system for audio transcription, summarization, and timestamp extraction using FastAPI.</li>
+                        <li>Integrated OpenAI's whisper-large-v3 model for accurate audio transcription.</li>
+                        <li>Implemented a summarization model to generate concise summaries from transcriptions.</li>
+                        <li>Extracted and correlated timestamps with transcriptions for key events in the audio.</li>
+                        <li>Utilized asynchronous endpoints in FastAPI for efficient handling of large audio files.</li>
+                        <li>Managed file storage operations using Python's os module.</li>
+                    </ul>
+                </div>
+                <div class="project">
+                    <h3>Zomato Restaurant Data Analysis: Exploring India's Dining Scene</h3>
+                    <p><em>Technologies: Python, Power BI</em></p>
+                    <ul>
+                        <li>Data preprocessing: Removed duplicates, managed missing values, and selected relevant features.</li>
+                        <li>Utilized various visualization techniques: bar charts, scatter plots, word clouds, box plots, and density plots.</li>
+                        <li>Analyzed various facets including restaurant chains, city demographics, and cuisine preferences to extract actionable insights.</li>
+                        <li>Investigated rating distribution, cost dynamics, and price range correlations, guiding informed decision-making processes through data-driven analysis.</li>
+                    </ul>
+                </div>
+                <div class="project">
+                    <h3>Olympics Data Analysis</h3>
+                    <p><em>Technologies: Python, Streamlit</em></p>
+                    <p><a href="#" target="_blank">EDA app link</a></p>
+                    <ul>
+                        <li>Conducted a comprehensive data analysis of historical Olympics data to uncover insights and trends.</li>
+                        <li>Medal Tally Analysis: Visualized the distribution of medals by countries over various Olympic editions.</li>
+                        <li>Overall Analysis: Identified trends and patterns in Olympic participation and performance.</li>
+                        <li>Country-wise Analysis: Examined medal counts and sports participation for individual countries.</li>
+                        <li>Athletes Analysis: Analyzed characteristics and performance of athletes, including participation and success rates.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="experience">
+                    <h3>Bachelor of Engineering - Electronics & Telecommunication</h3>
+                    <p>Savitribai Phule Pune University, Pune, Maharashtra</p>
+                    <p><em>08/2019 – 08/2023</em></p>
+                    <p>CGPA: 9.02</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <div class="container">
+                <h2>Certifications & Awards</h2>
+                <ul>
+                    <li>Google Data Analytics Professional Certificate: Data Analysis Techniques, SQL, Tableau, R, Excel.</li>
+                    <li>Data Analytics and Visualization Virtual Experience on Forge: Data Analysis</li>
+                    <li>1st Place, Best Project Paper, NCIE-2023 Conference: Awarded 1st place for Best Project Paper at the NCIE-2023 National Level conference on IoT Embedded Systems held at NIT Kurukshetra, competing nationwide</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Highlight active section in navigation
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav ul li a').forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href').slice(1) === current) {
+                    li.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
