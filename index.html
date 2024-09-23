@@ -6,7 +6,7 @@
     <title>Rohan Rajkumar Tekale - Portfolio</title>
     <style>
         :root {
-            --primary-color: #3498db;
+            --primary-color: #000; /* Changed to black */
             --secondary-color: #2c3e50;
             --background-color: #ecf0f1;
             --text-color: #333;
@@ -14,13 +14,13 @@
         }
 
         .dark-theme {
-            --primary-color: #4aa3df;
+            --primary-color: #000; /* Changed to black */
             --secondary-color: #34495e;
             --background-color: #1a1a1a;
             --text-color: #f0f0f0;
             --card-bg-color: #2c2c2c;
         }
-        
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -102,28 +102,36 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        .section h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
+        .tabs {
+            display: flex;
+            cursor: pointer;
             margin-bottom: 20px;
         }
 
-        .skills-list, .project, .experience {
+        .tab {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
             background-color: var(--card-bg-color);
-            border-radius: 5px;
+            border-radius: 0 0 5px 5px;
             padding: 20px;
-            margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
         }
 
-        .skills-list:hover, .project:hover, .experience:hover {
-            transform: translateY(-5px);
-        }
-
-        .project h3, .experience h3 {
-            color: var(--primary-color);
+        .active {
+            display: block;
         }
 
         footer {
@@ -143,17 +151,23 @@
                 margin-bottom: 10px;
             }
         }
+
+        /* Additional styles for name */
+        h1 {
+            font-size: 2.5rem; /* Larger font size */
+            font-weight: bold;  /* Bold font */
+        }
     </style>
 </head>
 <body class="dark-theme">
     <header>
         <nav class="container">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#home" onclick="showTab('home')">Home</a></li>
+                <li><a href="#skills" onclick="showTab('skills')">Skills</a></li>
+                <li><a href="#experience" onclick="showTab('experience')">Experience</a></li>
+                <li><a href="#projects" onclick="showTab('projects')">Projects</a></li>
+                <li><a href="#education" onclick="showTab('education')">Education</a></li>
             </ul>
         </nav>
     </header>
@@ -168,7 +182,22 @@
             </div>
         </section>
 
-        <section id="skills" class="section">
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>I'm a passionate Machine Learning Engineer with a strong background in data analysis and a commitment to using technology for impactful solutions.</p>
+                <p>I have experience working on diverse projects, honing my skills in Python, SQL, and various machine learning frameworks.</p>
+            </div>
+        </section>
+
+        <div class="tabs">
+            <button class="tab" onclick="showTab('skills')">Skills</button>
+            <button class="tab" onclick="showTab('experience')">Experience</button>
+            <button class="tab" onclick="showTab('projects')">Projects</button>
+            <button class="tab" onclick="showTab('education')">Education</button>
+        </div>
+
+        <section id="skills" class="section tab-content">
             <div class="container">
                 <h2>Skills</h2>
                 <div class="skills-list">
@@ -179,7 +208,7 @@
             </div>
         </section>
 
-        <section id="experience" class="section">
+        <section id="experience" class="section tab-content">
             <div class="container">
                 <h2>Work Experience</h2>
                 <div class="experience">
@@ -196,7 +225,7 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
+        <section id="projects" class="section tab-content">
             <div class="container">
                 <h2>Projects</h2>
                 <div class="project">
@@ -216,27 +245,14 @@
                     <p><em>Technologies: Python, Power BI</em></p>
                     <ul>
                         <li>Data preprocessing: Removed duplicates, managed missing values, and selected relevant features.</li>
-                        <li>Utilized various visualization techniques: bar charts, scatter plots, word clouds, box plots, and density plots.</li>
-                        <li>Analyzed various facets including restaurant chains, city demographics, and cuisine preferences to extract actionable insights.</li>
-                        <li>Investigated rating distribution, cost dynamics, and price range correlations, guiding informed decision-making processes through data-driven analysis.</li>
-                    </ul>
-                </div>
-                <div class="project">
-                    <h3>Olympics Data Analysis</h3>
-                    <p><em>Technologies: Python, Streamlit</em></p>
-                    <p><a href="#" target="_blank">EDA app link</a></p>
-                    <ul>
-                        <li>Conducted a comprehensive data analysis of historical Olympics data to uncover insights and trends.</li>
-                        <li>Medal Tally Analysis: Visualized the distribution of medals by countries over various Olympic editions.</li>
-                        <li>Overall Analysis: Identified trends and patterns in Olympic participation and performance.</li>
-                        <li>Country-wise Analysis: Examined medal counts and sports participation for individual countries.</li>
-                        <li>Athletes Analysis: Analyzed characteristics and performance of athletes, including participation and success rates.</li>
+                        <li>Visualized restaurant data trends, ratings, and pricing using Power BI.</li>
+                        <li>Analyzed the effect of online ratings on restaurant pricing, which helped to identify trends in the dining industry.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="education" class="section">
+        <section id="education" class="section tab-content">
             <div class="container">
                 <h2>Education</h2>
                 <div class="education">
@@ -252,5 +268,29 @@
             <p>© 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show the selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Set the active tab style
+            const activeTab = Array.from(tabs).find(tab => tab.textContent.toLowerCase() === tabName);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+        }
+
+        // Show the skills tab by default on page load
+        showTab('skills');
+    </script>
 </body>
 </html>
