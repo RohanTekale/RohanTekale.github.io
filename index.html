@@ -13,14 +13,6 @@
             --card-bg-color: #fff;
         }
 
-        .dark-theme {
-            --primary-color: #000; /* Changed to black */
-            --secondary-color: #34495e;
-            --background-color: #1a1a1a;
-            --text-color: #f0f0f0;
-            --card-bg-color: #2c2c2c;
-        }
-
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -45,12 +37,6 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         nav ul {
@@ -62,7 +48,6 @@
 
         nav ul li {
             margin-right: 20px;
-            transition: color 0.3s;
         }
 
         nav ul li a {
@@ -84,22 +69,10 @@
             color: #fff;
             padding: 3rem 0;
             text-align: center;
-            animation: slideIn 0.5s;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         .section {
             padding: 3rem 0;
-            animation: fadeInUp 0.5s;
-        }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         .tabs {
@@ -140,16 +113,6 @@
             text-align: center;
             padding: 1rem 0;
             margin-top: 2rem;
-            animation: fadeIn 0.5s;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-            }
-            nav ul li {
-                margin-bottom: 10px;
-            }
         }
 
         /* Additional styles for name */
@@ -159,11 +122,12 @@
         }
     </style>
 </head>
-<body class="dark-theme">
+<body>
     <header>
         <nav class="container">
             <ul>
                 <li><a href="#home" onclick="showTab('home')">Home</a></li>
+                <li><a href="#about" onclick="showTab('about')">About Me</a></li>
                 <li><a href="#skills" onclick="showTab('skills')">Skills</a></li>
                 <li><a href="#experience" onclick="showTab('experience')">Experience</a></li>
                 <li><a href="#projects" onclick="showTab('projects')">Projects</a></li>
@@ -182,20 +146,13 @@
             </div>
         </section>
 
-        <section id="about" class="section">
+        <section id="about" class="section tab-content active">
             <div class="container">
                 <h2>About Me</h2>
                 <p>I'm a passionate Machine Learning Engineer with a strong background in data analysis and a commitment to using technology for impactful solutions.</p>
                 <p>I have experience working on diverse projects, honing my skills in Python, SQL, and various machine learning frameworks.</p>
             </div>
         </section>
-
-        <div class="tabs">
-            <button class="tab" onclick="showTab('skills')">Skills</button>
-            <button class="tab" onclick="showTab('experience')">Experience</button>
-            <button class="tab" onclick="showTab('projects')">Projects</button>
-            <button class="tab" onclick="showTab('education')">Education</button>
-        </div>
 
         <section id="skills" class="section tab-content">
             <div class="container">
@@ -275,22 +232,12 @@
             const tabContents = document.querySelectorAll('.tab-content');
             tabContents.forEach(content => content.classList.remove('active'));
 
-            // Remove active class from all tabs
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
             // Show the selected tab content
             document.getElementById(tabName).classList.add('active');
-
-            // Set the active tab style
-            const activeTab = Array.from(tabs).find(tab => tab.textContent.toLowerCase() === tabName);
-            if (activeTab) {
-                activeTab.classList.add('active');
-            }
         }
 
-        // Show the skills tab by default on page load
-        showTab('skills');
+        // Show the about tab by default on page load
+        showTab('about');
     </script>
 </body>
 </html>
