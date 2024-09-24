@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohan Rajkumar Tekale - Portfolio</title>
 
-    <!-- Google Fonts for modern look -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome for icons -->
@@ -56,12 +56,22 @@
             color: #fff;
             text-decoration: none;
             padding: 10px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        nav ul li a:hover {
+        nav ul li a:hover, nav ul li a.active {
             background-color: var(--linkedin-blue);
             border-radius: 5px;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 3rem 0;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .hero {
@@ -92,7 +102,6 @@
             font-size: 1.1rem;
         }
 
-        /* LinkedIn Button */
         .linkedin-btn {
             background-color: var(--linkedin-blue);
             color: white;
@@ -108,10 +117,6 @@
             background-color: #005582;
         }
 
-        .section {
-            padding: 3rem 0;
-        }
-
         .section h2 {
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
@@ -119,7 +124,7 @@
             margin-bottom: 20px;
         }
 
-        .skills-list, .project, .experience {
+        .skills-list, .project, .experience, .feedback-form {
             background-color: var(--card-bg-color);
             border-radius: 8px;
             padding: 20px;
@@ -128,7 +133,7 @@
             transition: transform 0.3s ease;
         }
 
-        .skills-list:hover, .project:hover, .experience:hover {
+        .skills-list:hover, .project:hover, .experience:hover, .feedback-form:hover {
             transform: translateY(-5px);
         }
 
@@ -155,9 +160,6 @@
             nav ul {
                 flex-direction: column;
             }
-            nav ul li {
-                margin-bottom: 10px;
-            }
 
             .hero img {
                 width: 150px;
@@ -168,24 +170,45 @@
                 font-size: 2rem;
             }
         }
+
+        /* Feedback Form Styling */
+        .feedback-form input, .feedback-form textarea, .feedback-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .feedback-form button {
+            background-color: var(--linkedin-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .feedback-form button:hover {
+            background-color: #005582;
+        }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#home" class="tab-link active" data-tab="about">About Myself</a></li>
+                <li><a href="#skills" class="tab-link" data-tab="skills">Skills</a></li>
+                <li><a href="#experience" class="tab-link" data-tab="experience">Experience</a></li>
+                <li><a href="#projects" class="tab-link" data-tab="projects">Projects</a></li>
+                <li><a href="#feedback" class="tab-link" data-tab="feedback">Feedback</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="container">
+        <!-- About Myself -->
+        <section id="about" class="tab-content active">
+            <div class="container hero">
                 <img src="rohan.jpeg" alt="Rohan Rajkumar Tekale">
                 <h1>Rohan Rajkumar Tekale</h1>
                 <p>Machine Learning Engineer | Data Analyst</p>
@@ -198,7 +221,8 @@
             </div>
         </section>
 
-        <section id="skills" class="section">
+        <!-- Skills Tab -->
+        <section id="skills" class="tab-content">
             <div class="container">
                 <h2>Skills</h2>
                 <div class="skills-list">
@@ -209,7 +233,8 @@
             </div>
         </section>
 
-        <section id="experience" class="section">
+        <!-- Experience Tab -->
+        <section id="experience" class="tab-content">
             <div class="container">
                 <h2>Work Experience</h2>
                 <div class="experience">
@@ -224,7 +249,8 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
+        <!-- Projects Tab -->
+        <section id="projects" class="tab-content">
             <div class="container">
                 <h2>Projects</h2>
                 <div class="project">
@@ -236,21 +262,28 @@
                     </ul>
                 </div>
                 <div class="project">
-                    <h3>Zomato Restaurant Data Analysis</h3>
-                    <p><em>Technologies: Python, Power BI</em></p>
+                    <h3>Zomato Sales Dashboard</h3>
+                    <p><em>Technologies: Power BI, Python</em></p>
                     <ul>
-                        <li>Data preprocessing and visualization of restaurant data.</li>
-                        <li>Extracted actionable insights to guide decision-making processes.</li>
+                        <li>Created a Power BI dashboard for sales analysis.</li>
+                        <li>Performed data preprocessing using Python libraries.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="education" class="section">
+        <!-- Feedback Tab -->
+        <section id="feedback" class="tab-content">
             <div class="container">
-                <h2>Education</h2>
-                <p>Bachelor's in Electronics & Telecommunication</p>
-                <p>Savitribai Phule Pune University, CGPA: 9.02</p>
+                <h2>Feedback</h2>
+                <div class="feedback-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Feedback" rows="5" required></textarea>
+                        <button type="submit">Submit Feedback</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
@@ -265,5 +298,22 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // JavaScript for tab navigation
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                tabLinks.forEach(item => item.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                const targetTab = this.getAttribute('data-tab');
+                document.getElementById(targetTab).classList.add('active');
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
