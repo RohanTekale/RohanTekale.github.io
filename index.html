@@ -53,17 +53,19 @@
         nav ul li a {
             color: #fff;
             text-decoration: none;
+            cursor: pointer;
         }
 
         main {
             margin-top: 60px;
         }
 
-        .hero {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 3rem 0;
-            text-align: center;
+        .hero, .section {
+            display: none;
+        }
+
+        .active {
+            display: block;
         }
 
         .hero img {
@@ -80,17 +82,6 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-weight: bold;
-        }
-
-        .section {
-            padding: 3rem 0;
-        }
-
-        .section h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
         }
 
         .skills-list, .project, .experience {
@@ -123,17 +114,17 @@
     <header>
         <nav class="container">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('skills')">Skills</a></li>
+                <li><a onclick="showSection('experience')">Experience</a></li>
+                <li><a onclick="showSection('projects')">Projects</a></li>
+                <li><a onclick="showSection('education')">Education</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero">
+        <section id="home" class="hero active">
             <div class="container">
                 <img src="rohan.jpeg" alt="Rohan Rajkumar Tekale">
                 <h1>Rohan Rajkumar Tekale</h1>
@@ -205,5 +196,16 @@
             <p>&copy; 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('main > section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
