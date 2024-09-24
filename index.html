@@ -105,7 +105,7 @@
 
         .about-me {
             font-family: 'Dancing Script', cursive; /* Fancy italic font */
-            font-size: 1.8rem; /* Slightly increased font size */
+            font-size: 1.5rem; /* Slightly increased font size */
             margin-top: 20px;
             color: #fff;
             line-height: 1.6;
@@ -123,7 +123,7 @@
         }
 
         .linkedin-btn:hover {
-            background-color: #005582;
+            background-color: #004f7d;
         }
 
         .section h2 {
@@ -133,7 +133,29 @@
             margin-bottom: 20px;
         }
 
-        .skills-list, .project, .experience, .feedback-form {
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: var(--card-bg-color);
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill {
+            text-align: center;
+            margin: 15px;
+        }
+
+        .skill img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .experience, .project, .feedback-form {
             background-color: var(--card-bg-color);
             border-radius: 15px; /* Rounded corners */
             padding: 20px;
@@ -142,7 +164,7 @@
             transition: transform 0.3s ease;
         }
 
-        .skills-list:hover, .project:hover, .experience:hover, .feedback-form:hover {
+        .experience:hover, .project:hover, .feedback-form:hover {
             transform: translateY(-5px);
         }
 
@@ -205,7 +227,7 @@
     <header>
         <nav class="container">
             <ul>
-                <li><a href="#home" class="tab-link active" data-tab="about">About Myself</a></li>
+                <li><a href="#about" class="tab-link active" data-tab="about">About Myself</a></li>
                 <li><a href="#skills" class="tab-link" data-tab="skills">Skills</a></li>
                 <li><a href="#experience" class="tab-link" data-tab="experience">Experience</a></li>
                 <li><a href="#projects" class="tab-link" data-tab="projects">Projects</a></li>
@@ -240,9 +262,38 @@
             <div class="container">
                 <h2>Skills</h2>
                 <div class="skills-list">
-                    <p><strong>Languages:</strong> Python, SQL, HTML, CSS</p>
-                    <p><strong>Technologies & Tools:</strong> GenAI, LLM, Artificial Intelligence & Machine Learning, Power BI</p>
-                    <p><strong>Frameworks:</strong> FastAPI, Streamlit</p>
+                    <div class="skill">
+                        <img src="python-logo.png" alt="Python">
+                        <p>Python</p>
+                    </div>
+                    <div class="skill">
+                        <img src="sql-logo.png" alt="SQL">
+                        <p>SQL</p>
+                    </div>
+                    <div class="skill">
+                        <img src="html-logo.png" alt="HTML">
+                        <p>HTML</p>
+                    </div>
+                    <div class="skill">
+                        <img src="css-logo.png" alt="CSS">
+                        <p>CSS</p>
+                    </div>
+                    <div class="skill">
+                        <img src="fastapi-logo.png" alt="FastAPI">
+                        <p>FastAPI</p>
+                    </div>
+                    <div class="skill">
+                        <img src="powerbi-logo.png" alt="Power BI">
+                        <p>Power BI</p>
+                    </div>
+                    <div class="skill">
+                        <img src="tensorflow-logo.png" alt="TensorFlow">
+                        <p>TensorFlow</p>
+                    </div>
+                    <div class="skill">
+                        <img src="scikit-learn-logo.png" alt="Scikit-Learn">
+                        <p>Scikit-Learn</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -250,16 +301,24 @@
         <!-- Experience Tab -->
         <section id="experience" class="tab-content">
             <div class="container">
-                <h2>Work Experience</h2>
+                <h2>Experience</h2>
                 <div class="experience">
                     <h3>Machine Learning Engineer Intern</h3>
-                    <p><em>ValueDx Technologies Pvt Ltd., Pune | Jan 2024 - Present</em></p>
+                    <p><em>ValueDx Technologies Pvt Ltd., Pune | Feb 2022 - Mar 2022</em></p>
                     <ul>
-                        <li>Implemented machine learning algorithms for data analysis and predictive modeling.</li>
-                        <li>Collaborated with the team to deploy AI models for healthcare logistics.</li>
+                        <li>Implemented machine learning algorithms to enhance projects.</li>
+                        <li>Developed and deployed Python-based machine learning solutions.</li>
+                        <li>Collaborated with cross-functional teams to improve AI project performance.</li>
                     </ul>
                 </div>
-                <!-- Add more experiences as needed -->
+                <div class="experience">
+                    <h3>Data Analyst Intern</h3>
+                    <p><em>Healthcare Solutions, Mumbai | June 2023 - Dec 2023</em></p>
+                    <ul>
+                        <li>Analyzed healthcare logistics data to optimize supply chain processes.</li>
+                        <li>Created dashboards using Power BI for visual data insights.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -268,56 +327,50 @@
             <div class="container">
                 <h2>Projects</h2>
                 <div class="project">
-                    <h3>Audio Transcription & Summarization</h3>
-                    <p><em>Technologies: FastAPI, Whisper, Hugging Face</em></p>
-                    <ul>
-                        <li>Developed a web application to upload audio files and transcribe them using Whisper.</li>
-                        <li>Implemented summarization of transcripts with Hugging Face pipelines.</li>
-                    </ul>
+                    <h3>AI-Powered Healthcare Logistics Assistant</h3>
+                    <p>A web-based solution designed to optimize healthcare supply chain operations using AI-driven analysis and predictive models.</p>
                 </div>
-                <!-- Add more projects -->
+                <div class="project">
+                    <h3>AI-Powered Predictive Analytics for Supply Chain Management</h3>
+                    <p>A predictive model that analyzes supply chain data to provide insights and improve operational efficiency.</p>
+                </div>
             </div>
         </section>
 
-        <!-- Feedback Tab -->
+        <!-- Feedback Form -->
         <section id="feedback" class="tab-content">
             <div class="container">
                 <h2>Feedback</h2>
-                <div class="feedback-form">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Feedback" rows="5" required></textarea>
-                        <button type="submit">Submit Feedback</button>
-                    </form>
-                </div>
+                <form class="feedback-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Feedback" rows="5" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Rohan Rajkumar Tekale</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/rohan-tekale/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/rohan-tekale"><i class="fab fa-github"></i></a>
-                <a href="mailto:tekalerohan7@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
+        <p>© 2024 Rohan Rajkumar Tekale</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/rohan-tekale/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rohan-tekale"><i class="fab fa-github"></i></a>
         </div>
     </footer>
 
+    <!-- Script for Tab Switching -->
     <script>
-        const tabLinks = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
+        const tabs = document.querySelectorAll('.tab-link');
+        const contents = document.querySelectorAll('.tab-content');
 
-        tabLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                tabLinks.forEach(item => item.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-
-                const targetTab = this.getAttribute('data-tab');
-                document.getElementById(targetTab).classList.add('active');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                tabs.forEach(tab => tab.classList.remove('active'));
                 this.classList.add('active');
+                contents.forEach(content => content.classList.remove('active'));
+                document.querySelector(`#${this.dataset.tab}`).classList.add('active');
             });
         });
     </script>
