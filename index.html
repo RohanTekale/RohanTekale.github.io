@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohan Rajkumar Tekale - Portfolio</title>
+
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         :root {
-            --primary-color: black;
+            --primary-color: #333;
             --secondary-color: #2c3e50;
-            --background-color: #ecf0f1;
+            --background-color: #f4f4f4;
             --text-color: #333;
             --card-bg-color: #fff;
+            --linkedin-blue: #0077b5;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
             color: var(--text-color);
             background-color: var(--background-color);
             margin: 0;
             padding: 0;
-            transition: all 0.3s ease;
         }
 
         .container {
@@ -33,47 +39,44 @@
             background-color: var(--secondary-color);
             color: #fff;
             padding: 1rem 0;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
         }
 
         nav ul {
             display: flex;
-            list-style-type: none;
+            list-style: none;
             padding: 0;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin-right: 20px;
+            justify-content: space-around;
         }
 
         nav ul li a {
             color: #fff;
             text-decoration: none;
-            cursor: pointer;
+            padding: 10px;
+            transition: all 0.3s ease;
         }
 
-        main {
-            margin-top: 60px;
+        nav ul li a:hover {
+            background-color: var(--linkedin-blue);
+            border-radius: 5px;
         }
 
-        .hero, .section {
-            display: none;
-        }
-
-        .active {
-            display: block;
+        .hero {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
         }
 
         .hero img {
             border-radius: 50%;
             border: 4px solid white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             margin-bottom: 20px;
         }
@@ -84,12 +87,49 @@
             font-weight: bold;
         }
 
+        .hero p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* LinkedIn Button */
+        .linkedin-btn {
+            background-color: var(--linkedin-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .linkedin-btn:hover {
+            background-color: #005582;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
         .skills-list, .project, .experience {
             background-color: var(--card-bg-color);
-            border-radius: 5px;
+            border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skills-list:hover, .project:hover, .experience:hover {
+            transform: translateY(-5px);
         }
 
         footer {
@@ -100,12 +140,32 @@
             margin-top: 2rem;
         }
 
+        footer .social-icons a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--linkedin-blue);
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
             }
             nav ul li {
                 margin-bottom: 10px;
+            }
+
+            .hero img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -114,23 +174,27 @@
     <header>
         <nav class="container">
             <ul>
-                <li><a onclick="showSection('home')">Home</a></li>
-                <li><a onclick="showSection('skills')">Skills</a></li>
-                <li><a onclick="showSection('experience')">Experience</a></li>
-                <li><a onclick="showSection('projects')">Projects</a></li>
-                <li><a onclick="showSection('education')">Education</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero active">
+        <section id="home" class="hero">
             <div class="container">
                 <img src="rohan.jpeg" alt="Rohan Rajkumar Tekale">
                 <h1>Rohan Rajkumar Tekale</h1>
                 <p>Machine Learning Engineer | Data Analyst</p>
                 <p>Email: tekalerohan7@gmail.com | Phone: (+91) 9307802374</p>
-                <p><a href="https://www.linkedin.com/in/rohan-tekale/" style="color: white; text-decoration: underline;">LinkedIn Profile</a></p>
+                <p>
+                    <a href="https://www.linkedin.com/in/rohan-tekale/" class="linkedin-btn">
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
+                    </a>
+                </p>
             </div>
         </section>
 
@@ -193,19 +257,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
+            <p>&copy; 2024 Rohan Rajkumar Tekale</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/rohan-tekale/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/rohan-tekale"><i class="fab fa-github"></i></a>
+                <a href="mailto:tekalerohan7@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
     </footer>
-
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('main > section');
-            sections.forEach(section => section.classList.remove('active'));
-
-            // Show the selected section
-            document.getElementById(sectionId).classList.add('active');
-        }
-    </script>
 </body>
 </html>
