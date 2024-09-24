@@ -283,16 +283,12 @@
                         <p>FastAPI</p>
                     </div>
                     <div class="skill">
-                        <img src="powerbi-logo.png" alt="Power BI">
-                        <p>Power BI</p>
+                        <img src="docker-logo.png" alt="Docker">
+                        <p>Docker</p>
                     </div>
                     <div class="skill">
                         <img src="tensorflow-logo.png" alt="TensorFlow">
                         <p>TensorFlow</p>
-                    </div>
-                    <div class="skill">
-                        <img src="scikit-learn-logo.png" alt="Scikit-Learn">
-                        <p>Scikit-Learn</p>
                     </div>
                 </div>
             </div>
@@ -304,19 +300,11 @@
                 <h2>Experience</h2>
                 <div class="experience">
                     <h3>Machine Learning Engineer Intern</h3>
-                    <p><em>ValueDx Technologies Pvt Ltd., Pune | Feb 2022 - Mar 2022</em></p>
+                    <p><strong>ValueDx Technologies Pvt Ltd, Pune</strong> (Feb 2022 - Mar 2022)</p>
                     <ul>
-                        <li>Implemented machine learning algorithms to enhance projects.</li>
-                        <li>Developed and deployed Python-based machine learning solutions.</li>
-                        <li>Collaborated with cross-functional teams to improve AI project performance.</li>
-                    </ul>
-                </div>
-                <div class="experience">
-                    <h3>Data Analyst Intern</h3>
-                    <p><em>Healthcare Solutions, Mumbai | June 2023 - Dec 2023</em></p>
-                    <ul>
-                        <li>Analyzed healthcare logistics data to optimize supply chain processes.</li>
-                        <li>Created dashboards using Power BI for visual data insights.</li>
+                        <li>Implemented machine learning algorithms to enhance existing projects.</li>
+                        <li>Integrated Generative AI to improve predictive capabilities.</li>
+                        <li>Developed and deployed Python-based solutions for various applications.</li>
                     </ul>
                 </div>
             </div>
@@ -327,51 +315,66 @@
             <div class="container">
                 <h2>Projects</h2>
                 <div class="project">
-                    <h3>AI-Powered Healthcare Logistics Assistant</h3>
-                    <p>A web-based solution designed to optimize healthcare supply chain operations using AI-driven analysis and predictive models.</p>
+                    <h3>AI-Powered Predictive Analytics for Supply Chain Management</h3>
+                    <p>Developed a system to analyze supply chain data using machine learning techniques to predict inventory needs.</p>
                 </div>
                 <div class="project">
-                    <h3>AI-Powered Predictive Analytics for Supply Chain Management</h3>
-                    <p>A predictive model that analyzes supply chain data to provide insights and improve operational efficiency.</p>
+                    <h3>Healthcare Logistics Assistant</h3>
+                    <p>Built an AI-driven assistant for optimizing logistics in healthcare, improving efficiency and response times.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Feedback Form -->
+        <!-- Feedback Tab -->
         <section id="feedback" class="tab-content">
-            <div class="container">
+            <div class="container feedback-form">
                 <h2>Feedback</h2>
-                <form class="feedback-form">
+                <form id="feedback-form">
                     <input type="text" placeholder="Your Name" required>
                     <input type="email" placeholder="Your Email" required>
                     <textarea placeholder="Your Feedback" rows="5" required></textarea>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Submit Feedback</button>
                 </form>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2024 Rohan Rajkumar Tekale</p>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/rohan-tekale/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/rohan-tekale"><i class="fab fa-github"></i></a>
+        <div class="container">
+            <p>&copy; 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/rohan-tekale/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/yourgithubprofile"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/yourtwitterprofile"><i class="fab fa-twitter"></i></a>
+            </div>
         </div>
     </footer>
 
-    <!-- Script for Tab Switching -->
     <script>
+        // Tab Functionality
         const tabs = document.querySelectorAll('.tab-link');
-        const contents = document.querySelectorAll('.tab-content');
+        const tabContents = document.querySelectorAll('.tab-content');
 
         tabs.forEach(tab => {
-            tab.addEventListener('click', function(e) {
+            tab.addEventListener('click', (e) => {
                 e.preventDefault();
-                tabs.forEach(tab => tab.classList.remove('active'));
-                this.classList.add('active');
-                contents.forEach(content => content.classList.remove('active'));
-                document.querySelector(`#${this.dataset.tab}`).classList.add('active');
+                
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const target = document.querySelector(`#${tab.dataset.tab}`);
+                target.classList.add('active');
             });
+        });
+
+        // Feedback Form Submission (for demonstration)
+        document.getElementById('feedback-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert("Feedback submitted! Thank you.");
+            this.reset(); // Reset the form fields
         });
     </script>
 </body>
