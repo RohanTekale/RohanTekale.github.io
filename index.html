@@ -29,12 +29,6 @@
             padding: 0;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 20px;
-        }
-
         header {
             background-color: var(--secondary-color);
             color: #fff;
@@ -49,29 +43,23 @@
             display: flex;
             list-style: none;
             padding: 0;
-            justify-content: space-around;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
         }
 
         nav ul li a {
             color: #fff;
             text-decoration: none;
             padding: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         nav ul li a:hover, nav ul li a.active {
             background-color: var(--linkedin-blue);
             border-radius: 5px;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 3rem 0;
-        }
-
-        .tab-content.active {
-            display: block;
         }
 
         .hero {
@@ -126,17 +114,22 @@
             background-color: #004f7d;
         }
 
+        .section {
+            padding: 3rem 0;
+        }
+
         .section h2 {
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 10px;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
             background-color: var(--card-bg-color);
             border-radius: 15px; /* Rounded corners */
             padding: 20px;
@@ -225,21 +218,21 @@
 </head>
 <body>
     <header>
-        <nav class="container">
+        <nav>
             <ul>
-                <li><a href="#about" class="tab-link active" data-tab="about">About Myself</a></li>
-                <li><a href="#skills" class="tab-link" data-tab="skills">Skills</a></li>
-                <li><a href="#experience" class="tab-link" data-tab="experience">Experience</a></li>
-                <li><a href="#projects" class="tab-link" data-tab="projects">Projects</a></li>
-                <li><a href="#feedback" class="tab-link" data-tab="feedback">Feedback</a></li>
+                <li><a href="#about" class="active">About Myself</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#feedback">Feedback</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <!-- About Myself -->
-        <section id="about" class="tab-content active">
-            <div class="container hero">
+        <section id="about" class="section">
+            <div class="hero">
                 <img src="rohan.jpeg" alt="Rohan Rajkumar Tekale">
                 <h1>Rohan Rajkumar Tekale</h1>
                 <p>Machine Learning Engineer | Data Analyst</p>
@@ -258,81 +251,82 @@
         </section>
 
         <!-- Skills Tab -->
-        <section id="skills" class="tab-content">
-            <div class="container">
-                <h2>Skills</h2>
-                <div class="skills-list">
-                    <div class="skill">
-                        <img src="python-logo.png" alt="Python">
-                        <p>Python</p>
-                    </div>
-                    <div class="skill">
-                        <img src="sql-logo.png" alt="SQL">
-                        <p>SQL</p>
-                    </div>
-                    <div class="skill">
-                        <img src="html-logo.png" alt="HTML">
-                        <p>HTML</p>
-                    </div>
-                    <div class="skill">
-                        <img src="css-logo.png" alt="CSS">
-                        <p>CSS</p>
-                    </div>
-                    <div class="skill">
-                        <img src="fastapi-logo.png" alt="FastAPI">
-                        <p>FastAPI</p>
-                    </div>
-                    <div class="skill">
-                        <img src="docker-logo.png" alt="Docker">
-                        <p>Docker</p>
-                    </div>
-                    <div class="skill">
-                        <img src="tensorflow-logo.png" alt="TensorFlow">
-                        <p>TensorFlow</p>
-                    </div>
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div class="skill">
+                    <img src="python-logo.png" alt="Python">
+                    <p>Python</p>
+                </div>
+                <div class="skill">
+                    <img src="sql-logo.png" alt="SQL">
+                    <p>SQL</p>
+                </div>
+                <div class="skill">
+                    <img src="html-logo.png" alt="HTML">
+                    <p>HTML</p>
+                </div>
+                <div class="skill">
+                    <img src="css-logo.png" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="skill">
+                    <img src="fastapi-logo.png" alt="FastAPI">
+                    <p>FastAPI</p>
+                </div>
+                <div class="skill">
+                    <img src="docker-logo.png" alt="Docker">
+                    <p>Docker</p>
+                </div>
+                <div class="skill">
+                    <img src="tensorflow-logo.png" alt="TensorFlow">
+                    <p>TensorFlow</p>
                 </div>
             </div>
         </section>
 
         <!-- Experience Tab -->
-        <section id="experience" class="tab-content">
-            <div class="container">
-                <h2>Experience</h2>
-                <div class="experience">
-                    <h3>Machine Learning Engineer Intern</h3>
-                    <p><strong>ValueDx Technologies Pvt Ltd, Pune</strong> (Feb 2022 - Mar 2022)</p>
-                    <ul>
-                        <li>Implemented machine learning algorithms to enhance existing projects.</li>
-                        <li>Integrated Generative AI to improve predictive capabilities.</li>
-                        <li>Developed and deployed Python-based solutions for various applications.</li>
-                    </ul>
-                </div>
+        <section id="experience" class="section">
+            <h2>Experience</h2>
+            <div class="experience">
+                <h3>Machine Learning Engineer Intern</h3>
+                <p>ValueDx Technologies Pvt Ltd., Pune | Feb 2022 - Mar 2022</p>
+                <ul>
+                    <li>Implemented machine learning algorithms.</li>
+                    <li>Enhanced projects with machine learning and deep learning.</li>
+                    <li>Gained experience with neural networks and deep learning frameworks.</li>
+                    <li>Integrated Generative AI.</li>
+                    <li>Developed and deployed Python-based machine learning solutions.</li>
+                </ul>
             </div>
         </section>
 
         <!-- Projects Tab -->
-        <section id="projects" class="tab-content">
-            <div class="container">
-                <h2>Projects</h2>
-                <div class="project">
-                    <h3>AI-Powered Predictive Analytics for Supply Chain Management</h3>
-                    <p>Developed a system to analyze supply chain data using machine learning techniques to predict inventory needs.</p>
-                </div>
-                <div class="project">
-                    <h3>Healthcare Logistics Assistant</h3>
-                    <p>Built an AI-driven assistant for optimizing logistics in healthcare, improving efficiency and response times.</p>
-                </div>
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>AI-Powered Predictive Analytics for Supply Chain Management</h3>
+                <p>A project aimed at analyzing supply chain data to make predictive insights.</p>
+                <p>Tools: Python, FastAPI, SQL</p>
+            </div>
+            <div class="project">
+                <h3>AI-Powered Healthcare Logistics Assistant</h3>
+                <p>A healthcare logistics assistant utilizing AI for optimized supply management.</p>
+                <p>Tools: Python, TensorFlow, FastAPI</p>
             </div>
         </section>
 
         <!-- Feedback Tab -->
-        <section id="feedback" class="tab-content">
-            <div class="container feedback-form">
-                <h2>Feedback</h2>
-                <form id="feedback-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Feedback" rows="5" required></textarea>
+        <section id="feedback" class="section">
+            <h2>Feedback</h2>
+            <div class="feedback-form">
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" rows="4" required></textarea>
                     <button type="submit">Submit Feedback</button>
                 </form>
             </div>
@@ -340,42 +334,11 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/rohan-tekale/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/yourgithubprofile"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/yourtwitterprofile"><i class="fab fa-twitter"></i></a>
-            </div>
+        <p>&copy; 2024 Rohan Rajkumar Tekale. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/rohan-tekale/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rohan-tekale"><i class="fab fa-github"></i></a>
         </div>
     </footer>
-
-    <script>
-        // Tab Functionality
-        const tabs = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active class from all tabs and contents
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-
-                // Add active class to clicked tab and corresponding content
-                tab.classList.add('active');
-                const target = document.querySelector(`#${tab.dataset.tab}`);
-                target.classList.add('active');
-            });
-        });
-
-        // Feedback Form Submission (for demonstration)
-        document.getElementById('feedback-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert("Feedback submitted! Thank you.");
-            this.reset(); // Reset the form fields
-        });
-    </script>
 </body>
 </html>
