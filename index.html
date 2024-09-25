@@ -4,41 +4,378 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohan Rajkumar Tekale - Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Cinzel+Decorative:wght@400;700&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #2c3e50;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --card-bg-color: #fff;
+            --linkedin-blue: #0077b5;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
         }
-        h1, h2 {
-            color: #2c3e50;
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
         }
-        .contact-info {
-            background-color: #f4f4f4;
+
+        header {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            justify-content: space-around;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
             padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--linkedin-blue);
             border-radius: 5px;
         }
-        .section {
-            margin-bottom: 30px;
+
+        .tab-content {
+            display: none;
+            padding: 3rem 0;
         }
-        .project, .experience {
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .hero {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero img {
+            border-radius: 50%; /* Circular image */
+            border: 4px solid white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
             margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel Decorative', serif; /* Title font */
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .about-me {
+            font-family: 'Dancing Script', cursive; /* Fancy italic font */
+            font-size: 1.5rem; /* Slightly increased font size */
+            margin-top: 20px;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .linkedin-btn {
+            background-color: var(--linkedin-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .linkedin-btn:hover {
+            background-color: #004f7d;
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: var(--card-bg-color);
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill {
+            text-align: center;
+            margin: 15px;
+        }
+
+        .skill img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .experience, .project, .feedback-form {
+            background-color: var(--card-bg-color);
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .experience:hover, .project:hover, .feedback-form:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        footer .social-icons a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--linkedin-blue);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            .hero img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Feedback Form Styling */
+        .feedback-form input, .feedback-form textarea, .feedback-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .feedback-form button {
+            background-color: var(--linkedin-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .feedback-form button:hover {
+            background-color: #005582;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Rohan Rajkumar Tekale</h1>
-        <div class="contact-info">
-            <p>Email: tekalerohan7@gmail.com | Phone: (+91) 9307802374</p>
-            <p><a href="https://github.com/RohanTekale">GitHub Profile</a> | <a href="#">LinkedIn</a></p>
-        </div>
+        <nav class="container">
+            <ul>
+                <li><a href="#about" class="tab-link active" data-tab="about">About Myself</a></li>
+                <li><a href="#skills" class="tab-link" data-tab="skills">Skills</a></li>
+                <li><a href="#experience" class="tab-link" data-tab="experience">Experience</a></li>
+                <li><a href="#projects" class="tab-link" data-tab="projects">Projects</a></li>
+                <li><a href="#feedback" class="tab-link" data-tab="feedback">Feedback</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- The rest of the HTML remains the same as in the previous artifact -->
+    <main>
+        <!-- About Myself -->
+        <section id="about" class="tab-content active">
+            <div class="container hero">
+                <img src="rohan.jpeg" alt="Rohan Rajkumar Tekale">
+                <h1>Rohan Rajkumar Tekale</h1>
+                <p>Machine Learning Engineer | Data Analyst</p>
+                <p>Email: tekalerohan7@gmail.com | Phone: (+91) 9307802374</p>
+                <div class="about-me">
+                    <p>
+                        "I am a passionate Machine Learning Engineer with a strong foundation in data analysis and predictive modeling. My journey in the tech world has been driven by an insatiable curiosity to leverage data for impactful solutions. I thrive in dynamic environments and am eager to contribute my skills to innovative projects."
+                    </p>
+                </div>
+                <p>
+                    <a href="https://www.linkedin.com/in/rohan-tekale/" class="linkedin-btn">
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
+                    </a>
+                </p>
+            </div>
+        </section>
 
+        <!-- Skills Tab -->
+        <section id="skills" class="tab-content">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skills-list">
+                    <div class="skill">
+                        <img src="python-logo.png" alt="Python">
+                        <p>Python</p>
+                    </div>
+                    <div class="skill">
+                        <img src="sql-logo.png" alt="SQL">
+                        <p>SQL</p>
+                    </div>
+                    <div class="skill">
+                        <img src="html-logo.png" alt="HTML">
+                        <p>HTML</p>
+                    </div>
+                    <div class="skill">
+                        <img src="css-logo.png" alt="CSS">
+                        <p>CSS</p>
+                    </div>
+                    <div class="skill">
+                        <img src="fastapi-logo.png" alt="FastAPI">
+                        <p>FastAPI</p>
+                    </div>
+                    <div class="skill">
+                        <img src="docker-logo.png" alt="Docker">
+                        <p>Docker</p>
+                    </div>
+                    <div class="skill">
+                        <img src="tensorflow-logo.png" alt="TensorFlow">
+                        <p>TensorFlow</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Tab -->
+        <section id="experience" class="tab-content">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="experience">
+                    <h3>Machine Learning Engineer Intern</h3>
+                    <p><strong>ValueDx Technologies Pvt Ltd, Pune</strong> (Feb 2022 - Mar 2022)</p>
+                    <ul>
+                        <li>Implemented machine learning algorithms to enhance existing projects.</li>
+                        <li>Integrated Generative AI to improve predictive capabilities.</li>
+                        <li>Developed and deployed Python-based solutions for various applications.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Tab -->
+        <section id="projects" class="tab-content">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project">
+                    <h3>AI-Powered Predictive Analytics for Supply Chain Management</h3>
+                    <p>Developed a system to analyze supply chain data using machine learning techniques to predict inventory needs.</p>
+                </div>
+                <div class="project">
+                    <h3>Healthcare Logistics Assistant</h3>
+                    <p>Built an AI-driven assistant for optimizing logistics in healthcare, improving efficiency and response times.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Tab -->
+        <section id="feedback" class="tab-content">
+            <div class="container feedback-form">
+                <h2>Feedback</h2>
+                <form id="feedback-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Feedback" rows="5" required></textarea>
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Rohan Rajkumar Tekale. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/rohan-tekale/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/yourgithubprofile"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/yourtwitterprofile"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Functionality
+        const tabs = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const target = document.querySelector(`#${tab.dataset.tab}`);
+                target.classList.add('active');
+            });
+        });
+
+        // Feedback Form Submission (for demonstration)
+        document.getElementById('feedback-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert("Feedback submitted! Thank you.");
+            this.reset(); // Reset the form fields
+        });
+    </script>
 </body>
 </html>
