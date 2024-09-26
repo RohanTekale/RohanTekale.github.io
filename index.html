@@ -1,138 +1,159 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Rohan's Portfolio - Projects</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Rohan's Portfolio - Projects</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* Ensure input text is visible */
+        input, textarea {
+            color: #000; /* Black text color */
+            background-color: #fff; /* White background */
+            border: 1px solid #ccc; /* Light border */
+            padding: 10px; /* Padding for better spacing */
+            border-radius: 4px; /* Rounded corners */
+            width: 100%; /* Full width */
+            box-sizing: border-box; /* Include padding in width */
+        }
 
-		<!-- Wrapper -->
-		<div id="wrapper" class="fade-in">
+        /* Add focus styles for better visibility */
+        input:focus, textarea:focus {
+            border: 2px solid #007BFF; /* Highlight border on focus */
+            outline: none; /* Remove default outline */
+        }
 
-			<!-- Intro -->
-			<div id="intro">
-				<h1>Rohan's<br />Portfolio</h1>
-				<p>"Motivated Software Developer with expertise in Python, SQL, Generative AI, Microsoft Power BI, Django, FastAPI, and Streamlit, aiming to leverage my skills to build innovative and scalable solutions."
-				<br />Feel free to reach out on <a href="https://www.linkedin.com/in/rohan-tekale/">LinkedIn</a>.<br />
-				Explore my work on <a href="https://github.com/RohanTekale">GitHub</a>.
-				</p>
-				<ul class="actions">
-					<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-				</ul>
-			</div>
+        /* Feedback section styling */
+        #feedback {
+            margin-top: 20px; /* Space above feedback section */
+        }
+    </style>
+</head>
+<body class="is-preload">
 
-			<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="logo">Gen-AI & Data Portfolio</a>
-			</header>
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li class="active"><a href="index.html">Projects</a></li>
-					<li><a href="resume.html">Resume</a></li>
-					<li><a href="experience.html">Experience</a></li>
-				</ul>
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/rohan-tekale" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					<li><a href="https://github.com/RohanTekale" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-			</nav>
+        <!-- Intro -->
+        <div id="intro">
+            <h1>Rohan's<br />Portfolio</h1>
+            <p>"Motivated Software Developer with expertise in Python, SQL, Generative AI, Microsoft Power BI, Django, FastAPI, and Streamlit, aiming to leverage my skills to build innovative and scalable solutions."
+            <br />Feel free to reach out on <a href="https://www.linkedin.com/in/rohan-tekale/">LinkedIn</a>.<br />
+            Explore my work on <a href="https://github.com/RohanTekale">GitHub</a>.
+            </p>
+            <ul class="actions">
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+            </ul>
+        </div>
 
-			<!-- Main -->
-			<div id="main">
-				<!-- Featured Post -->
-				<article class="post featured">
-					<header class="major">
-						<h2><a href="#">Projects<br /> </a></h2>
-						<p>Explore my projects to see how I've integrated software development, generative AI, and data analytics to create impactful solutions. Let the innovation and insights unfold!</p>
-					</header>
-				</article>
-			</div>
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo">Gen-AI & Data Portfolio</a>
+        </header>
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section class="alt">
-					<h3>Address</h3>
-					<p>Sahkar Nagar, Swarget<br />
-					Pune, Maharashtra - 411009</p>
-				</section>
-				<section>
-					<h3>Phone Number</h3>
-					<p><a href="#">(+91) 9307802374</a></p>
-				</section>
-				<section>
-					<h3>Email ID</h3>
-					<p><a href="#">tekalerohan7@gmail.com</a></p>
-				</section>
-			</footer>
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li class="active"><a href="index.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="experience.html">Experience</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://www.linkedin.com/in/rohan-tekale" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://github.com/RohanTekale" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+            </ul>
+        </nav>
 
-			<!-- Feedback Section -->
-			<section id="feedback">
-				<header class="major">
-					<h2>Feedback</h2>
-					<p>Your feedback is highly appreciated!</p>
-				</header>
-				<form id="feedback-form">
-					<div class="field">
-						<label for="name">Name:</label>
-						<input type="text" id="name" name="name" required placeholder="Your Name" />
-					</div>
-					<div class="field">
-						<label for="email">Email:</label>
-						<input type="email" id="email" name="email" required placeholder="Your Email" />
-					</div>
-					<div class="field">
-						<label for="feedback">Feedback:</label>
-						<textarea id="feedback" name="feedback" required placeholder="Your Feedback" rows="4"></textarea>
-					</div>
-					<ul class="actions">
-						<li><input type="submit" value="Submit Feedback" class="button primary" /></li>
-					</ul>
-				</form>
-			</section>
-		</div>
+        <!-- Main -->
+        <div id="main">
+            <!-- Featured Post -->
+            <article class="post featured">
+                <header class="major">
+                    <h2><a href="#">Projects<br /> </a></h2>
+                    <p>Explore my projects to see how I've integrated software development, generative AI, and data analytics to create impactful solutions. Let the innovation and insights unfold!</p>
+                </header>
+            </article>
+        </div>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+        <!-- Feedback Section -->
+        <section id="feedback">
+            <header class="major">
+                <h2>Feedback</h2>
+                <p>Your feedback is highly appreciated!</p>
+            </header>
+            <form id="feedback-form">
+                <div class="field">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name" />
+                </div>
+                <div class="field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Your Email" />
+                </div>
+                <div class="field">
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" required placeholder="Your Feedback" rows="4"></textarea>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Submit Feedback" class="button primary" /></li>
+                </ul>
+            </form>
+        </section>
 
-		<!-- EmailJS Script -->
-		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-		<script type="text/javascript">
-		  (function() {
-		    emailjs.init('BC2_zaKNxrt8Os5GVMAyt'); // Replace with your EmailJS user ID
-		  })();
-		</script>
+        <!-- Footer -->
+        <footer id="footer">
+            <section class="alt">
+                <h3>Address</h3>
+                <p>Sahkar Nagar, Swarget<br />
+                Pune, Maharashtra - 411009</p>
+            </section>
+            <section>
+                <h3>Phone Number</h3>
+                <p><a href="#">(+91) 9307802374</a></p>
+            </section>
+            <section>
+                <h3>Email ID</h3>
+                <p><a href="#">tekalerohan7@gmail.com</a></p>
+            </section>
+        </footer>
 
-		<!-- JavaScript to send feedback -->
-		<script type="text/javascript">
-		  document.getElementById('feedback-form').addEventListener('submit', function(event) {
-		    event.preventDefault();
-		    
-		    const templateParams = {
-		      to_name: 'Rohan',  // Your name
-		      from_name: document.getElementById('name').value,
-		      email: document.getElementById('email').value,
-		      message: document.getElementById('feedback').value,
-		    };
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
 
-		    emailjs.send('service_g0ffuxl', 'template_ul7kk9i', templateParams)
-		      .then(function(response) {
-		        alert('Feedback sent successfully!');
-		      }, function(error) {
-		        alert('Failed to send feedback: ' + error.text);
-		      });
-		  });
-		</script>
+        <!-- EmailJS Script -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function() {
+                emailjs.init('6gHSolnV0TzAicpRa'); // Replace with your EmailJS user ID
+            })();
+        </script>
 
-	</body>
+        <!-- JavaScript to send feedback -->
+        <script type="text/javascript">
+            document.getElementById('feedback-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const templateParams = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    feedback: document.getElementById('feedback').value,
+                };
+
+                emailjs.send('service_g0ffuxl', 'template_ul7kk9i', templateParams)
+                    .then(function(response) {
+                        alert('Feedback sent successfully!');
+                    }, function(error) {
+                        alert('Failed to send feedback: ' + error.text);
+                    });
+            });
+        </script>
+    </div>
+</body>
 </html>
