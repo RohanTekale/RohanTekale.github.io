@@ -71,15 +71,29 @@
 			</footer>
 
 			<!-- Feedback Section -->
-			<div id="intro">
-				<h1>Feedbacks are highly appreciated!</h1>
-				<p>Feel free to share your comments on my  
-					 <a href="https://www.linkedin.com/in/rohan-tekale/">LinkedIn Profile</a>.
-				</p>
-				<ul class="actions">
-					<li><a href="#header" class="button icon solid solo fa-arrow-up scrolly">Continue</a></li>
-				</ul>
-			</div>
+			<section id="feedback">
+				<header class="major">
+					<h2>Feedback</h2>
+					<p>Your feedback is highly appreciated!</p>
+				</header>
+				<form id="feedback-form">
+					<div class="field">
+						<label for="name">Name:</label>
+						<input type="text" id="name" name="name" required placeholder="Your Name" />
+					</div>
+					<div class="field">
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" required placeholder="Your Email" />
+					</div>
+					<div class="field">
+						<label for="feedback">Feedback:</label>
+						<textarea id="feedback" name="feedback" required placeholder="Your Feedback" rows="4"></textarea>
+					</div>
+					<ul class="actions">
+						<li><input type="submit" value="Submit Feedback" class="button primary" /></li>
+					</ul>
+				</form>
+			</section>
 		</div>
 
 		<!-- Scripts -->
@@ -90,6 +104,35 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+
+		<!-- EmailJS Script -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+		<script type="text/javascript">
+		  (function() {
+		    emailjs.init('BC2_zaKNxrt8Os5GVMAyt'); // Replace with your EmailJS user ID
+		  })();
+		</script>
+
+		<!-- JavaScript to send feedback -->
+		<script type="text/javascript">
+		  document.getElementById('feedback-form').addEventListener('submit', function(event) {
+		    event.preventDefault();
+		    
+		    const templateParams = {
+		      to_name: 'Rohan',  // Your name
+		      from_name: document.getElementById('name').value,
+		      email: document.getElementById('email').value,
+		      message: document.getElementById('feedback').value,
+		    };
+
+		    emailjs.send('service_g0ffuxl', 'template_ul7kk9i', templateParams)
+		      .then(function(response) {
+		        alert('Feedback sent successfully!');
+		      }, function(error) {
+		        alert('Failed to send feedback: ' + error.text);
+		      });
+		  });
+		</script>
 
 	</body>
 </html>
