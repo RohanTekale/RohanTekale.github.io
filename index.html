@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-        /* Ensure input text is visible and background is white */
+        /* Ensure input text is visible */
         input, textarea {
             color: #000; /* Black text color */
             background-color: #fff; /* White background */
@@ -27,11 +27,6 @@
         /* Feedback section styling */
         #feedback {
             margin-top: 20px; /* Space above feedback section */
-        }
-
-        /* Change feedback header and appreciation text to white */
-        #feedback h2, #feedback p {
-            color: #fff; /* White text color for feedback title and message */
         }
     </style>
 </head>
@@ -97,8 +92,8 @@
                     <input type="email" id="email" name="email" required placeholder="Your Email" />
                 </div>
                 <div class="field">
-                    <label for="feedbackText">Feedback:</label>
-                    <textarea id="feedbackText" name="feedbackText" required placeholder="Your Feedback" rows="4"></textarea>
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" required placeholder="Your Feedback" rows="4"></textarea>
                 </div>
                 <ul class="actions">
                     <li><input type="submit" value="Submit Feedback" class="button primary" /></li>
@@ -136,7 +131,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         <script type="text/javascript">
             (function() {
-                emailjs.init('6gHSolnV0TzAicpRa'); // Replace with your EmailJS user ID
+                emailjs.init('YOUR_USER_ID'); // Replace with your EmailJS user ID
             })();
         </script>
 
@@ -148,10 +143,10 @@
                 const templateParams = {
                     name: document.getElementById('name').value,
                     email: document.getElementById('email').value,
-                    feedback: document.getElementById('feedbackText').value,  // Correct reference to textarea
+                    feedback: document.getElementById('feedback').value,
                 };
 
-                emailjs.send('service_g0ffuxl', 'template_ul7kk9i', templateParams)
+                emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
                     .then(function(response) {
                         alert('Feedback sent successfully!');
                     }, function(error) {
