@@ -1,93 +1,195 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Rohan's Portfolio - Experience</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Experience — Rohan Tekale</title>
+  <link rel="stylesheet" href="theme.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .exp-layout { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; margin-top: 3.5rem; align-items: start; }
+    .exp-sidebar { position: sticky; top: 7rem; }
+    .sidebar-stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; margin-bottom: 1rem; }
+    .ss-label { font-family: var(--mono); font-size: .68rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .4rem; }
+    .ss-val { font-family: var(--heading); font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .ss-sub { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+    .sidebar-skills { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; }
+    .sidebar-skills h4 { font-family: var(--mono); font-size: .68rem; color: var(--accent); letter-spacing: .12em; margin-bottom: .9rem; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-		<!-- Wrapper -->
-		<div id="wrapper" class="fade-in">
+    .timeline { position: relative; }
+    .tl-line {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+    .tl-item { padding-left: 2.5rem; margin-bottom: 4rem; position: relative; }
+    .tl-dot {
+      position: absolute; left: -6px; top: .5rem;
+      width: 13px; height: 13px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 4px var(--bg), 0 0 16px var(--accent);
+      transition: box-shadow .3s;
+    }
+    .tl-dot.dim { background: var(--accent2); box-shadow: 0 0 0 4px var(--bg), 0 0 12px var(--accent2); }
+    .tl-item:hover .tl-dot { box-shadow: 0 0 0 6px var(--bg), 0 0 24px var(--accent); }
+    .tl-header { margin-bottom: 1.25rem; }
+    .tl-meta { font-family: var(--mono); font-size: .72rem; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-bottom: .5rem; }
+    .tl-badge { background: rgba(var(--accent-rgb),.08); border: 1px solid rgba(var(--accent-rgb),.18); color: var(--accent); padding: .2rem .65rem; border-radius: 4px; font-size: .67rem; }
+    .tl-company { font-family: var(--heading); font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: .25rem; }
+    .tl-role { color: var(--accent); font-size: .9rem; font-weight: 500; margin-bottom: 1rem; }
+    .tl-desc { font-size: .9rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.8; }
+    .tl-points { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
+    .tl-points li { font-size: .88rem; color: var(--muted); padding-left: 1.3rem; position: relative; line-height: 1.7; }
+    .tl-points li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: .78rem; top: .15rem; }
+    .tl-points li strong { color: var(--text); }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tl-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; transition: border-color .3s, box-shadow .3s; }
+    .tl-card:hover { border-color: rgba(var(--accent-rgb),.3); box-shadow: 0 12px 40px rgba(0,0,0,.2); }
 
-			<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="logo">Software Development & AI Solutions</a>
-			</header>
+    .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; margin-top: 1rem; }
+    .edu-deg { font-family: var(--heading); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .25rem; }
+    .edu-school { font-size: .85rem; color: var(--muted); }
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li><a href="about.html">About Me</a></li>
-					<li><a href="projects.html">Projects</a></li>
-					<li><a href="resume.html">Resume</a></li>
-					<li class="active"><a href="experience.html">Experience</a></li>
-				</ul>
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/rohan-tekale" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					<li><a href="https://github.com/RohanTekale" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-			</nav>
+    @media (max-width: 860px) {
+      .exp-layout { grid-template-columns: 1fr; }
+      .exp-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body class="dev page-in">
+<div id="cursor"></div><div id="cursor-trail"></div><div id="progress"></div>
+<div id="mobile-nav">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="experience.html">Experience</a><a href="projects.html">Projects</a>
+  <a href="ai.html">AI Work</a><a href="contact.html">Contact</a>
+</div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">RT<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="about.html">about</a></li>
+    <li><a href="experience.html" class="active">experience</a></li>
+    <li><a href="projects.html">projects</a></li>
+    <li><a href="ai.html">ai work</a></li>
+    <li><a href="contact.html">contact</a></li>
+  </ul>
+  <div class="theme-toggle">
+    <button class="theme-btn on" data-mode="dev">⌨ Dev</button>
+    <button class="theme-btn" data-mode="ai">✦ AI</button>
+  </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
 
-			<!-- Main -->
-			<div id="main">
-				<section id="experience">
-					<header class="major">
-						<h2>Professional Experience</h2>
-					</header>
-					<article class="post">
-						<header class="major">
-							<h3>Software Developer - Biddano Pvt. Ltd.</h3>
-							<p><strong>Duration:</strong> August 2024 - Present</p>
-							<p><strong>Location:</strong> Pune, Maharashtra</p>
-						</header>
-						<ul>
-							<li>Developed secure RESTful microservices with Python, FastAPI, and Django on AWS EC2/S3, ensuring 99.9% uptime for 100+ daily API requests.</li>
-							<li>Built WebSocket endpoints for real-time updates, handling 50+ concurrent connections with <100ms latency.</li>
-							<li>Optimized PostgreSQL/MongoDB queries on AWS RDS, boosting data retrieval by 30%.</li>
-							<li>Integrated React front-end with backend APIs, enhancing user experience for 50+ daily users.</li>
-						</ul>
-					</article>
-					<article class="post">
-						<header class="major">
-							<h3>ML Engineer Intern - ValueDx Technologies Pvt Ltd.</h3>
-							<p><strong>Duration:</strong> February 2022 - March 2022</p>
-							<p><strong>Location:</strong> Pune, Maharashtra</p>
-						</header>
-						<p>Implemented machine learning algorithms, enhanced existing projects using machine learning and deep learning, gained experience with neural networks and deep learning frameworks, and developed Python-based machine learning solutions. Integrated Generative AI concepts and deployed various ML models.</p>
-					</article>
-				</section>
-			</div>
+<section style="padding-top:9rem">
+  <div class="container">
+    <div class="s-label reveal">02 // experience</div>
+    <h2 class="s-title reveal">Where I've <em>shipped code</em></h2>
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section class="alt">
-					<h3>Address</h3>
-					<p>Sahkar Nagar, Swarget<br />
-					Pune, Maharashtra - 411009</p>
-				</section>
-				<section>
-					<h3>Phone Number</h3>
-					<p><a href="#">(+91) 9307802374</a></p>
-				</section>
-				<section>
-					<h3>Email ID</h3>
-					<p><a href="#">tekalerohan7@gmail.com</a></p>
-				</section>
-			</footer>
+    <div class="exp-layout">
+      <!-- Sidebar -->
+      <div class="exp-sidebar">
+        <div class="sidebar-stat reveal"><div class="ss-label">TOTAL EXPERIENCE</div><div class="ss-val">2+</div><div class="ss-sub">years in production</div></div>
+        <div class="sidebar-stat reveal"><div class="ss-label">COMPANIES</div><div class="ss-val">2</div><div class="ss-sub">Biddano · ValueDx</div></div>
+        <div class="sidebar-stat reveal"><div class="ss-label">UPTIME ACHIEVED</div><div class="ss-val">99.9%</div><div class="ss-sub">across all services</div></div>
+        <div class="sidebar-skills reveal">
+          <h4>CORE SKILLS</h4>
+          <div class="tag-cloud">
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">FastAPI</span>
+            <span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Celery</span>
+            <span class="tag">RabbitMQ</span><span class="tag">Docker</span><span class="tag">AWS</span>
+            <span class="tag">Kubernetes</span><span class="tag">LangChain</span><span class="tag">HuggingFace</span>
+          </div>
+        </div>
+      </div>
 
-		</div>
+      <!-- Timeline -->
+      <div class="timeline">
+        <div class="tl-line"></div>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+        <!-- Job 1 -->
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-meta">
+                <span class="tl-badge">Aug 2024 – Present</span>
+                <span>Pune, Maharashtra</span>
+                <span style="color:var(--accent2)">● current</span>
+              </div>
+              <div class="tl-company">Biddano Pvt. Ltd.</div>
+              <div class="tl-role">Software Developer</div>
+            </div>
+            <p class="tl-desc">Building scalable microservices and real-time backend infrastructure for digital financial products. Full ownership from architecture to deployment.</p>
+            <ul class="tl-points">
+              <li>Developed secure RESTful microservices with Python, FastAPI, and Django on <strong>AWS EC2/S3</strong> — ensuring <strong>99.9% uptime</strong> for 100+ daily API requests.</li>
+              <li>Built <strong>WebSocket endpoints</strong> for real-time updates handling 50+ concurrent connections with &lt;100ms latency.</li>
+              <li>Optimized <strong>PostgreSQL/MongoDB queries</strong> on AWS RDS — boosted data retrieval by <strong>30%</strong>.</li>
+              <li>Integrated React front-end with backend APIs, improving UX for 50+ daily active users.</li>
+              <li>Implemented <strong>CI/CD pipelines</strong> with Docker and Bitbucket Pipelines for consistent automated deployments.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Django</span>
+              <span class="tag">AWS</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span>
+              <span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">WebSocket</span>
+            </div>
+          </div>
+        </div>
 
-	</body>
+        <!-- Job 2 -->
+        <div class="tl-item reveal">
+          <div class="tl-dot dim"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-meta">
+                <span class="tl-badge" style="color:var(--accent2);background:rgba(var(--accent2-rgb),.08);border-color:rgba(var(--accent2-rgb),.18)">Feb 2022 – Mar 2022</span>
+                <span>Pune, Maharashtra</span>
+              </div>
+              <div class="tl-company">ValueDx Technologies</div>
+              <div class="tl-role">ML Engineer Intern</div>
+            </div>
+            <p class="tl-desc">First hands-on exposure to production ML systems — implementing algorithms, deploying models, and integrating Generative AI concepts into existing pipelines.</p>
+            <ul class="tl-points">
+              <li>Implemented machine learning algorithms and enhanced existing projects using <strong>deep learning</strong> techniques.</li>
+              <li>Gained practical experience with <strong>neural networks and deep learning frameworks</strong> in a production environment.</li>
+              <li>Developed Python-based ML solutions and integrated <strong>Generative AI concepts</strong> into real workflows.</li>
+              <li>Deployed and monitored various ML models end-to-end.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tag">Python</span><span class="tag">Machine Learning</span>
+              <span class="tag">Deep Learning</span><span class="tag">Neural Networks</span><span class="tag">Generative AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="tl-item reveal">
+          <div class="tl-dot" style="background:var(--muted);box-shadow:0 0 0 4px var(--bg)"></div>
+          <div class="s-label" style="margin-bottom:1rem">EDUCATION</div>
+          <div class="edu-card">
+            <div class="edu-deg">B.E. / B.Tech — Computer Science</div>
+            <div class="edu-school">Pune, Maharashtra · Graduated 2024</div>
+          </div>
+          <div class="edu-card" style="margin-top:.75rem">
+            <div class="edu-deg">Key Coursework</div>
+            <div class="edu-school" style="margin-top:.5rem">
+              Data Structures · Algorithms · DBMS · OS · Computer Networks · ML Fundamentals · Cloud Computing
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <span class="footer-copy">© 2025 Rohan Tekale · Pune, India</span>
+      <div class="footer-socials">
+        <a href="https://github.com/RohanTekale" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:tekalerohan7@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="theme.js"></script>
+</body>
 </html>
