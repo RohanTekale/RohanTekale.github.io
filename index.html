@@ -124,9 +124,7 @@
     }
 
     /* RIGHT PANEL */
-    .hero-right { display: flex; flex-direction: column; gap: 1.25rem;
-      opacity: 0; animation: fadeUp .8s 1s ease forwards;
-    }
+    .hero-right { display: flex; flex-direction: column; gap: 1.25rem; }
 
     /* Terminal widget */
     .terminal {
@@ -206,10 +204,137 @@
     }
     .ai-tool-chip:hover { border-color: var(--accent); color: var(--accent); background: rgba(168,85,247,.1); transform: translateY(-2px); }
 
-    /* Mode visibility */
+
+    /* ── LAPTOP MOCKUP ── */
+    .laptop-mockup {
+      display: flex; flex-direction: column; align-items: center;
+      opacity: 0; animation: fadeUp .8s 1s ease forwards;
+      filter: drop-shadow(0 40px 60px rgba(0,0,0,.6));
+    }
+    body.ai .laptop-mockup { display: none; }
+    .laptop-screen {
+      width: 100%; max-width: 380px;
+      background: #0a0e1a;
+      border: 2px solid #1e2d45;
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+      padding: 10px;
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(0,212,255,.08),
+        inset 0 0 40px rgba(0,0,0,.4),
+        0 -8px 40px rgba(0,212,255,.04);
+    }
+    .laptop-screen::before {
+      content: '';
+      position: absolute; top: 5px; left: 50%; transform: translateX(-50%);
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #1e2d45;
+      box-shadow: 0 0 0 1px #0d1527;
+    }
+    .screen-inner {
+      background: #080c14;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #1e2d45;
+      min-height: 200px;
+    }
+    /* Mini nav inside screen */
+    .mini-nav {
+      background: rgba(8,12,20,.95);
+      border-bottom: 1px solid #1e2d45;
+      padding: 6px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mini-logo {
+      font-family: var(--heading); font-weight: 800; font-size: .65rem;
+      color: #e2e8f0;
+    }
+    .mini-logo span { color: #00d4ff; }
+    .mini-links { display: flex; gap: 8px; }
+    .mini-links span {
+      font-family: var(--mono); font-size: .45rem; color: #64748b;
+    }
+    /* Mini hero content */
+    .mini-hero {
+      padding: 10px 14px 8px;
+    }
+    .mini-eyebrow {
+      font-family: var(--mono); font-size: .42rem; color: #00d4ff;
+      display: flex; align-items: center; gap: 4px; margin-bottom: 5px;
+    }
+    .mini-dot {
+      width: 4px; height: 4px; border-radius: 50%; background: #22c55e;
+      display: inline-block; animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .mini-name {
+      font-family: var(--heading); font-weight: 800; font-size: 1rem;
+      line-height: .9; color: #e2e8f0; margin-bottom: 4px;
+    }
+    .mini-name span {
+      background: linear-gradient(135deg, #00d4ff, #10b981);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .mini-role {
+      font-family: var(--mono); font-size: .42rem; color: #64748b; margin-bottom: 6px;
+    }
+    .mini-btns { display: flex; gap: 4px; }
+    .mini-btn-p {
+      font-family: var(--mono); font-size: .38rem; padding: 2px 7px;
+      background: #00d4ff; color: #080c14; border-radius: 3px;
+    }
+    .mini-btn-g {
+      font-family: var(--mono); font-size: .38rem; padding: 2px 7px;
+      border: 1px solid #1e2d45; color: #64748b; border-radius: 3px;
+    }
+    /* Mini terminal */
+    .mini-terminal {
+      margin: 0 8px 8px;
+      background: #0d1220;
+      border: 1px solid #1e2d45;
+      border-radius: 5px; overflow: hidden;
+      font-family: var(--mono); font-size: .42rem;
+    }
+    .mini-term-bar {
+      background: #111827; padding: 4px 8px;
+      display: flex; align-items: center; gap: 4px;
+      border-bottom: 1px solid #1e2d45;
+    }
+    .mdot { width: 5px; height: 5px; border-radius: 50%; }
+    .mini-term-title { font-size: .38rem; color: #64748b; margin: 0 auto; }
+    .mini-term-body { padding: 6px 10px; color: #00d4ff; line-height: 1.8; }
+    /* Laptop base / keyboard */
+    .laptop-base {
+      width: 100%; max-width: 420px; /* slightly wider for realistic look */
+    }
+    .laptop-hinge {
+      height: 6px;
+      background: linear-gradient(to bottom, #1a2540, #111827);
+      border-left: 2px solid #1e2d45;
+      border-right: 2px solid #1e2d45;
+      width: 100%;
+    }
+    .laptop-bottom {
+      background: linear-gradient(to bottom, #111827, #0d1220);
+      border: 2px solid #1e2d45;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 10px 20px 12px;
+      display: flex; justify-content: center;
+    }
+    .laptop-trackpad {
+      width: 60px; height: 36px;
+      background: #0d1220;
+      border: 1px solid #1e2d45;
+      border-radius: 5px;
+    }
+
+    /* Hide laptop in AI mode, hide ai-panel in dev mode */
     body.dev .ai-panel  { display: none; }
     body.ai  .terminal  { display: none; }
     body.ai  .stats-grid { display: none; }
+
 
     /* CMD PALETTE */
     #cmd-overlay {
@@ -364,8 +489,49 @@
       <!-- Right -->
       <div class="hero-right">
 
-        <!-- DEV: Terminal -->
-        <div class="terminal">
+        <!-- DEV: Laptop Mockup -->
+        <div class="laptop-mockup">
+          <div class="laptop-screen">
+            <div class="screen-inner">
+              <div class="mini-nav">
+                <span class="mini-logo">RT<span>.</span></span>
+                <div class="mini-links">
+                  <span>about</span><span>projects</span><span>ai work</span>
+                </div>
+              </div>
+              <div class="mini-hero">
+                <div class="mini-eyebrow"><span class="mini-dot"></span> available for work</div>
+                <div class="mini-name">Rohan<br><span>Tekale.</span></div>
+                <div class="mini-role">Backend Engineer_</div>
+                <div class="mini-btns">
+                  <span class="mini-btn-p">View Work</span>
+                  <span class="mini-btn-g">Let's Talk</span>
+                </div>
+              </div>
+              <div class="mini-terminal">
+                <div class="mini-term-bar">
+                  <span class="mdot" style="background:#ff5f57"></span>
+                  <span class="mdot" style="background:#febc2e"></span>
+                  <span class="mdot" style="background:#28c840"></span>
+                  <span class="mini-term-title">rohan@dev — zsh</span>
+                </div>
+                <div class="mini-term-body">
+                  <div>❯ cat profile.json</div>
+                  <div style="color:#64748b">{ "role": <span style="color:#00d4ff">"Backend Engineer"</span>,</div>
+                  <div style="color:#64748b">&nbsp; "status": <span style="color:#10b981">"open_to_work"</span> }</div>
+                  <div>❯ <span style="animation:blink .9s step-end infinite">▊</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="laptop-base">
+            <div class="laptop-hinge"></div>
+            <div class="laptop-bottom"><div class="laptop-trackpad"></div></div>
+          </div>
+        </div>
+
+        <!-- DEV: Terminal (hidden, keeping for JS) -->
+        <div class="terminal" style="display:none">
           <div class="term-bar">
             <span class="tdot" style="background:#ff5f57"></span>
             <span class="tdot" style="background:#febc2e"></span>

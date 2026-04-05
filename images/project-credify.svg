@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="monospace">
+  <rect width="800" height="420" fill="#080c14"/>
+  <rect width="800" height="50" fill="#0d1220"/>
+  <circle cx="25" cy="25" r="8" fill="#ff5f57"/><circle cx="45" cy="25" r="8" fill="#febc2e"/><circle cx="65" cy="25" r="8" fill="#28c840"/>
+  <text x="370" y="31" fill="#64748b" font-size="11" text-anchor="middle">Credify — Virtual Credit Card API</text>
+  <rect x="20" y="65" width="170" height="80" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="35" y="88" fill="#64748b" font-size="9">TOTAL USERS</text>
+  <text x="35" y="120" fill="#00d4ff" font-size="26" font-weight="bold">12,480</text>
+  <text x="35" y="138" fill="#10b981" font-size="9">▲ 8.3% this month</text>
+  <rect x="205" y="65" width="170" height="80" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="220" y="88" fill="#64748b" font-size="9">KYC APPROVED</text>
+  <text x="220" y="120" fill="#10b981" font-size="26" font-weight="bold">98.2%</text>
+  <text x="220" y="138" fill="#10b981" font-size="9">▲ 2.1% improvement</text>
+  <rect x="390" y="65" width="170" height="80" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="405" y="88" fill="#64748b" font-size="9">TRANSACTIONS</text>
+  <text x="405" y="120" fill="#00d4ff" font-size="26" font-weight="bold">4.2M</text>
+  <text x="405" y="138" fill="#10b981" font-size="9">▲ 15% this quarter</text>
+  <rect x="575" y="65" width="205" height="80" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="590" y="88" fill="#64748b" font-size="9">API UPTIME</text>
+  <text x="590" y="120" fill="#00d4ff" font-size="26" font-weight="bold">99.9%</text>
+  <text x="590" y="138" fill="#64748b" font-size="9">AWS Lambda · RDS</text>
+  <rect x="20" y="158" width="470" height="240" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="35" y="178" fill="#00d4ff" font-size="10" font-weight="bold">RECENT TRANSACTIONS</text>
+  <line x1="20" y1="185" x2="490" y2="185" stroke="#1e2d45"/>
+  <text x="35" y="200" fill="#64748b" font-size="8">USER ID</text><text x="150" y="200" fill="#64748b" font-size="8">TYPE</text>
+  <text x="250" y="200" fill="#64748b" font-size="8">AMOUNT</text><text x="360" y="200" fill="#64748b" font-size="8">STATUS</text><text x="450" y="200" fill="#64748b" font-size="8">TIME</text>
+  <rect x="20" y="205" width="470" height="26" fill="#0d1220"/>
+  <text x="35" y="222" fill="#e2e8f0" font-size="9">USR-8821</text><text x="150" y="222" fill="#e2e8f0" font-size="9">CREDIT</text>
+  <text x="250" y="222" fill="#10b981" font-size="9">+ ₹15,000</text>
+  <rect x="355" y="209" width="56" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="383" y="220" fill="#10b981" font-size="7" text-anchor="middle">APPROVED</text><text x="450" y="222" fill="#64748b" font-size="9">14:32</text>
+  <rect x="20" y="231" width="470" height="26" fill="#111827"/>
+  <text x="35" y="248" fill="#e2e8f0" font-size="9">USR-5543</text><text x="150" y="248" fill="#e2e8f0" font-size="9">DEBIT</text>
+  <text x="250" y="248" fill="#ff5f57" font-size="9">- ₹4,200</text>
+  <rect x="355" y="235" width="52" height="14" rx="3" fill="rgba(0,212,255,0.1)"/>
+  <text x="381" y="246" fill="#00d4ff" font-size="7" text-anchor="middle">PENDING</text><text x="450" y="248" fill="#64748b" font-size="9">14:28</text>
+  <rect x="20" y="257" width="470" height="26" fill="#0d1220"/>
+  <text x="35" y="274" fill="#e2e8f0" font-size="9">USR-3301</text><text x="150" y="274" fill="#e2e8f0" font-size="9">CREDIT</text>
+  <text x="250" y="274" fill="#10b981" font-size="9">+ ₹8,500</text>
+  <rect x="355" y="261" width="56" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="383" y="272" fill="#10b981" font-size="7" text-anchor="middle">APPROVED</text><text x="450" y="274" fill="#64748b" font-size="9">14:21</text>
+  <rect x="20" y="283" width="470" height="26" fill="#111827"/>
+  <text x="35" y="300" fill="#e2e8f0" font-size="9">USR-9912</text><text x="150" y="300" fill="#e2e8f0" font-size="9">KYC</text>
+  <text x="250" y="300" fill="#64748b" font-size="9">—</text>
+  <rect x="355" y="287" width="52" height="14" rx="3" fill="rgba(254,188,46,0.15)"/>
+  <text x="381" y="298" fill="#febc2e" font-size="7" text-anchor="middle">REVIEW</text><text x="450" y="300" fill="#64748b" font-size="9">14:15</text>
+  <rect x="20" y="309" width="470" height="26" fill="#0d1220"/>
+  <text x="35" y="326" fill="#e2e8f0" font-size="9">USR-2248</text><text x="150" y="326" fill="#e2e8f0" font-size="9">CREDIT</text>
+  <text x="250" y="326" fill="#10b981" font-size="9">+ ₹22,000</text>
+  <rect x="355" y="313" width="56" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="383" y="324" fill="#10b981" font-size="7" text-anchor="middle">APPROVED</text><text x="450" y="326" fill="#64748b" font-size="9">14:09</text>
+  <rect x="20" y="363" width="470" height="30" rx="4" fill="#0d1220" stroke="#1e2d45"/>
+  <text x="35" y="381" fill="#64748b" font-size="8">STACK: Django REST · PostgreSQL · Redis · Celery · AWS Lambda · Docker · KYC APIs</text>
+  <rect x="505" y="158" width="275" height="235" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="520" y="178" fill="#00d4ff" font-size="10" font-weight="bold">TRANSACTION SPLIT</text>
+  <circle cx="643" cy="280" r="62" fill="none" stroke="#1e2d45" stroke-width="24"/>
+  <circle cx="643" cy="280" r="62" fill="none" stroke="#00d4ff" stroke-width="24" stroke-dasharray="233 156" stroke-dashoffset="58" transform="rotate(-90 643 280)"/>
+  <circle cx="643" cy="280" r="62" fill="none" stroke="#10b981" stroke-width="24" stroke-dasharray="117 272" stroke-dashoffset="-175" transform="rotate(-90 643 280)"/>
+  <circle cx="643" cy="280" r="62" fill="none" stroke="#febc2e" stroke-width="24" stroke-dasharray="39 350" stroke-dashoffset="-292" transform="rotate(-90 643 280)"/>
+  <text x="643" y="275" fill="#e2e8f0" font-size="15" font-weight="bold" text-anchor="middle">60%</text>
+  <text x="643" y="292" fill="#64748b" font-size="8" text-anchor="middle">Credit</text>
+  <circle cx="525" cy="355" r="5" fill="#00d4ff"/><text x="535" y="359" fill="#64748b" font-size="9">Credit 60%</text>
+  <circle cx="610" cy="355" r="5" fill="#10b981"/><text x="620" y="359" fill="#64748b" font-size="9">Debit 30%</text>
+  <circle cx="525" cy="373" r="5" fill="#febc2e"/><text x="535" y="377" fill="#64748b" font-size="9">KYC Review 10%</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="monospace">
+  <rect width="800" height="420" fill="#080c14"/>
+  <rect width="800" height="50" fill="#0d1220"/>
+  <circle cx="25" cy="25" r="8" fill="#ff5f57"/><circle cx="45" cy="25" r="8" fill="#febc2e"/><circle cx="65" cy="25" r="8" fill="#28c840"/>
+  <text x="370" y="31" fill="#64748b" font-size="11" text-anchor="middle">Inventory Management System · React + Django REST</text>
+  <rect x="0" y="50" width="140" height="370" fill="#0d1220" stroke="#1e2d45"/>
+  <text x="18" y="80" fill="#10b981" font-size="12" font-weight="bold">📦 InvMS</text>
+  <rect x="8" y="90" width="124" height="24" rx="4" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)"/>
+  <text x="20" y="106" fill="#10b981" font-size="9">⊞ Dashboard</text>
+  <text x="20" y="130" fill="#64748b" font-size="9">🏭 Warehouses</text>
+  <text x="20" y="150" fill="#64748b" font-size="9">📋 Purchase Orders</text>
+  <text x="20" y="170" fill="#64748b" font-size="9">📊 Analytics</text>
+  <text x="20" y="190" fill="#64748b" font-size="9">📦 Stock Levels</text>
+  <text x="20" y="210" fill="#64748b" font-size="9">👥 Users &amp; RBAC</text>
+  <text x="20" y="230" fill="#64748b" font-size="9">⚙ Settings</text>
+  <rect x="12" y="390" width="116" height="22" rx="4" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.2)"/>
+  <text x="70" y="404" fill="#00d4ff" font-size="8" text-anchor="middle">ROLE: ADMIN</text>
+  <rect x="155" y="65" width="145" height="70" rx="6" fill="#111827" stroke="#1e2d45"/>
+  <text x="168" y="83" fill="#64748b" font-size="8">TOTAL SKUs</text>
+  <text x="168" y="110" fill="#10b981" font-size="22" font-weight="bold">4,821</text>
+  <text x="168" y="127" fill="#64748b" font-size="7">3 warehouses</text>
+  <rect x="310" y="65" width="145" height="70" rx="6" fill="#111827" stroke="#1e2d45"/>
+  <text x="323" y="83" fill="#64748b" font-size="8">PENDING POs</text>
+  <text x="323" y="110" fill="#febc2e" font-size="22" font-weight="bold">18</text>
+  <text x="323" y="127" fill="#febc2e" font-size="7">⚠ 3 urgent</text>
+  <rect x="465" y="65" width="145" height="70" rx="6" fill="#111827" stroke="#1e2d45"/>
+  <text x="478" y="83" fill="#64748b" font-size="8">TEST COV.</text>
+  <text x="478" y="110" fill="#10b981" font-size="22" font-weight="bold">85%</text>
+  <text x="478" y="127" fill="#64748b" font-size="7">pytest · Actions</text>
+  <rect x="620" y="65" width="160" height="70" rx="6" fill="#111827" stroke="#1e2d45"/>
+  <text x="633" y="83" fill="#64748b" font-size="8">STOCK VALUE</text>
+  <text x="633" y="110" fill="#00d4ff" font-size="22" font-weight="bold">₹2.8M</text>
+  <text x="633" y="127" fill="#10b981" font-size="7">▲ 6.4% this week</text>
+  <rect x="155" y="148" width="470" height="200" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="170" y="168" fill="#10b981" font-size="10" font-weight="bold">WAREHOUSE STOCK LEVELS</text>
+  <line x1="155" y1="175" x2="625" y2="175" stroke="#1e2d45"/>
+  <text x="170" y="191" fill="#64748b" font-size="8">WAREHOUSE</text><text x="310" y="191" fill="#64748b" font-size="8">CAPACITY</text>
+  <text x="390" y="191" fill="#64748b" font-size="8">UTILIZATION</text><text x="490" y="191" fill="#64748b" font-size="8">STATUS</text>
+  <rect x="155" y="195" width="470" height="30" fill="#0d1220"/>
+  <text x="170" y="215" fill="#e2e8f0" font-size="9">Mumbai — WH01</text><text x="310" y="215" fill="#e2e8f0" font-size="9">10,000</text>
+  <rect x="388" y="204" width="90" height="10" rx="2" fill="#1e2d45"/><rect x="388" y="204" width="74" height="10" rx="2" fill="#10b981"/>
+  <text x="490" y="215" fill="#10b981" font-size="8">82% ACTIVE</text>
+  <rect x="155" y="225" width="470" height="30" fill="#111827"/>
+  <text x="170" y="245" fill="#e2e8f0" font-size="9">Pune — WH02</text><text x="310" y="245" fill="#e2e8f0" font-size="9">8,500</text>
+  <rect x="388" y="234" width="90" height="10" rx="2" fill="#1e2d45"/><rect x="388" y="234" width="59" height="10" rx="2" fill="#00d4ff"/>
+  <text x="490" y="245" fill="#00d4ff" font-size="8">65% ACTIVE</text>
+  <rect x="155" y="255" width="470" height="30" fill="#0d1220"/>
+  <text x="170" y="275" fill="#e2e8f0" font-size="9">Delhi — WH03</text><text x="310" y="275" fill="#e2e8f0" font-size="9">12,000</text>
+  <rect x="388" y="264" width="90" height="10" rx="2" fill="#1e2d45"/><rect x="388" y="264" width="84" height="10" rx="2" fill="#febc2e"/>
+  <text x="490" y="275" fill="#febc2e" font-size="8">93% WARNING</text>
+  <rect x="155" y="285" width="470" height="30" fill="#111827"/>
+  <text x="170" y="305" fill="#e2e8f0" font-size="9">Chennai — WH04</text><text x="310" y="305" fill="#e2e8f0" font-size="9">6,000</text>
+  <rect x="388" y="294" width="90" height="10" rx="2" fill="#1e2d45"/><rect x="388" y="294" width="36" height="10" rx="2" fill="#10b981"/>
+  <text x="490" y="305" fill="#10b981" font-size="8">40% ACTIVE</text>
+  <rect x="155" y="360" width="470" height="44" rx="6" fill="#111827" stroke="#1e2d45"/>
+  <text x="170" y="378" fill="#64748b" font-size="8">STACK: React · Django REST · PostgreSQL · Docker · GitHub Actions · JWT · Metabase</text>
+  <text x="170" y="394" fill="#64748b" font-size="8">RBAC: Admin · Manager · Staff · 85% test coverage with pytest</text>
+  <rect x="637" y="148" width="143" height="200" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="650" y="168" fill="#10b981" font-size="9" font-weight="bold">PO TREND</text>
+  <rect x="652" y="258" width="14" height="65" rx="2" fill="rgba(16,185,129,0.4)"/>
+  <rect x="672" y="238" width="14" height="85" rx="2" fill="rgba(16,185,129,0.5)"/>
+  <rect x="692" y="222" width="14" height="101" rx="2" fill="rgba(16,185,129,0.65)"/>
+  <rect x="712" y="242" width="14" height="81" rx="2" fill="rgba(16,185,129,0.55)"/>
+  <rect x="732" y="218" width="14" height="105" rx="2" fill="#10b981"/>
+  <text x="652" y="337" fill="#64748b" font-size="7">Nov</text><text x="672" y="337" fill="#64748b" font-size="7">Dec</text>
+  <text x="692" y="337" fill="#64748b" font-size="7">Jan</text><text x="712" y="337" fill="#64748b" font-size="7">Feb</text><text x="732" y="337" fill="#64748b" font-size="7">Mar</text>
+</svg>

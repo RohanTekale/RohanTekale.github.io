@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="monospace">
+  <rect width="800" height="420" fill="#080c14"/>
+  <rect width="800" height="50" fill="#0d1220"/>
+  <circle cx="25" cy="25" r="8" fill="#ff5f57"/><circle cx="45" cy="25" r="8" fill="#febc2e"/><circle cx="65" cy="25" r="8" fill="#28c840"/>
+  <text x="370" y="31" fill="#64748b" font-size="11" text-anchor="middle">Recipe App API · TDD · AWS Deployed · PEP-8</text>
+  <rect x="20" y="65" width="260" height="335" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="35" y="85" fill="#00d4ff" font-size="10" font-weight="bold">API ENDPOINTS</text>
+  <line x1="20" y1="92" x2="280" y2="92" stroke="#1e2d45"/>
+  <rect x="30" y="100" width="240" height="22" rx="3" fill="#0d1220"/>
+  <text x="38" y="115" fill="#10b981" font-size="8">POST</text><text x="75" y="115" fill="#e2e8f0" font-size="8">/api/users/token/</text>
+  <rect x="222" y="103" width="42" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="243" y="113" fill="#10b981" font-size="7" text-anchor="middle">200 OK</text>
+  <rect x="30" y="128" width="240" height="22" rx="3" fill="#111827"/>
+  <text x="38" y="143" fill="#00d4ff" font-size="8">GET</text><text x="60" y="143" fill="#e2e8f0" font-size="8">/api/recipe/recipes/</text>
+  <rect x="222" y="131" width="42" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="243" y="141" fill="#10b981" font-size="7" text-anchor="middle">200 OK</text>
+  <rect x="30" y="156" width="240" height="22" rx="3" fill="#0d1220"/>
+  <text x="38" y="171" fill="#10b981" font-size="8">POST</text><text x="75" y="171" fill="#e2e8f0" font-size="8">/api/recipe/recipes/</text>
+  <rect x="222" y="159" width="42" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="243" y="169" fill="#10b981" font-size="7" text-anchor="middle">201</text>
+  <rect x="30" y="184" width="240" height="22" rx="3" fill="#111827"/>
+  <text x="38" y="199" fill="#febc2e" font-size="8">PATCH</text><text x="76" y="199" fill="#e2e8f0" font-size="8">/api/recipe/recipes/{id}/</text>
+  <rect x="222" y="187" width="42" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="243" y="197" fill="#10b981" font-size="7" text-anchor="middle">200 OK</text>
+  <rect x="30" y="212" width="240" height="22" rx="3" fill="#0d1220"/>
+  <text x="38" y="227" fill="#10b981" font-size="8">POST</text><text x="75" y="227" fill="#e2e8f0" font-size="8">/api/recipe/upload-image/</text>
+  <rect x="222" y="215" width="42" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="243" y="225" fill="#10b981" font-size="7" text-anchor="middle">200 OK</text>
+  <rect x="30" y="240" width="240" height="22" rx="3" fill="#111827"/>
+  <text x="38" y="255" fill="#00d4ff" font-size="8">GET</text><text x="60" y="255" fill="#e2e8f0" font-size="8">/api/recipe/tags/</text>
+  <rect x="222" y="243" width="42" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="243" y="253" fill="#10b981" font-size="7" text-anchor="middle">200 OK</text>
+  <rect x="30" y="268" width="240" height="22" rx="3" fill="#0d1220"/>
+  <text x="38" y="283" fill="#00d4ff" font-size="8">GET</text><text x="60" y="283" fill="#e2e8f0" font-size="8">/api/recipe/ingredients/</text>
+  <rect x="222" y="271" width="42" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="243" y="281" fill="#10b981" font-size="7" text-anchor="middle">200 OK</text>
+  <rect x="30" y="296" width="240" height="22" rx="3" fill="#111827"/>
+  <text x="38" y="311" fill="#ff5f57" font-size="8">DELETE</text><text x="80" y="311" fill="#e2e8f0" font-size="8">/api/recipe/recipes/{id}/</text>
+  <rect x="222" y="299" width="42" height="14" rx="3" fill="rgba(255,95,87,0.15)"/>
+  <text x="243" y="309" fill="#ff5f57" font-size="7" text-anchor="middle">204</text>
+  <rect x="30" y="324" width="240" height="22" rx="3" fill="#0d1220"/>
+  <text x="38" y="339" fill="#febc2e" font-size="8">PATCH</text><text x="76" y="339" fill="#e2e8f0" font-size="8">/api/recipe/tags/{id}/</text>
+  <rect x="222" y="327" width="42" height="14" rx="3" fill="rgba(16,185,129,0.15)"/>
+  <text x="243" y="337" fill="#10b981" font-size="7" text-anchor="middle">200 OK</text>
+  <rect x="295" y="65" width="310" height="195" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="310" y="85" fill="#00d4ff" font-size="10" font-weight="bold">TDD TEST SUITE</text>
+  <text x="590" y="85" fill="#10b981" font-size="9" text-anchor="end">✓ 32 Passing</text>
+  <line x1="295" y1="92" x2="605" y2="92" stroke="#1e2d45"/>
+  <text x="310" y="110" fill="#10b981" font-size="8">✓  test_create_recipe_success</text><text x="580" y="110" fill="#64748b" font-size="7" text-anchor="end">0.12s</text>
+  <text x="310" y="126" fill="#10b981" font-size="8">✓  test_user_token_auth</text><text x="580" y="126" fill="#64748b" font-size="7" text-anchor="end">0.08s</text>
+  <text x="310" y="142" fill="#10b981" font-size="8">✓  test_image_upload_s3</text><text x="580" y="142" fill="#64748b" font-size="7" text-anchor="end">0.31s</text>
+  <text x="310" y="158" fill="#10b981" font-size="8">✓  test_filter_by_tag</text><text x="580" y="158" fill="#64748b" font-size="7" text-anchor="end">0.09s</text>
+  <text x="310" y="174" fill="#10b981" font-size="8">✓  test_ingredient_management</text><text x="580" y="174" fill="#64748b" font-size="7" text-anchor="end">0.11s</text>
+  <text x="310" y="190" fill="#10b981" font-size="8">✓  test_rbac_admin_only</text><text x="580" y="190" fill="#64748b" font-size="7" text-anchor="end">0.07s</text>
+  <text x="310" y="206" fill="#10b981" font-size="8">✓  test_flake8_pep8_lint</text><text x="580" y="206" fill="#64748b" font-size="7" text-anchor="end">0.04s</text>
+  <text x="310" y="222" fill="#10b981" font-size="8">✓  test_docker_health_check</text><text x="580" y="222" fill="#64748b" font-size="7" text-anchor="end">0.19s</text>
+  <text x="310" y="246" fill="#64748b" font-size="8">32 passed · 0 failed · 0 skipped · 2.41s total</text>
+  <rect x="295" y="272" width="310" height="128" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="310" y="292" fill="#00d4ff" font-size="10" font-weight="bold">CI/CD PIPELINE · GitHub Actions</text>
+  <circle cx="325" cy="330" r="14" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+  <text x="325" y="334" fill="#10b981" font-size="9" text-anchor="middle">✓</text>
+  <text x="325" y="352" fill="#64748b" font-size="7" text-anchor="middle">lint</text>
+  <line x1="339" y1="330" x2="367" y2="330" stroke="#10b981" stroke-dasharray="3,2"/>
+  <circle cx="381" cy="330" r="14" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+  <text x="381" y="334" fill="#10b981" font-size="9" text-anchor="middle">✓</text>
+  <text x="381" y="352" fill="#64748b" font-size="7" text-anchor="middle">test</text>
+  <line x1="395" y1="330" x2="423" y2="330" stroke="#10b981" stroke-dasharray="3,2"/>
+  <circle cx="437" cy="330" r="14" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+  <text x="437" y="334" fill="#10b981" font-size="9" text-anchor="middle">✓</text>
+  <text x="437" y="352" fill="#64748b" font-size="7" text-anchor="middle">build</text>
+  <line x1="451" y1="330" x2="479" y2="330" stroke="#00d4ff" stroke-dasharray="3,2"/>
+  <circle cx="493" cy="330" r="14" fill="rgba(0,212,255,0.15)" stroke="#00d4ff"/>
+  <text x="493" y="334" fill="#00d4ff" font-size="9" text-anchor="middle">✓</text>
+  <text x="493" y="352" fill="#64748b" font-size="7" text-anchor="middle">push</text>
+  <line x1="507" y1="330" x2="535" y2="330" stroke="#00d4ff" stroke-dasharray="3,2"/>
+  <circle cx="549" cy="330" r="14" fill="rgba(0,212,255,0.15)" stroke="#00d4ff"/>
+  <text x="549" y="334" fill="#00d4ff" font-size="9" text-anchor="middle">✓</text>
+  <text x="549" y="352" fill="#64748b" font-size="7" text-anchor="middle">deploy</text>
+  <text x="310" y="388" fill="#64748b" font-size="8">AWS EC2 · S3 Image Store · RDS PostgreSQL · Docker · flake8 PEP-8</text>
+  <rect x="619" y="65" width="161" height="335" rx="8" fill="#111827" stroke="#1e2d45"/>
+  <text x="634" y="85" fill="#00d4ff" font-size="10" font-weight="bold">AWS INFRA</text>
+  <line x1="619" y1="92" x2="780" y2="92" stroke="#1e2d45"/>
+  <text x="634" y="115" fill="#e2e8f0" font-size="9">☁ EC2 Instance</text><text x="634" y="130" fill="#64748b" font-size="7">t3.small · us-east-1</text>
+  <text x="634" y="155" fill="#e2e8f0" font-size="9">🗄 RDS PostgreSQL</text><text x="634" y="170" fill="#64748b" font-size="7">db.t3.micro · Multi-AZ</text>
+  <text x="634" y="195" fill="#e2e8f0" font-size="9">🪣 S3 Bucket</text><text x="634" y="210" fill="#64748b" font-size="7">recipe-images-prod</text>
+  <text x="634" y="235" fill="#e2e8f0" font-size="9">🐳 Docker</text><text x="634" y="250" fill="#64748b" font-size="7">multi-stage build</text>
+  <text x="634" y="275" fill="#e2e8f0" font-size="9">🔒 Token Auth</text><text x="634" y="290" fill="#64748b" font-size="7">DRF Token-based</text>
+  <text x="634" y="315" fill="#e2e8f0" font-size="9">📋 Admin Panel</text><text x="634" y="330" fill="#64748b" font-size="7">Customized Django</text>
+  <line x1="619" y1="348" x2="780" y2="348" stroke="#1e2d45"/>
+  <rect x="630" y="358" width="120" height="24" rx="4" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)"/>
+  <text x="690" y="373" fill="#10b981" font-size="9" text-anchor="middle">✓ LIVE ON AWS</text>
+</svg>
