@@ -1,77 +1,184 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Rohan's Portfolio - About Me</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>About — Rohan Tekale</title>
+  <link rel="stylesheet" href="theme.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; margin-top: 3.5rem; }
+    .avatar-wrap { position: sticky; top: 7rem; }
+    .avatar-box {
+      width: 100%; aspect-ratio: 1; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--surface), var(--bg2));
+      border: 1px solid var(--border); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem; position: relative;
+      transition: box-shadow .4s;
+    }
+    .avatar-box:hover { box-shadow: 0 0 50px var(--glow); }
+    .avatar-box::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba(var(--accent-rgb),.1));
+    }
+    .avatar-badge {
+      margin-top: 1rem; background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.2rem;
+      font-family: var(--mono); font-size: .72rem; line-height: 1.8;
+    }
+    .badge-row { display: flex; justify-content: space-between; }
+    .badge-key { color: var(--muted); }
+    .badge-val { color: var(--accent); }
 
-		<!-- Wrapper -->
-		<div id="wrapper" class="fade-in">
+    .about-content h3 {
+      font-family: var(--heading); font-size: 1.5rem; font-weight: 700;
+      color: var(--text); margin-bottom: 1rem; margin-top: 2rem;
+    }
+    .about-content h3:first-child { margin-top: 0; }
+    .about-content p { color: var(--muted); font-size: .95rem; line-height: 1.9; margin-bottom: 1rem; }
+    .about-content p strong { color: var(--text); }
 
-			<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="logo">Software Development & AI Solutions</a>
-			</header>
+    .skills-section { margin-top: 2.5rem; }
+    .skill-group { margin-bottom: 2rem; }
+    .skill-group-title {
+      font-family: var(--mono); font-size: .7rem; color: var(--accent);
+      letter-spacing: .14em; margin-bottom: .9rem;
+    }
+    .skill-row { display: flex; align-items: center; gap: 1rem; margin-bottom: .6rem; }
+    .skill-name { font-family: var(--mono); font-size: .78rem; color: var(--text); width: 130px; flex-shrink: 0; }
+    .skill-bar-wrap { flex: 1; height: 3px; background: var(--faint); border-radius: 2px; overflow: hidden; }
+    .skill-bar {
+      height: 100%; border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 0; transition: width 1.2s ease;
+    }
+    .skill-bar.loaded { width: var(--w); }
+    .skill-pct { font-family: var(--mono); font-size: .68rem; color: var(--muted); width: 2.5rem; text-align: right; }
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-                    <li class="active"><a href="about.html">About Me</a></li>
-					<li><a href="index.html">Projects</a></li>
-					<li><a href="resume.html">Resume</a></li>
-					<li><a href="experience.html">Experience</a></li>
-					
-				</ul>
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/rohan-tekale" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					<li><a href="https://github.com/RohanTekale" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-			</nav>
+    .val-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .val-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem;
+      transition: border-color .3s;
+    }
+    .val-card:hover { border-color: rgba(var(--accent-rgb),.35); }
+    .val-card i { color: var(--accent); font-size: 1.1rem; margin-bottom: .6rem; display: block; }
+    .val-card h4 { font-family: var(--heading); font-size: .95rem; font-weight: 700; margin-bottom: .3rem; }
+    .val-card p { font-size: .8rem; color: var(--muted); line-height: 1.6; }
 
-			<!-- Main -->
-			<div id="main">
-				<section id="about">
-					<header class="major">
-						<h2>About Me</h2>
-					</header>
-					<article class="post">
-						<p>I am a passionate Software Developer and Machine Learning enthusiast based in Pune, Maharashtra. With a strong foundation in computer science and hands-on experience in developing innovative AI solutions, I thrive on solving complex problems through code and data-driven approaches. My journey in technology has been driven by a curiosity to explore cutting-edge advancements in machine learning, deep learning, and generative AI.</p>
-						<p>I hold a background in implementing machine learning algorithms and deploying models that make a real-world impact. My interests extend to creating scalable software solutions, contributing to open-source projects, and continuously learning about emerging technologies. When I'm not coding, you can find me exploring new tech trends, reading about AI advancements, or working on personal projects to refine my skills.</p>
-					</article>
-				</section>
-			</div>
+    @media (max-width: 860px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .avatar-wrap { position: static; }
+      .avatar-box { max-width: 260px; }
+      .val-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="dev page-in">
+<div id="cursor"></div><div id="cursor-trail"></div><div id="progress"></div>
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section class="alt">
-					<h3>Address</h3>
-					<p>Sahkar Nagar, Swarget<br />
-					Pune, Maharashtra - 411009</p>
-				</section>
-				<section>
-					<h3>Phone Number</h3>
-					<p><a href="#">(+91) 9307802374</a></p>
-				</section>
-				<section>
-					<h3>Email ID</h3>
-					<p><a href="#">tekalerohan7@gmail.com</a></p>
-				</section>
-			</footer>
+<div id="mobile-nav">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="experience.html">Experience</a><a href="projects.html">Projects</a>
+  <a href="ai.html">AI Work</a><a href="contact.html">Contact</a>
+</div>
 
-		</div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">RT<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="about.html" class="active">about</a></li>
+    <li><a href="experience.html">experience</a></li>
+    <li><a href="projects.html">projects</a></li>
+    <li><a href="ai.html">ai work</a></li>
+    <li><a href="contact.html">contact</a></li>
+  </ul>
+  <div class="theme-toggle">
+    <button class="theme-btn on" data-mode="dev">⌨ Dev</button>
+    <button class="theme-btn" data-mode="ai">✦ AI</button>
+  </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+<section style="padding-top:9rem">
+  <div class="container">
+    <div class="s-label reveal">01 // about</div>
+    <h2 class="s-title reveal">The person behind <em>the code</em></h2>
 
-	</body>
+    <div class="about-grid">
+      <div class="avatar-wrap reveal">
+        <div class="avatar-box">👨‍💻</div>
+        <div class="avatar-badge">
+          <div class="badge-row"><span class="badge-key">name</span><span class="badge-val">Rohan Tekale</span></div>
+          <div class="badge-row"><span class="badge-key">location</span><span class="badge-val">Pune, IN</span></div>
+          <div class="badge-row"><span class="badge-key">role</span><span class="badge-val">Backend + AI Dev</span></div>
+          <div class="badge-row"><span class="badge-key">status</span><span class="badge-val" style="color:#22c55e">● open to work</span></div>
+          <div class="badge-row"><span class="badge-key">email</span><span class="badge-val" style="font-size:.65rem">tekalerohan7@gmail.com</span></div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <h3 class="reveal">Who I am</h3>
+        <p class="reveal">I'm a Software Developer and ML enthusiast based in Pune, Maharashtra — passionate about building systems that work at scale and <strong>hold up under pressure</strong>. My journey started with a deep curiosity about what happens beneath abstractions, and evolved into shipping production-grade APIs, event-driven architectures, and AI-powered pipelines.</p>
+        <p class="reveal">I believe the best engineering is invisible — it just works, fast and reliably, whether it's serving 10 users or 10,000. Every system I build is designed with that principle in mind.</p>
+
+        <h3 class="reveal">What I build</h3>
+        <p class="reveal">At <strong>Biddano Pvt. Ltd.</strong>, I've shipped secure RESTful microservices with 99.9% uptime, built WebSocket endpoints handling 50+ concurrent connections with &lt;100ms latency, and optimized database queries for 30% faster data retrieval. I also integrate React frontends with the APIs I build.</p>
+        <p class="reveal">Beyond backend, I'm deeply interested in <strong>Generative AI</strong> — building RAG pipelines, integrating Whisper for speech intelligence, and working with LangChain and HuggingFace to create systems that actually reason about data rather than just storing it.</p>
+
+        <div class="skills-section">
+          <h3 class="reveal">Skills & proficiency</h3>
+
+          <div class="skill-group reveal">
+            <div class="skill-group-title">BACKEND & CLOUD</div>
+            <div class="skill-row"><span class="skill-name">Python / Django</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:92%"></div></div><span class="skill-pct">92%</span></div>
+            <div class="skill-row"><span class="skill-name">FastAPI</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div><span class="skill-pct">88%</span></div>
+            <div class="skill-row"><span class="skill-name">PostgreSQL / Redis</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:84%"></div></div><span class="skill-pct">84%</span></div>
+            <div class="skill-row"><span class="skill-name">AWS / Docker / K8s</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:78%"></div></div><span class="skill-pct">78%</span></div>
+          </div>
+
+          <div class="skill-group reveal">
+            <div class="skill-group-title">AI / ML</div>
+            <div class="skill-row"><span class="skill-name">LangChain</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:80%"></div></div><span class="skill-pct">80%</span></div>
+            <div class="skill-row"><span class="skill-name">HuggingFace</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:75%"></div></div><span class="skill-pct">75%</span></div>
+            <div class="skill-row"><span class="skill-name">Whisper / Speech</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:72%"></div></div><span class="skill-pct">72%</span></div>
+            <div class="skill-row"><span class="skill-name">ML / Deep Learning</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:70%"></div></div><span class="skill-pct">70%</span></div>
+          </div>
+        </div>
+
+        <h3 class="reveal">How I think</h3>
+        <div class="val-grid">
+          <div class="val-card reveal"><i class="fa-solid fa-layer-group"></i><h4>Systems first</h4><p>I think in systems, not features. Every decision considers scalability and maintainability from day one.</p></div>
+          <div class="val-card reveal"><i class="fa-solid fa-vial"></i><h4>Test everything</h4><p>85–90% test coverage isn't a goal — it's the baseline. I write tests before I write code.</p></div>
+          <div class="val-card reveal"><i class="fa-solid fa-gauge-high"></i><h4>Performance matters</h4><p>A 30% query speedup isn't lucky — it comes from profiling, indexing, and knowing your database deeply.</p></div>
+          <div class="val-card reveal"><i class="fa-solid fa-infinity"></i><h4>Always shipping</h4><p>CI/CD isn't optional. Every project I build has automated tests, linting, and deployment pipelines.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <span class="footer-copy">© 2025 Rohan Tekale · Pune, India</span>
+      <div class="footer-socials">
+        <a href="https://github.com/RohanTekale" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:tekalerohan7@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+<script>
+  // Animate skill bars on scroll
+  const bars = document.querySelectorAll('.skill-bar');
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('loaded'); });
+  }, { threshold: 0.3 });
+  bars.forEach(b => barObs.observe(b));
+</script>
+</body>
 </html>
