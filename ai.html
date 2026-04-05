@@ -3,13 +3,10 @@
 <head>
   <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>AI Work — Rohan Tekale</title>
-  <link rel="stylesheet" href="theme.css"/>
+  <link rel="stylesheet" href="assets/css/theme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    /* Force AI mode on this page */
-    body { /* ai class added by JS immediately */ }
-
-    /* ── HERO AI ── */
+    /* ── AI HERO ── */
     #ai-hero {
       min-height: 55vh; display: flex; align-items: center;
       padding-top: 9rem; position: relative; overflow: hidden;
@@ -20,24 +17,24 @@
         radial-gradient(ellipse 80% 60% at 50% 40%, rgba(168,85,247,.12) 0%, transparent 70%),
         radial-gradient(ellipse 40% 50% at 90% 70%, rgba(6,182,212,.08) 0%, transparent 60%);
     }
-    /* Animated grid */
     .ai-grid {
       position: absolute; inset: 0; pointer-events: none;
       background-image: linear-gradient(rgba(168,85,247,.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(168,85,247,.05) 1px, transparent 1px);
       background-size: 48px 48px;
       mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
+      animation: gridPulse 6s ease-in-out infinite;
     }
-    /* Floating particles */
-    .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-    .particle {
+    @keyframes gridPulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .ai-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .ai-p {
       position: absolute; width: 2px; height: 2px; border-radius: 50%;
       background: var(--accent); animation: drift linear infinite;
     }
     @keyframes drift {
       from { transform: translateY(100vh) translateX(0); opacity: 0; }
       10%  { opacity: 1; }
-      90%  { opacity: 1; }
+      90%  { opacity: 0.6; }
       to   { transform: translateY(-20px) translateX(60px); opacity: 0; }
     }
     .ai-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 720px; margin: 0 auto; }
@@ -46,8 +43,11 @@
       border: 1px solid rgba(168,85,247,.25); border-radius: 30px;
       padding: .4rem 1.2rem; font-family: var(--mono); font-size: .72rem;
       color: var(--accent); background: rgba(168,85,247,.06); margin-bottom: 2rem;
+      animation: float 3s ease-in-out infinite;
     }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
     .ai-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #a855f7; animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 0 rgba(168,85,247,.5)} 50%{box-shadow:0 0 0 5px rgba(168,85,247,0)} }
     .ai-hero-title {
       font-family: var(--heading); font-size: clamp(2.5rem,5vw,4.5rem);
       font-weight: 800; line-height: 1; letter-spacing: -.03em;
@@ -60,36 +60,38 @@
     }
     .ai-hero-sub { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
 
-    /* ── RAG ARCHITECTURE ── */
-    .arch-section { padding: 5rem 0; }
+    /* ── ARCHITECTURE ── */
     .arch-box {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 2.5rem; margin-top: 2.5rem;
+      transition: border-color .3s;
     }
+    .arch-box:hover { border-color: rgba(168,85,247,.3); }
     .arch-title { font-family: var(--heading); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.75rem; }
     .arch-flow { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; }
     .arch-node {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: 8px; padding: .65rem 1.1rem;
       font-family: var(--mono); font-size: .75rem; color: var(--text);
-      transition: border-color .3s, color .3s, box-shadow .3s; white-space: nowrap;
+      transition: border-color .3s, color .3s, box-shadow .3s, transform .3s; white-space: nowrap;
     }
-    .arch-node:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 16px var(--glow2); }
+    .arch-node:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 20px var(--glow2); transform: translateY(-3px); }
     .arch-node.hi { border-color: rgba(168,85,247,.3); color: #c084fc; }
-    .arch-arrow { color: var(--muted); font-size: .9rem; flex-shrink: 0; }
+    .arch-arrow { color: var(--muted); font-size: .9rem; flex-shrink: 0; animation: arrowPulse 2s ease-in-out infinite; }
+    @keyframes arrowPulse { 0%,100%{opacity:.4} 50%{opacity:1} }
 
-    /* ── AI TOOLS GRID ── */
+    /* ── TOOLS GRID ── */
     .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: .9rem; margin-top: 2rem; }
     .tool-card {
       background: var(--surface); border: 1px solid rgba(168,85,247,.12);
       border-radius: var(--radius); padding: 1.2rem;
       display: flex; flex-direction: column; align-items: center; gap: .6rem;
       font-family: var(--mono); font-size: .72rem; color: var(--muted);
-      text-align: center; transition: border-color .3s, transform .25s, color .3s, box-shadow .3s;
+      text-align: center; transition: border-color .3s, transform .3s, color .3s, box-shadow .3s;
     }
     .tool-card:hover {
-      border-color: rgba(168,85,247,.5); transform: translateY(-4px);
-      color: var(--accent); box-shadow: 0 12px 30px rgba(168,85,247,.1);
+      border-color: rgba(168,85,247,.5); transform: translateY(-6px);
+      color: var(--accent); box-shadow: 0 16px 40px rgba(168,85,247,.12);
     }
     .tool-card i { font-size: 1.5rem; color: var(--accent); }
 
@@ -98,15 +100,15 @@
     .ai-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column;
-      position: relative; transition: border-color .3s, transform .3s, box-shadow .3s;
+      position: relative; transition: border-color .3s, transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s;
     }
     .ai-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, #a855f7, #06b6d4);
-      opacity: 0; transition: opacity .3s;
+      transform: scaleX(0); transition: transform .4s ease; transform-origin: left;
     }
-    .ai-card:hover { border-color: rgba(168,85,247,.3); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(168,85,247,.08); }
-    .ai-card:hover::before { opacity: 1; }
+    .ai-card:hover { border-color: rgba(168,85,247,.3); transform: translateY(-6px); box-shadow: 0 24px 60px rgba(168,85,247,.1); }
+    .ai-card:hover::before { transform: scaleX(1); }
     .ai-card-top { padding: 1.5rem; border-bottom: 1px solid var(--border); background: linear-gradient(135deg,rgba(168,85,247,.04),transparent); }
     .ai-card-type { font-family: var(--mono); font-size: .65rem; letter-spacing: .14em; color: #a855f7; margin-bottom: .6rem; }
     .ai-card-title { font-family: var(--heading); font-size: 1.05rem; font-weight: 700; color: var(--text); line-height: 1.3; }
@@ -114,8 +116,9 @@
     .ai-card-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; }
     .ai-highlight {
       background: rgba(168,85,247,.05); border: 1px solid rgba(168,85,247,.12);
-      border-radius: 6px; padding: .75rem 1rem;
+      border-radius: 6px; padding: .75rem 1rem; transition: border-color .3s;
     }
+    .ai-highlight:hover { border-color: rgba(168,85,247,.3); }
     .ai-h-label { font-family: var(--mono); font-size: .62rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .25rem; }
     .ai-h-val { font-size: .82rem; color: var(--text); }
     .ai-pills { display: flex; flex-wrap: wrap; gap: .35rem; }
@@ -123,15 +126,20 @@
       font-family: var(--mono); font-size: .63rem; padding: .25rem .6rem;
       border-radius: 4px; background: rgba(168,85,247,.06);
       border: 1px solid rgba(168,85,247,.15); color: #c084fc;
+      transition: border-color .3s, background .3s;
     }
+    .ai-pill:hover { background: rgba(168,85,247,.12); border-color: rgba(168,85,247,.4); }
     .ai-card-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 1rem; }
     .ai-link { font-family: var(--mono); font-size: .72rem; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: .4rem; transition: gap .2s; }
     .ai-link:hover { gap: .7rem; }
 
-    /* ── WHAT I KNOW ABOUT AI ── */
+    /* ── STATS GRID ── */
     .know-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
-    .know-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: border-color .3s; }
-    .know-card:hover { border-color: rgba(168,85,247,.3); }
+    .know-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem; transition: border-color .3s, transform .3s;
+    }
+    .know-card:hover { border-color: rgba(168,85,247,.3); transform: translateY(-4px); }
     .know-num { font-family: var(--heading); font-size: 2rem; font-weight: 800; color: var(--accent); display: block; }
     .know-label { font-family: var(--mono); font-size: .7rem; color: var(--muted); letter-spacing: .1em; display: block; margin-bottom: .6rem; }
     .know-desc { font-size: .85rem; color: var(--muted); line-height: 1.7; }
@@ -143,6 +151,7 @@
     }
   </style>
 </head>
+<!-- ai.html intentionally defaults to AI mode but respects user's saved preference -->
 <body class="ai page-in">
 <div id="cursor"></div><div id="cursor-trail"></div><div id="progress"></div>
 <div id="mobile-nav">
@@ -161,7 +170,7 @@
   </ul>
   <div class="theme-toggle">
     <button class="theme-btn" data-mode="dev">⌨ Dev</button>
-    <button class="theme-btn on" data-mode="ai">✦ AI</button>
+    <button class="theme-btn" data-mode="ai">✦ AI</button>
   </div>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
@@ -170,15 +179,15 @@
 <section id="ai-hero">
   <div class="ai-hero-bg"></div>
   <div class="ai-grid"></div>
-  <div class="particles" id="particles"></div>
+  <div class="ai-particles" id="ai-particles"></div>
   <div class="container">
     <div class="ai-hero-inner reveal">
       <div class="ai-badge"><span class="ai-badge-dot"></span> ai mode active</div>
       <h1 class="ai-hero-title">Intelligence,<br/><em>engineered.</em></h1>
       <p class="ai-hero-sub">I build AI systems that reason, transcribe, detect anomalies, and generate — not just wrap an API. Here's the work behind the models.</p>
       <div style="display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap">
-        <a href="projects.html" class="btn-ghost">← Back to All Projects</a>
-        <a href="contact.html"  class="btn-primary"><i class="fa-solid fa-brain fa-sm"></i> Build AI with Me</a>
+        <a href="projects.html" class="btn-ghost magnetic">← Back to All Projects</a>
+        <a href="contact.html"  class="btn-primary magnetic"><i class="fa-solid fa-brain fa-sm"></i> Build AI with Me</a>
       </div>
     </div>
   </div>
@@ -188,16 +197,16 @@
 <section style="padding:2.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="container">
     <div class="know-grid">
-      <div class="know-card reveal"><span class="know-num">2+</span><span class="know-label">AI PROJECTS SHIPPED</span><p class="know-desc">Real production AI systems — not notebooks. Integrated into FastAPI services with proper async, error handling, and monitoring.</p></div>
-      <div class="know-card reveal"><span class="know-num">RAG</span><span class="know-label">ARCHITECTURE EXPERIENCE</span><p class="know-desc">Built retrieval-augmented generation pipelines: chunking → embedding → vector store → retrieval chain → LLM output with citations.</p></div>
-      <div class="know-card reveal"><span class="know-num">1k+</span><span class="know-label">EVENTS/SEC WITH AI ANALYSIS</span><p class="know-desc">Integrated LangChain + HuggingFace into a real-time event platform for live anomaly detection and predictive traffic forecasting.</p></div>
-      <div class="know-card reveal"><span class="know-num">Whisper</span><span class="know-label">SPEECH INTELLIGENCE</span><p class="know-desc">End-to-end audio pipeline using Whisper-large-v3 for transcription, then summarization models for structured timestamp output.</p></div>
+      <div class="know-card reveal spotlight-card"><span class="know-num">2+</span><span class="know-label">AI PROJECTS SHIPPED</span><p class="know-desc">Real production AI systems — not notebooks. Integrated into FastAPI services with proper async, error handling, and monitoring.</p></div>
+      <div class="know-card reveal spotlight-card"><span class="know-num">RAG</span><span class="know-label">ARCHITECTURE EXPERIENCE</span><p class="know-desc">Built retrieval-augmented generation pipelines: chunking → embedding → vector store → retrieval chain → LLM output with citations.</p></div>
+      <div class="know-card reveal spotlight-card"><span class="know-num">1k+</span><span class="know-label">EVENTS/SEC WITH AI ANALYSIS</span><p class="know-desc">Integrated LangChain + HuggingFace into a real-time event platform for live anomaly detection and predictive traffic forecasting.</p></div>
+      <div class="know-card reveal spotlight-card"><span class="know-num">Whisper</span><span class="know-label">SPEECH INTELLIGENCE</span><p class="know-desc">End-to-end audio pipeline using Whisper-large-v3 for transcription, then summarization models for structured timestamp output.</p></div>
     </div>
   </div>
 </section>
 
 <!-- RAG Architecture -->
-<section class="arch-section">
+<section style="padding:5rem 0">
   <div class="container">
     <div class="s-label reveal">how I build</div>
     <h2 class="s-title reveal">My <em>RAG Pipeline</em> Architecture</h2>
@@ -330,20 +339,31 @@
   </div>
 </footer>
 
-<script src="theme.js"></script>
+<script src="assets/js/theme.js"></script>
 <script>
-  // Force AI mode on this page
-  document.body.classList.add('ai');
-  localStorage.setItem('rt-theme', 'ai');
+  // ai.html forces AI mode and saves it — so switching to about, etc. keeps AI mode
+  // User can switch back with the toggle
+  (function() {
+    const saved = localStorage.getItem('rt-theme');
+    // Only auto-switch to AI if user hasn't explicitly chosen dev
+    if (!saved) {
+      document.body.classList.remove('dev');
+      document.body.classList.add('ai');
+      localStorage.setItem('rt-theme', 'ai');
+    }
+  })();
 
-  // Particles
-  const container = document.getElementById('particles');
-  for (let i = 0; i < 20; i++) {
+  // Floating particles
+  const container = document.getElementById('ai-particles');
+  for (let i = 0; i < 24; i++) {
     const p = document.createElement('div');
-    p.className = 'particle';
-    p.style.cssText = `left:${Math.random()*100}%;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*6}s;opacity:${0.3+Math.random()*.5}`;
+    p.className = 'ai-p';
+    p.style.cssText = `left:${Math.random()*100}%;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;opacity:${0.2+Math.random()*.6}`;
     container.appendChild(p);
   }
+
+  // Stagger tool cards
+  document.querySelectorAll('.tool-card').forEach((el, i) => { el.dataset.delay = i * 60; });
 </script>
 </body>
 </html>

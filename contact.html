@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Contact — Rohan Tekale</title>
-  <link rel="stylesheet" href="theme.css"/>
+  <link rel="stylesheet" href="assets/css/theme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; margin-top: 3.5rem; align-items: start; }
@@ -15,16 +15,16 @@
       display: flex; align-items: center; gap: 1rem;
       padding: 1rem 1.3rem; border-radius: var(--radius);
       border: 1px solid var(--border); text-decoration: none; color: var(--muted);
-      font-size: .9rem; transition: border-color .3s, color .3s, background .3s;
+      font-size: .9rem; transition: border-color .3s, color .3s, background .3s, transform .3s;
     }
-    .c-link:hover { border-color: var(--accent); color: var(--text); background: rgba(var(--accent-rgb),.03); }
+    .c-link:hover { border-color: var(--accent); color: var(--text); background: rgba(var(--accent-rgb),.03); transform: translateX(6px); }
     .c-link i { color: var(--accent); font-size: 1rem; width: 1.1rem; text-align: center; flex-shrink: 0; }
     .c-link-val { color: var(--text); font-size: .82rem; margin-top: .1rem; }
-
     .availability-card {
       margin-top: 2rem; background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem;
+      border-radius: var(--radius); padding: 1.25rem; transition: border-color .3s;
     }
+    .availability-card:hover { border-color: rgba(var(--accent-rgb),.2); }
     .av-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
     .av-row:last-child { margin-bottom: 0; }
     .av-key { font-family: var(--mono); font-size: .72rem; color: var(--muted); }
@@ -32,7 +32,11 @@
     .av-val.green { color: #22c55e; }
 
     /* Form */
-    .form-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem; }
+    .form-wrap {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 2.5rem; transition: border-color .4s, box-shadow .4s;
+    }
+    .form-wrap:focus-within { border-color: rgba(var(--accent-rgb),.3); box-shadow: 0 0 40px rgba(var(--accent-rgb),.05); }
     .form-title { font-family: var(--heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
@@ -42,9 +46,12 @@
       background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
       padding: .85rem 1rem; color: var(--text);
       font-family: var(--body); font-size: .9rem; outline: none;
-      transition: border-color .3s; resize: none;
+      transition: border-color .3s, box-shadow .3s; resize: none;
     }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.08);
+    }
     .form-group select option { background: var(--surface); }
     .form-group textarea { height: 120px; }
     .btn-send {
@@ -52,11 +59,17 @@
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       color: var(--bg); border: none; padding: .95rem;
       border-radius: var(--radius); cursor: pointer;
-      transition: opacity .3s, transform .2s; font-weight: 500;
-      margin-top: .5rem;
+      transition: opacity .3s, transform .2s, box-shadow .3s; font-weight: 500;
+      margin-top: .5rem; position: relative; overflow: hidden;
     }
-    .btn-send:hover { opacity: .85; transform: translateY(-2px); }
-    .form-note { font-family: var(--mono); font-size: .68rem; color: var(--muted); text-align: center; margin-top: .75rem; }
+    .btn-send::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,.2), transparent);
+      transform: translateX(-100%); transition: transform .5s;
+    }
+    .btn-send:hover::before { transform: translateX(100%); }
+    .btn-send:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(var(--accent-rgb),.3); }
+    .form-note { font-family: var(--mono); font-size: .68rem; color: var(--muted); text-align: center; margin-top: .75rem; transition: color .3s; }
 
     @media (max-width: 860px) {
       .contact-grid { grid-template-columns: 1fr; }
@@ -81,7 +94,7 @@
     <li><a href="contact.html" class="active">contact</a></li>
   </ul>
   <div class="theme-toggle">
-    <button class="theme-btn on" data-mode="dev">⌨ Dev</button>
+    <button class="theme-btn" data-mode="dev">⌨ Dev</button>
     <button class="theme-btn" data-mode="ai">✦ AI</button>
   </div>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
@@ -171,7 +184,7 @@
     </div>
   </div>
 </footer>
-<script src="theme.js"></script>
+<script src="assets/js/theme.js"></script>
 <script>
   function handleSend() {
     const name    = document.getElementById('fname').value.trim();

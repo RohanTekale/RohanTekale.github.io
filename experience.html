@@ -3,14 +3,23 @@
 <head>
   <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Experience — Rohan Tekale</title>
-  <link rel="stylesheet" href="theme.css"/>
+  <link rel="stylesheet" href="assets/css/theme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     .exp-layout { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; margin-top: 3.5rem; align-items: start; }
     .exp-sidebar { position: sticky; top: 7rem; }
-    .sidebar-stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; margin-bottom: 1rem; }
+    .sidebar-stat {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.2rem; margin-bottom: 1rem;
+      transition: border-color .3s, transform .3s; cursor: default;
+    }
+    .sidebar-stat:hover { border-color: rgba(var(--accent-rgb),.3); transform: translateX(4px); }
     .ss-label { font-family: var(--mono); font-size: .68rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .4rem; }
-    .ss-val { font-family: var(--heading); font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .ss-val {
+      font-family: var(--heading); font-size: 1.8rem; font-weight: 800;
+      background: linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
     .ss-sub { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
     .sidebar-skills { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; }
     .sidebar-skills h4 { font-family: var(--mono); font-size: .68rem; color: var(--accent); letter-spacing: .12em; margin-bottom: .9rem; }
@@ -21,30 +30,49 @@
       position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
       background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
     }
+    /* Animated glow on the line */
+    .tl-line::after {
+      content: ''; position: absolute; left: 0; width: 1px; height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+      animation: lineGlow 3s ease-in-out infinite;
+    }
+    @keyframes lineGlow {
+      0%   { top: 0; opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
     .tl-item { padding-left: 2.5rem; margin-bottom: 4rem; position: relative; }
     .tl-dot {
       position: absolute; left: -6px; top: .5rem;
       width: 13px; height: 13px; border-radius: 50%;
       background: var(--accent); box-shadow: 0 0 0 4px var(--bg), 0 0 16px var(--accent);
-      transition: box-shadow .3s;
+      transition: box-shadow .3s, transform .3s;
     }
     .tl-dot.dim { background: var(--accent2); box-shadow: 0 0 0 4px var(--bg), 0 0 12px var(--accent2); }
-    .tl-item:hover .tl-dot { box-shadow: 0 0 0 6px var(--bg), 0 0 24px var(--accent); }
-    .tl-header { margin-bottom: 1.25rem; }
+    .tl-item:hover .tl-dot { box-shadow: 0 0 0 6px var(--bg), 0 0 28px var(--accent); transform: scale(1.3); }
     .tl-meta { font-family: var(--mono); font-size: .72rem; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-bottom: .5rem; }
     .tl-badge { background: rgba(var(--accent-rgb),.08); border: 1px solid rgba(var(--accent-rgb),.18); color: var(--accent); padding: .2rem .65rem; border-radius: 4px; font-size: .67rem; }
     .tl-company { font-family: var(--heading); font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: .25rem; }
     .tl-role { color: var(--accent); font-size: .9rem; font-weight: 500; margin-bottom: 1rem; }
     .tl-desc { font-size: .9rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.8; }
     .tl-points { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
-    .tl-points li { font-size: .88rem; color: var(--muted); padding-left: 1.3rem; position: relative; line-height: 1.7; }
-    .tl-points li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: .78rem; top: .15rem; }
+    .tl-points li {
+      font-size: .88rem; color: var(--muted); padding-left: 1.3rem; position: relative; line-height: 1.7;
+      transition: color .3s;
+    }
+    .tl-points li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: .78rem; top: .15rem; transition: transform .3s; }
+    .tl-points li:hover { color: var(--text); }
+    .tl-points li:hover::before { transform: translateX(3px); }
     .tl-points li strong { color: var(--text); }
     .tl-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .tl-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; transition: border-color .3s, box-shadow .3s; }
-    .tl-card:hover { border-color: rgba(var(--accent-rgb),.3); box-shadow: 0 12px 40px rgba(0,0,0,.2); }
-
-    .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; margin-top: 1rem; }
+    .tl-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.75rem; transition: border-color .3s, box-shadow .3s, transform .3s;
+    }
+    .tl-card:hover { border-color: rgba(var(--accent-rgb),.3); box-shadow: 0 16px 50px rgba(0,0,0,.25); transform: translateX(4px); }
+    .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; margin-top: 1rem; transition: border-color .3s; }
+    .edu-card:hover { border-color: rgba(var(--accent-rgb),.2); }
     .edu-deg { font-family: var(--heading); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .25rem; }
     .edu-school { font-size: .85rem; color: var(--muted); }
 
@@ -71,7 +99,7 @@
     <li><a href="contact.html">contact</a></li>
   </ul>
   <div class="theme-toggle">
-    <button class="theme-btn on" data-mode="dev">⌨ Dev</button>
+    <button class="theme-btn" data-mode="dev">⌨ Dev</button>
     <button class="theme-btn" data-mode="ai">✦ AI</button>
   </div>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
@@ -107,15 +135,13 @@
         <div class="tl-item reveal">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-header">
-              <div class="tl-meta">
-                <span class="tl-badge">Aug 2024 – Present</span>
-                <span>Pune, Maharashtra</span>
-                <span style="color:var(--accent2)">● current</span>
-              </div>
-              <div class="tl-company">Biddano Pvt. Ltd.</div>
-              <div class="tl-role">Software Developer</div>
+            <div class="tl-meta">
+              <span class="tl-badge">Aug 2024 – Present</span>
+              <span>Pune, Maharashtra</span>
+              <span style="color:var(--accent2)">● current</span>
             </div>
+            <div class="tl-company">Biddano Pvt. Ltd.</div>
+            <div class="tl-role">Software Developer</div>
             <p class="tl-desc">Building scalable microservices and real-time backend infrastructure for digital financial products. Full ownership from architecture to deployment.</p>
             <ul class="tl-points">
               <li>Developed secure RESTful microservices with Python, FastAPI, and Django on <strong>AWS EC2/S3</strong> — ensuring <strong>99.9% uptime</strong> for 100+ daily API requests.</li>
@@ -136,14 +162,12 @@
         <div class="tl-item reveal">
           <div class="tl-dot dim"></div>
           <div class="tl-card">
-            <div class="tl-header">
-              <div class="tl-meta">
-                <span class="tl-badge" style="color:var(--accent2);background:rgba(var(--accent2-rgb),.08);border-color:rgba(var(--accent2-rgb),.18)">Feb 2022 – Mar 2022</span>
-                <span>Pune, Maharashtra</span>
-              </div>
-              <div class="tl-company">ValueDx Technologies</div>
-              <div class="tl-role">ML Engineer Intern</div>
+            <div class="tl-meta">
+              <span class="tl-badge" style="color:var(--accent2);background:rgba(var(--accent2-rgb),.08);border-color:rgba(var(--accent2-rgb),.18)">Feb 2022 – Mar 2022</span>
+              <span>Pune, Maharashtra</span>
             </div>
+            <div class="tl-company">ValueDx Technologies</div>
+            <div class="tl-role">ML Engineer Intern</div>
             <p class="tl-desc">First hands-on exposure to production ML systems — implementing algorithms, deploying models, and integrating Generative AI concepts into existing pipelines.</p>
             <ul class="tl-points">
               <li>Implemented machine learning algorithms and enhanced existing projects using <strong>deep learning</strong> techniques.</li>
@@ -190,6 +214,6 @@
     </div>
   </div>
 </footer>
-<script src="theme.js"></script>
+<script src="assets/js/theme.js"></script>
 </body>
 </html>

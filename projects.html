@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Projects — Rohan Tekale</title>
-  <link rel="stylesheet" href="theme.css"/>
+  <link rel="stylesheet" href="assets/css/theme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     .filters { display: flex; gap: .5rem; flex-wrap: wrap; margin: 2rem 0 3rem; }
@@ -19,10 +19,21 @@
     .p-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-lg); overflow: hidden; display: flex;
-      flex-direction: column; transition: border-color .3s, transform .3s, box-shadow .3s;
+      flex-direction: column;
+      transition: border-color .3s, transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s;
+      position: relative;
     }
-    .p-card:hover { border-color: rgba(var(--accent-rgb),.3); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+    .p-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transition: transform .4s ease; transform-origin: left;
+    }
+    .p-card:hover::before { transform: scaleX(1); }
+    .p-card:hover { border-color: rgba(var(--accent-rgb),.3); transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.4), 0 0 40px rgba(var(--accent-rgb),.05); }
     .p-card.hidden { display: none; }
+    /* Filter animation */
+    .p-card.fade-in { animation: cardFade .4s ease forwards; }
+    @keyframes cardFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     .p-top {
       padding: 1.5rem; border-bottom: 1px solid var(--border);
@@ -32,20 +43,21 @@
     .p-title { font-family: var(--heading); font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.3; }
     .p-body { padding: 1.3rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: .9rem; }
     .p-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; }
-
     .p-highlight {
       background: rgba(var(--accent-rgb),.04); border: 1px solid rgba(var(--accent-rgb),.1);
-      border-radius: 6px; padding: .75rem 1rem;
+      border-radius: 6px; padding: .75rem 1rem; transition: border-color .3s;
     }
+    .p-highlight:hover { border-color: rgba(var(--accent-rgb),.25); }
     .p-h-label { font-family: var(--mono); font-size: .63rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .25rem; }
     .p-h-val { font-size: .82rem; color: var(--text); }
-
     .p-tech { display: flex; flex-wrap: wrap; gap: .35rem; }
     .tech-pill {
       font-family: var(--mono); font-size: .64rem; padding: .25rem .6rem;
       border-radius: 4px; background: rgba(255,255,255,.04);
       border: 1px solid var(--border); color: var(--muted);
+      transition: border-color .3s, color .3s;
     }
+    .tech-pill:hover { border-color: rgba(var(--accent-rgb),.3); color: var(--accent); }
     .p-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 1rem; align-items: center; }
     .p-link { font-family: var(--mono); font-size: .73rem; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: .4rem; transition: gap .2s; }
     .p-link:hover { gap: .7rem; }
@@ -70,7 +82,7 @@
     <li><a href="contact.html">contact</a></li>
   </ul>
   <div class="theme-toggle">
-    <button class="theme-btn on" data-mode="dev">⌨ Dev</button>
+    <button class="theme-btn" data-mode="dev">⌨ Dev</button>
     <button class="theme-btn" data-mode="ai">✦ AI</button>
   </div>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
@@ -230,15 +242,23 @@
     </div>
   </div>
 </footer>
-<script src="theme.js"></script>
+<script src="assets/js/theme.js"></script>
 <script>
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
       btn.classList.add('on');
       const f = btn.dataset.f;
-      document.querySelectorAll('.p-card').forEach(card => {
-        card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
+      document.querySelectorAll('.p-card').forEach((card, i) => {
+        const show = f === 'all' || card.dataset.cat === f;
+        if (show) {
+          card.classList.remove('hidden');
+          card.style.animationDelay = (i * 60) + 'ms';
+          card.classList.add('fade-in');
+          setTimeout(() => card.classList.remove('fade-in'), 500);
+        } else {
+          card.classList.add('hidden');
+        }
       });
     });
   });
