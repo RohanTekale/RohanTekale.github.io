@@ -6,92 +6,49 @@
   <link rel="stylesheet" href="assets/css/theme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    .filters { display: flex; gap: .5rem; flex-wrap: wrap; margin: 2rem 0 3rem; }
-    .filter-btn {
-      font-family: var(--mono); font-size: .72rem; letter-spacing: .07em;
-      padding: .45rem 1.1rem; border-radius: 4px;
-      border: 1px solid var(--border); background: transparent;
-      color: var(--muted); cursor: pointer; transition: all .3s;
-    }
-    .filter-btn.on, .filter-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(var(--accent-rgb),.05); }
+    .filters { display:flex; gap:.5rem; flex-wrap:wrap; margin:2rem 0 3rem; }
+    .filter-btn { font-family:var(--mono); font-size:.72rem; letter-spacing:.07em; padding:.45rem 1.1rem; border-radius:4px; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:all .3s; }
+    .filter-btn.on,.filter-btn:hover { border-color:var(--accent); color:var(--accent); background:rgba(var(--accent-rgb),.05); }
 
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 1.5rem; }
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; }
     .p-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); overflow: hidden; display: flex;
-      flex-direction: column;
-      transition: border-color .3s, transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s;
-      position: relative;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:var(--radius-lg); overflow:hidden; display:flex;
+      flex-direction:column;
+      transition:border-color .3s,transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;
+      position:relative;
     }
-    .p-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      transform: scaleX(0); transition: transform .4s ease; transform-origin: left;
-    }
-    .p-card:hover::before { transform: scaleX(1); }
-    .p-card:hover { border-color: rgba(var(--accent-rgb),.3); transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.4), 0 0 40px rgba(var(--accent-rgb),.05); }
-    .p-card.hidden { display: none; }
-    /* Filter animation */
-    .p-card.fade-in { animation: cardFade .4s ease forwards; }
-    @keyframes cardFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .p-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); transform:scaleX(0); transition:transform .4s ease; transform-origin:left; }
+    .p-card:hover::before { transform:scaleX(1); }
+    .p-card:hover { border-color:rgba(var(--accent-rgb),.3); transform:translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 40px rgba(var(--accent-rgb),.05); }
+    .p-card.hidden { display:none; }
+    .p-card.fade-in { animation:cardFade .4s ease forwards; }
+    @keyframes cardFade { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
-    .p-top {
-      padding: 1.5rem; border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(var(--accent-rgb),.03), transparent);
-    }
-    .p-type { font-family: var(--mono); font-size: .65rem; letter-spacing: .14em; color: var(--accent); margin-bottom: .6rem; }
-    .p-title { font-family: var(--heading); font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.3; }
-    .p-body { padding: 1.3rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: .9rem; }
-    .p-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; }
-    .p-highlight {
-      background: rgba(var(--accent-rgb),.04); border: 1px solid rgba(var(--accent-rgb),.1);
-      border-radius: 6px; padding: .75rem 1rem; transition: border-color .3s;
-    }
-    .p-highlight:hover { border-color: rgba(var(--accent-rgb),.25); }
-    .p-h-label { font-family: var(--mono); font-size: .63rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .25rem; }
-    .p-h-val { font-size: .82rem; color: var(--text); }
-    .p-tech { display: flex; flex-wrap: wrap; gap: .35rem; }
-    .tech-pill {
-      font-family: var(--mono); font-size: .64rem; padding: .25rem .6rem;
-      border-radius: 4px; background: rgba(255,255,255,.04);
-      border: 1px solid var(--border); color: var(--muted);
-      transition: border-color .3s, color .3s;
-    }
-    .tech-pill:hover { border-color: rgba(var(--accent-rgb),.3); color: var(--accent); }
-    .p-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 1rem; align-items: center; }
-    .p-link { font-family: var(--mono); font-size: .73rem; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: .4rem; transition: gap .2s; }
-    .p-link:hover { gap: .7rem; }
+    /* Project image */
+    .p-img { width:100%; aspect-ratio:16/9; overflow:hidden; position:relative; background:#080c14; flex-shrink:0; }
+    .p-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s cubic-bezier(.16,1,.3,1),filter .5s; filter:brightness(.92) saturate(.92); display:block; }
+    .p-card:hover .p-img img { transform:scale(1.05); filter:brightness(1) saturate(1.08); }
+    .p-img-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,transparent 50%,var(--surface) 100%); pointer-events:none; }
+    .p-img-badge { position:absolute; top:.75rem; right:.75rem; font-family:var(--mono); font-size:.6rem; letter-spacing:.1em; padding:.25rem .65rem; border-radius:4px; background:rgba(8,12,20,.82); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.1); color:var(--accent); }
 
-    @media (max-width: 720px) { .projects-grid { grid-template-columns: 1fr; } }
+    .p-top { padding:1.5rem; border-bottom:1px solid var(--border); background:linear-gradient(135deg,rgba(var(--accent-rgb),.03),transparent); }
+    .p-type { font-family:var(--mono); font-size:.65rem; letter-spacing:.14em; color:var(--accent); margin-bottom:.6rem; }
+    .p-title { font-family:var(--heading); font-size:1.1rem; font-weight:700; color:var(--text); line-height:1.3; }
+    .p-body { padding:1.3rem 1.5rem; flex:1; display:flex; flex-direction:column; gap:.9rem; }
+    .p-desc { font-size:.87rem; color:var(--muted); line-height:1.75; }
+    .p-highlight { background:rgba(var(--accent-rgb),.04); border:1px solid rgba(var(--accent-rgb),.1); border-radius:6px; padding:.75rem 1rem; transition:border-color .3s; }
+    .p-highlight:hover { border-color:rgba(var(--accent-rgb),.25); }
+    .p-h-label { font-family:var(--mono); font-size:.63rem; color:var(--muted); letter-spacing:.1em; margin-bottom:.25rem; }
+    .p-h-val { font-size:.82rem; color:var(--text); }
+    .p-tech { display:flex; flex-wrap:wrap; gap:.35rem; }
+    .tech-pill { font-family:var(--mono); font-size:.64rem; padding:.25rem .6rem; border-radius:4px; background:rgba(255,255,255,.04); border:1px solid var(--border); color:var(--muted); transition:border-color .3s,color .3s; }
+    .tech-pill:hover { border-color:rgba(var(--accent-rgb),.3); color:var(--accent); }
+    .p-footer { padding:1rem 1.5rem; border-top:1px solid var(--border); display:flex; gap:1rem; align-items:center; }
+    .p-link { font-family:var(--mono); font-size:.73rem; color:var(--accent); text-decoration:none; display:flex; align-items:center; gap:.4rem; transition:gap .2s; }
+    .p-link:hover { gap:.7rem; }
 
-    /* Project card images */
-    .p-img {
-      width: 100%; aspect-ratio: 16/9; overflow: hidden;
-      position: relative; background: #080c14;
-    }
-    .p-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform .5s cubic-bezier(.16,1,.3,1), filter .5s;
-      filter: brightness(.92) saturate(.95);
-      display: block;
-    }
-    .p-card:hover .p-img img {
-      transform: scale(1.04);
-      filter: brightness(1) saturate(1.05);
-    }
-    .p-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 55%, var(--surface) 100%);
-      pointer-events: none;
-    }
-    .p-img-badge {
-      position: absolute; top: .75rem; right: .75rem;
-      font-family: var(--mono); font-size: .6rem; letter-spacing: .1em;
-      padding: .25rem .65rem; border-radius: 4px;
-      background: rgba(8,12,20,.8); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,.1); color: var(--accent);
-    }
-
+    @media (max-width:720px) { .projects-grid{grid-template-columns:1fr} }
   </style>
 </head>
 <body class="dev page-in">
@@ -132,7 +89,7 @@
 
     <div class="projects-grid" id="grid">
 
-      <!-- Credify -->
+      <!-- ── CREDIFY ── -->
       <div class="p-card tilt reveal" data-cat="backend">
         <div class="p-img">
           <img src="images/project-credify.svg" alt="Credify Virtual Credit Card API Dashboard"/>
@@ -164,12 +121,12 @@
         </div>
       </div>
 
-      <!-- Real-Time Event Platform -->
+      <!-- ── REAL-TIME EVENT PLATFORM ── -->
       <div class="p-card tilt reveal" data-cat="backend">
         <div class="p-img">
           <img src="images/project-realtime.svg" alt="Real-Time Event Analytics Platform Dashboard"/>
           <div class="p-img-overlay"></div>
-          <span class="p-img-badge">ANALYTICS · AI</span>
+          <span class="p-img-badge">ANALYTICS · AI-POWERED</span>
         </div>
         <div class="p-top">
           <div class="p-type">BACKEND · ANALYTICS · AI-POWERED</div>
@@ -196,7 +153,7 @@
         </div>
       </div>
 
-      <!-- Inventory Management -->
+      <!-- ── INVENTORY MANAGEMENT ── -->
       <div class="p-card tilt reveal" data-cat="fullstack">
         <div class="p-img">
           <img src="images/project-inventory.svg" alt="Inventory Management System Dashboard"/>
@@ -224,12 +181,12 @@
         </div>
       </div>
 
-      <!-- Recipe App -->
+      <!-- ── RECIPE APP ── -->
       <div class="p-card tilt reveal" data-cat="backend">
         <div class="p-img">
           <img src="images/project-recipe.svg" alt="Recipe App API TDD AWS Dashboard"/>
           <div class="p-img-overlay"></div>
-          <span class="p-img-badge">TDD · AWS</span>
+          <span class="p-img-badge">TDD · AWS DEPLOYED</span>
         </div>
         <div class="p-top">
           <div class="p-type">BACKEND · TDD · AWS DEPLOYED</div>
@@ -252,10 +209,10 @@
         </div>
       </div>
 
-      <!-- Audio AI -->
+      <!-- ── AUDIO AI ── -->
       <div class="p-card tilt reveal" data-cat="ai">
         <div class="p-img">
-          <img src="images/project-audio.svg" alt="Audio Transcription AI Whisper Dashboard"/>
+          <img src="images/project-audio.svg" alt="Audio Transcription Whisper AI Dashboard"/>
           <div class="p-img-overlay"></div>
           <span class="p-img-badge" style="color:#a855f7">WHISPER-V3 · AI</span>
         </div>
@@ -296,6 +253,7 @@
     </div>
   </div>
 </footer>
+
 <script src="assets/js/theme.js"></script>
 <script>
   document.querySelectorAll('.filter-btn').forEach(btn => {
