@@ -90,14 +90,30 @@ function initMobile() {
 /* ── SCROLL REVEAL ── */
 function initReveal() {
   const els = document.querySelectorAll('.reveal');
+  function markIn(el) {
+    el.classList.add('in');
+  }
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), i * 70);
+        setTimeout(() => markIn(e.target), i * 70);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08, rootMargin: '0px 0px 8% 0px' });
   els.forEach(el => io.observe(el));
+  function revealIfAlreadyVisible() {
+    els.forEach(el => {
+      if (el.classList.contains('in')) return;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (r.top < vh * 0.92 && r.bottom > vh * 0.05) markIn(el);
+    });
+  }
+  requestAnimationFrame(() => {
+    revealIfAlreadyVisible();
+    requestAnimationFrame(revealIfAlreadyVisible);
+  });
+  setTimeout(revealIfAlreadyVisible, 120);
 }
 
 /* ── TYPING EFFECT ── */
