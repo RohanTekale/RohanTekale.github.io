@@ -7,171 +7,171 @@
   <link rel="stylesheet" href="assets/css/theme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; margin-top: 3.5rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; margin-top: 3rem; }
     .avatar-wrap { position: sticky; top: 7rem; }
     .avatar-box {
       width: 100%; aspect-ratio: 1; border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, var(--surface), var(--bg2));
-      border: 1px solid var(--border); overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 6rem; position: relative;
-      transition: box-shadow .4s, transform .4s;
-    }
-    .avatar-box:hover { box-shadow: 0 0 60px var(--glow); transform: scale(1.02); }
-    .avatar-box::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 55%, rgba(var(--accent-rgb),.1));
-    }
-    /* Scanning line animation */
-    .avatar-box::before {
-      content: ''; position: absolute; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      animation: scanLine 3s ease-in-out infinite; z-index: 1;
-      opacity: 0.6;
-    }
-    @keyframes scanLine {
-      0%   { top: 0%; opacity: 0; }
-      10%  { opacity: 0.6; }
-      90%  { opacity: 0.6; }
-      100% { top: 100%; opacity: 0; }
+      background: var(--surface2);
+      border: 1px solid var(--border-h); display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; box-shadow: var(--shadow-lg), 0 0 60px rgba(var(--accent-rgb), 0.08);
     }
     .avatar-badge {
       margin-top: 1rem; background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1rem 1.2rem;
-      font-family: var(--mono); font-size: .72rem; line-height: 1.8;
-      transition: border-color .3s;
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      font-family: var(--mono); font-size: 0.72rem; line-height: 1.9;
     }
-    .avatar-badge:hover { border-color: rgba(var(--accent-rgb),.3); }
-    .badge-row { display: flex; justify-content: space-between; }
+    .badge-row { display: flex; justify-content: space-between; gap: 1rem; }
     .badge-key { color: var(--muted); }
-    .badge-val { color: var(--accent); }
+    .badge-val { color: var(--accent); text-align: right; }
 
     .about-content h3 {
-      font-family: var(--heading); font-size: 1.5rem; font-weight: 700;
-      color: var(--text); margin-bottom: 1rem; margin-top: 2rem;
+      font-family: var(--heading); font-size: 1.35rem; font-weight: 700;
+      color: var(--text); margin-bottom: 0.85rem; margin-top: 2rem;
     }
     .about-content h3:first-child { margin-top: 0; }
-    .about-content p { color: var(--muted); font-size: .95rem; line-height: 1.9; margin-bottom: 1rem; }
-    .about-content p strong { color: var(--text); }
+    .about-content p { color: var(--text2); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1rem; }
+    .about-content p strong { color: var(--text); font-weight: 600; }
 
-    .skills-section { margin-top: 2.5rem; }
-    .skill-group { margin-bottom: 2rem; }
-    .skill-group-title {
-      font-family: var(--mono); font-size: .7rem; color: var(--accent);
-      letter-spacing: .14em; margin-bottom: .9rem;
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+    .skill-cat {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem; transition: box-shadow 0.3s, border-color 0.3s;
     }
-    .skill-row { display: flex; align-items: center; gap: 1rem; margin-bottom: .6rem; }
-    .skill-name { font-family: var(--mono); font-size: .78rem; color: var(--text); width: 130px; flex-shrink: 0; }
-    .skill-bar-wrap { flex: 1; height: 3px; background: var(--faint); border-radius: 2px; overflow: hidden; }
+    .skill-cat:hover { box-shadow: var(--shadow); border-color: rgba(var(--accent-rgb), 0.2); }
+    .skill-cat h4 {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--accent2);
+      letter-spacing: 0.12em; margin-bottom: 0.85rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .skill-group { margin-bottom: 1.75rem; }
+    .skill-group-title { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 0.75rem; }
+    .skill-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.55rem; }
+    .skill-name { font-family: var(--mono); font-size: 0.76rem; color: var(--text2); width: 140px; flex-shrink: 0; }
+    .skill-bar-wrap { flex: 1; height: 4px; background: var(--faint); border-radius: 2px; overflow: hidden; }
     .skill-bar {
       height: 100%; border-radius: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      width: 0; transition: width 1.4s cubic-bezier(.16,1,.3,1);
+      background: var(--accent);
+      width: 0; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .skill-bar.loaded { width: var(--w); }
-    .skill-pct { font-family: var(--mono); font-size: .68rem; color: var(--muted); width: 2.5rem; text-align: right; }
 
-    .val-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .val-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
     .val-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.2rem;
-      transition: border-color .3s, transform .3s, box-shadow .3s;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.2rem; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
-    .val-card:hover {
-      border-color: rgba(var(--accent-rgb),.35);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,.2);
-    }
-    .val-card i { color: var(--accent); font-size: 1.1rem; margin-bottom: .6rem; display: block; }
-    .val-card h4 { font-family: var(--heading); font-size: .95rem; font-weight: 700; margin-bottom: .3rem; }
-    .val-card p { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+    .val-card:hover { border-color: rgba(var(--accent-rgb), 0.2); transform: translateY(-3px); box-shadow: var(--shadow); }
+    .val-card i { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.5rem; display: block; }
+    .val-card h4 { font-family: var(--heading); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .val-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin: 0; }
 
     @media (max-width: 860px) {
       .about-grid { grid-template-columns: 1fr; }
       .avatar-wrap { position: static; }
-      .avatar-box { max-width: 260px; }
-      .val-grid { grid-template-columns: 1fr; }
+      .avatar-box { max-width: 280px; }
+      .skills-grid, .val-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<!-- IMPORTANT: body starts with dev but initTheme() in theme.js immediately corrects it -->
-<body class="dev page-in">
-<div id="cursor"></div><div id="cursor-trail"></div><div id="progress"></div>
-
+<body>
+<div id="progress"></div>
 <div id="mobile-nav">
-  <a href="index.html">Home</a><a href="about.html">About</a>
-  <a href="experience.html">Experience</a><a href="projects.html">Projects</a>
-  <a href="ai.html">AI Work</a><a href="contact.html">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="ai.html">AI Work</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <nav id="nav">
   <a href="index.html" class="nav-logo">RT<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="about.html" class="active">about</a></li>
-    <li><a href="experience.html">experience</a></li>
-    <li><a href="projects.html">projects</a></li>
-    <li><a href="ai.html">ai work</a></li>
-    <li><a href="contact.html">contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="ai.html">AI Work</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="theme-toggle">
-    <button class="theme-btn" data-mode="dev">⌨ Dev</button>
-    <button class="theme-btn" data-mode="ai">✦ AI</button>
-  </div>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <a href="contact.html" class="nav-cta nav-cta-desktop">Get in touch →</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<section style="padding-top:9rem">
+<section class="page-hero">
   <div class="container">
     <div class="s-label reveal">01 // about</div>
-    <h2 class="s-title reveal">The person behind <em>the code</em></h2>
+    <h2 class="s-title reveal">Backend engineer who <em>ships at scale</em></h2>
 
     <div class="about-grid">
       <div class="avatar-wrap reveal">
         <div class="avatar-box">👨‍💻</div>
         <div class="avatar-badge">
-          <div class="badge-row"><span class="badge-key">name</span><span class="badge-val">Rohan Tekale</span></div>
+          <div class="badge-row"><span class="badge-key">name</span><span class="badge-val">Rohan R. Tekale</span></div>
           <div class="badge-row"><span class="badge-key">location</span><span class="badge-val">Pune, IN</span></div>
-          <div class="badge-row"><span class="badge-key">role</span><span class="badge-val">Backend + AI Dev</span></div>
-          <div class="badge-row"><span class="badge-key">status</span><span class="badge-val" style="color:#22c55e">● open to work</span></div>
-          <div class="badge-row"><span class="badge-key">email</span><span class="badge-val" style="font-size:.65rem">tekalerohan7@gmail.com</span></div>
+          <div class="badge-row"><span class="badge-key">role</span><span class="badge-val">Backend Python Dev</span></div>
+          <div class="badge-row"><span class="badge-key">status</span><span class="badge-val" style="color:var(--accent2)">● open to work</span></div>
+          <div class="badge-row"><span class="badge-key">email</span><span class="badge-val" style="font-size:.62rem">tekalerohan2000@gmail.com</span></div>
+          <div class="badge-row"><span class="badge-key">phone</span><span class="badge-val">+91 9307802374</span></div>
         </div>
       </div>
 
       <div class="about-content">
-        <h3 class="reveal">Who I am</h3>
-        <p class="reveal">I'm a Software Developer and ML enthusiast based in Pune, Maharashtra — passionate about building systems that work at scale and <strong>hold up under pressure</strong>. My journey started with a deep curiosity about what happens beneath abstractions, and evolved into shipping production-grade APIs, event-driven architectures, and AI-powered pipelines.</p>
-        <p class="reveal">I believe the best engineering is invisible — it just works, fast and reliably, whether it's serving 10 users or 10,000. Every system I build is designed with that principle in mind.</p>
+        <h3 class="reveal">Professional summary</h3>
+        <p class="reveal">I'm a <strong>Backend Python Developer</strong> with 3+ years of experience designing and delivering production-grade APIs and microservices using FastAPI, Django REST Framework, and Flask. I've architected solutions delivering up to <strong>40% latency reduction</strong> across high-volume workloads in pharma, fintech, and hospitality.</p>
+        <p class="reveal">My work spans <strong>JWT/OAuth2, RBAC, Celery, Docker, AWS (EC2, S3, RDS, ECS Fargate), CI/CD</strong>, and AI-powered backends using <strong>RAG, OpenAI, Anthropic Claude, FAISS, and ChromaDB</strong>. I maintain 80%+ test coverage on critical services with Pytest and I'm seeking a <strong>Senior Backend / SDE-II</strong> role.</p>
 
-        <h3 class="reveal">What I build</h3>
-        <p class="reveal">At <strong>Biddano Pvt. Ltd.</strong>, I've shipped secure RESTful microservices with 99.9% uptime, built WebSocket endpoints handling 50+ concurrent connections with &lt;100ms latency, and optimized database queries for 30% faster data retrieval. I also integrate React frontends with the APIs I build.</p>
-        <p class="reveal">Beyond backend, I'm deeply interested in <strong>Generative AI</strong> — building RAG pipelines, integrating Whisper for speech intelligence, and working with LangChain and HuggingFace to create systems that actually reason about data rather than just storing it.</p>
+        <h3 class="reveal">What I do today</h3>
+        <p class="reveal">At <strong>Biddano Pvt. Ltd.</strong>, I own order management, supplier, and logistics microservices on a B2B pharma platform — plus an AI-powered catalog reconciliation pipeline with semantic embeddings and LLM reranking. Previously at <strong>Shekru Labs</strong>, I built billing, construction, and HR backends deployed to multiple enterprise clients.</p>
 
-        <div class="skills-section">
-          <h3 class="reveal">Skills & proficiency</h3>
-
-          <div class="skill-group reveal">
-            <div class="skill-group-title">BACKEND & CLOUD</div>
-            <div class="skill-row"><span class="skill-name">Python / Django</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:92%"></div></div><span class="skill-pct">92%</span></div>
-            <div class="skill-row"><span class="skill-name">FastAPI</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div><span class="skill-pct">88%</span></div>
-            <div class="skill-row"><span class="skill-name">PostgreSQL / Redis</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:84%"></div></div><span class="skill-pct">84%</span></div>
-            <div class="skill-row"><span class="skill-name">AWS / Docker / K8s</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:78%"></div></div><span class="skill-pct">78%</span></div>
+        <div class="skills-grid reveal">
+          <div class="skill-cat">
+            <h4>LANGUAGES & BACKEND</h4>
+            <div class="skill-tags">
+              <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Django REST</span>
+              <span class="tag">Flask</span><span class="tag">AsyncIO</span><span class="tag">SQL</span>
+            </div>
           </div>
-
-          <div class="skill-group reveal">
-            <div class="skill-group-title">AI / ML</div>
-            <div class="skill-row"><span class="skill-name">LangChain</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:80%"></div></div><span class="skill-pct">80%</span></div>
-            <div class="skill-row"><span class="skill-name">HuggingFace</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:75%"></div></div><span class="skill-pct">75%</span></div>
-            <div class="skill-row"><span class="skill-name">Whisper / Speech</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:72%"></div></div><span class="skill-pct">72%</span></div>
-            <div class="skill-row"><span class="skill-name">ML / Deep Learning</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:70%"></div></div><span class="skill-pct">70%</span></div>
+          <div class="skill-cat">
+            <h4>DATA & MESSAGING</h4>
+            <div class="skill-tags">
+              <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span>
+              <span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">RabbitMQ</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <h4>DEVOPS & CLOUD</h4>
+            <div class="skill-tags">
+              <span class="tag">Docker</span><span class="tag">AWS ECS</span><span class="tag">EC2</span>
+              <span class="tag">GitHub Actions</span><span class="tag">Nginx</span><span class="tag">Linux</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <h4>AI & SEARCH</h4>
+            <div class="skill-tags">
+              <span class="tag">RAG</span><span class="tag">OpenAI API</span><span class="tag">Claude API</span>
+              <span class="tag">FAISS</span><span class="tag">ChromaDB</span><span class="tag">SentenceTransformers</span>
+            </div>
           </div>
         </div>
 
-        <h3 class="reveal">How I think</h3>
+        <h3 class="reveal" style="margin-top:2.5rem">Core strengths</h3>
+        <div class="skill-group reveal">
+          <div class="skill-group-title">PROFICIENCY</div>
+          <div class="skill-row"><span class="skill-name">FastAPI / DRF</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:94%"></div></div></div>
+          <div class="skill-row"><span class="skill-name">PostgreSQL / Redis</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
+          <div class="skill-row"><span class="skill-name">Celery / Async jobs</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div></div>
+          <div class="skill-row"><span class="skill-name">AWS / Docker / CI/CD</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+          <div class="skill-row"><span class="skill-name">RAG / LLM APIs</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div></div>
+        </div>
+
+        <h3 class="reveal">How I work</h3>
         <div class="val-grid">
-          <div class="val-card reveal spotlight-card"><i class="fa-solid fa-layer-group"></i><h4>Systems first</h4><p>I think in systems, not features. Every decision considers scalability and maintainability from day one.</p></div>
-          <div class="val-card reveal spotlight-card"><i class="fa-solid fa-vial"></i><h4>Test everything</h4><p>85–90% test coverage isn't a goal — it's the baseline. I write tests before I write code.</p></div>
-          <div class="val-card reveal spotlight-card"><i class="fa-solid fa-gauge-high"></i><h4>Performance matters</h4><p>A 30% query speedup isn't lucky — it comes from profiling, indexing, and knowing your database deeply.</p></div>
-          <div class="val-card reveal spotlight-card"><i class="fa-solid fa-infinity"></i><h4>Always shipping</h4><p>CI/CD isn't optional. Every project I build has automated tests, linting, and deployment pipelines.</p></div>
+          <div class="val-card reveal"><i class="fa-solid fa-layer-group"></i><h4>Systems first</h4><p>Microservice boundaries, caching layers, and indexing strategies planned before features ship.</p></div>
+          <div class="val-card reveal"><i class="fa-solid fa-vial"></i><h4>Test-driven quality</h4><p>80%+ Pytest coverage on critical paths — unit and integration tests as a baseline, not an afterthought.</p></div>
+          <div class="val-card reveal"><i class="fa-solid fa-gauge-high"></i><h4>Performance by design</h4><p>40% latency wins come from Redis, query tuning, and eliminating synchronous bottlenecks.</p></div>
+          <div class="val-card reveal"><i class="fa-solid fa-robot"></i><h4>AI with guardrails</h4><p>Human-in-the-loop validation, audit logging, and confidence scoring on every AI pipeline.</p></div>
         </div>
       </div>
     </div>
@@ -181,24 +181,15 @@
 <footer>
   <div class="container">
     <div class="footer-row">
-      <span class="footer-copy">© 2025 Rohan Tekale · Pune, India</span>
+      <span class="footer-copy">© 2025 Rohan Rajkumar Tekale · Pune, India</span>
       <div class="footer-socials">
-        <a href="https://github.com/RohanTekale" target="_blank"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="mailto:tekalerohan7@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://github.com/RohanTekale" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:tekalerohan2000@gmail.com"><i class="fa-solid fa-envelope"></i></a>
       </div>
     </div>
   </div>
 </footer>
-
 <script src="assets/js/theme.js"></script>
-<script>
-  // Animate skill bars on scroll
-  const bars = document.querySelectorAll('.skill-bar');
-  const barObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('loaded'), 200); } });
-  }, { threshold: 0.3 });
-  bars.forEach(b => barObs.observe(b));
-</script>
 </body>
 </html>

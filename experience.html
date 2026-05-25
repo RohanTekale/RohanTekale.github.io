@@ -1,200 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Experience — Rohan Tekale</title>
   <link rel="stylesheet" href="assets/css/theme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    .exp-layout { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; margin-top: 3.5rem; align-items: start; }
+    .exp-layout { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
     .exp-sidebar { position: sticky; top: 7rem; }
     .sidebar-stat {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.2rem; margin-bottom: 1rem;
-      transition: border-color .3s, transform .3s; cursor: default;
+      padding: 1.2rem; margin-bottom: 1rem; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
-    .sidebar-stat:hover { border-color: rgba(var(--accent-rgb),.3); transform: translateX(4px); }
-    .ss-label { font-family: var(--mono); font-size: .68rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .4rem; }
+    .sidebar-stat:hover { border-color: rgba(var(--accent-rgb), 0.25); transform: translateX(4px); box-shadow: var(--shadow); }
+    .ss-label { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
     .ss-val {
-      font-family: var(--heading); font-size: 1.8rem; font-weight: 800;
-      background: linear-gradient(135deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      font-family: var(--heading); font-size: 1.8rem; font-weight: 600;
+      color: var(--text);
     }
-    .ss-sub { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+    .ss-sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
     .sidebar-skills { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; }
-    .sidebar-skills h4 { font-family: var(--mono); font-size: .68rem; color: var(--accent); letter-spacing: .12em; margin-bottom: .9rem; }
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .sidebar-skills h4 { font-family: var(--mono); font-size: 0.68rem; color: var(--accent2); letter-spacing: 0.12em; margin-bottom: 0.9rem; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
     .timeline { position: relative; }
     .tl-line {
-      position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
-      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+      position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--border-h), var(--border), transparent);
     }
-    /* Animated glow on the line */
-    .tl-line::after {
-      content: ''; position: absolute; left: 0; width: 1px; height: 60px;
-      background: linear-gradient(to bottom, transparent, var(--accent), transparent);
-      animation: lineGlow 3s ease-in-out infinite;
-    }
-    @keyframes lineGlow {
-      0%   { top: 0; opacity: 0; }
-      20%  { opacity: 1; }
-      80%  { opacity: 1; }
-      100% { top: 100%; opacity: 0; }
-    }
-    .tl-item { padding-left: 2.5rem; margin-bottom: 4rem; position: relative; }
+    .tl-item { padding-left: 2.5rem; margin-bottom: 3rem; position: relative; }
     .tl-dot {
-      position: absolute; left: -6px; top: .5rem;
-      width: 13px; height: 13px; border-radius: 50%;
-      background: var(--accent); box-shadow: 0 0 0 4px var(--bg), 0 0 16px var(--accent);
-      transition: box-shadow .3s, transform .3s;
+      position: absolute; left: -7px; top: 0.6rem; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(var(--accent-rgb), 0.15);
     }
-    .tl-dot.dim { background: var(--accent2); box-shadow: 0 0 0 4px var(--bg), 0 0 12px var(--accent2); }
-    .tl-item:hover .tl-dot { box-shadow: 0 0 0 6px var(--bg), 0 0 28px var(--accent); transform: scale(1.3); }
-    .tl-meta { font-family: var(--mono); font-size: .72rem; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-bottom: .5rem; }
-    .tl-badge { background: rgba(var(--accent-rgb),.08); border: 1px solid rgba(var(--accent-rgb),.18); color: var(--accent); padding: .2rem .65rem; border-radius: 4px; font-size: .67rem; }
-    .tl-company { font-family: var(--heading); font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: .25rem; }
-    .tl-role { color: var(--accent); font-size: .9rem; font-weight: 500; margin-bottom: 1rem; }
-    .tl-desc { font-size: .9rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.8; }
-    .tl-points { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
-    .tl-points li {
-      font-size: .88rem; color: var(--muted); padding-left: 1.3rem; position: relative; line-height: 1.7;
-      transition: color .3s;
-    }
-    .tl-points li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: .78rem; top: .15rem; transition: transform .3s; }
-    .tl-points li:hover { color: var(--text); }
-    .tl-points li:hover::before { transform: translateX(3px); }
-    .tl-points li strong { color: var(--text); }
-    .tl-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tl-dot.dim { background: var(--accent2); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(var(--accent2-rgb), 0.15); }
+    .tl-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .tl-badge { background: rgba(var(--accent-rgb), 0.08); border: 1px solid rgba(var(--accent-rgb), 0.2); color: var(--accent); padding: 0.2rem 0.65rem; border-radius: 100px; font-size: 0.67rem; }
+    .tl-company { font-family: var(--heading); font-size: 1.45rem; font-weight: 800; color: var(--text); margin-bottom: 0.2rem; }
+    .tl-role { color: var(--accent2); font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem; }
+    .tl-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.8; }
+    .tl-points { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.25rem; }
+    .tl-points li { font-size: 0.88rem; color: var(--text2); padding-left: 1.3rem; position: relative; line-height: 1.7; }
+    .tl-points li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.78rem; }
+    .tl-points li strong { color: var(--text); font-weight: 600; }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tl-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 1.75rem; transition: border-color .3s, box-shadow .3s, transform .3s;
+      box-shadow: var(--shadow);
+      padding: 1.75rem; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
-    .tl-card:hover { border-color: rgba(var(--accent-rgb),.3); box-shadow: 0 16px 50px rgba(0,0,0,.25); transform: translateX(4px); }
-    .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; margin-top: 1rem; transition: border-color .3s; }
-    .edu-card:hover { border-color: rgba(var(--accent-rgb),.2); }
-    .edu-deg { font-family: var(--heading); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .25rem; }
-    .edu-school { font-size: .85rem; color: var(--muted); }
+    .tl-card:hover { border-color: rgba(var(--accent-rgb), 0.25); box-shadow: var(--shadow-lg); transform: translateX(4px); }
+
+    .edu-section { margin-top: 1rem; }
+    .edu-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.4rem; margin-bottom: 0.75rem; transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .edu-card:hover { border-color: rgba(var(--accent-rgb), 0.2); box-shadow: var(--shadow); }
+    .edu-deg { font-family: var(--heading); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+    .edu-school { font-size: 0.85rem; color: var(--muted); }
+    .edu-cgpa { font-family: var(--mono); font-size: 0.75rem; color: var(--accent2); margin-top: 0.35rem; }
+
+    .cert-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin-top: 1rem; }
+    .cert-item {
+      display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.9rem 1rem;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
+      font-size: 0.85rem; color: var(--text2);
+    }
+    .cert-item i { color: var(--accent); margin-top: 0.15rem; }
 
     @media (max-width: 860px) {
       .exp-layout { grid-template-columns: 1fr; }
-      .exp-sidebar { position: static; }
+      .exp-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .sidebar-skills { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) {
+      .exp-sidebar { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body class="dev page-in">
-<div id="cursor"></div><div id="cursor-trail"></div><div id="progress"></div>
+<body>
+<div id="progress"></div>
 <div id="mobile-nav">
-  <a href="index.html">Home</a><a href="about.html">About</a>
-  <a href="experience.html">Experience</a><a href="projects.html">Projects</a>
-  <a href="ai.html">AI Work</a><a href="contact.html">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="ai.html">AI Work</a>
+  <a href="contact.html">Contact</a>
 </div>
+
 <nav id="nav">
   <a href="index.html" class="nav-logo">RT<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="about.html">about</a></li>
-    <li><a href="experience.html" class="active">experience</a></li>
-    <li><a href="projects.html">projects</a></li>
-    <li><a href="ai.html">ai work</a></li>
-    <li><a href="contact.html">contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="ai.html">AI Work</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="theme-toggle">
-    <button class="theme-btn" data-mode="dev">⌨ Dev</button>
-    <button class="theme-btn" data-mode="ai">✦ AI</button>
-  </div>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <a href="contact.html" class="nav-cta nav-cta-desktop">Get in touch →</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<section style="padding-top:9rem">
+<section class="page-hero">
   <div class="container">
     <div class="s-label reveal">02 // experience</div>
     <h2 class="s-title reveal">Where I've <em>shipped code</em></h2>
+    <p class="lead reveal">3+ years building production APIs and microservices across pharma B2B, fintech, hospitality, and construction — with measurable impact on latency, throughput, and test coverage.</p>
 
     <div class="exp-layout">
-      <!-- Sidebar -->
-      <div class="exp-sidebar">
-        <div class="sidebar-stat reveal"><div class="ss-label">TOTAL EXPERIENCE</div><div class="ss-val">2+</div><div class="ss-sub">years in production</div></div>
-        <div class="sidebar-stat reveal"><div class="ss-label">COMPANIES</div><div class="ss-val">2</div><div class="ss-sub">Biddano · ValueDx</div></div>
-        <div class="sidebar-stat reveal"><div class="ss-label">UPTIME ACHIEVED</div><div class="ss-val">99.9%</div><div class="ss-sub">across all services</div></div>
+      <aside class="exp-sidebar">
+        <div class="sidebar-stat reveal">
+          <div class="ss-label">TOTAL EXPERIENCE</div>
+          <div class="ss-val">3+</div>
+          <div class="ss-sub">years in production</div>
+        </div>
+        <div class="sidebar-stat reveal">
+          <div class="ss-label">COMPANIES</div>
+          <div class="ss-val">2</div>
+          <div class="ss-sub">Biddano · Shekru Labs</div>
+        </div>
+        <div class="sidebar-stat reveal">
+          <div class="ss-label">LATENCY REDUCTION</div>
+          <div class="ss-val">40%</div>
+          <div class="ss-sub">Redis + PostgreSQL tuning</div>
+        </div>
         <div class="sidebar-skills reveal">
-          <h4>CORE SKILLS</h4>
+          <h4>CORE STACK</h4>
           <div class="tag-cloud">
-            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">FastAPI</span>
-            <span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Celery</span>
-            <span class="tag">RabbitMQ</span><span class="tag">Docker</span><span class="tag">AWS</span>
-            <span class="tag">Kubernetes</span><span class="tag">LangChain</span><span class="tag">HuggingFace</span>
+            <span class="tag">FastAPI</span><span class="tag">Django REST</span><span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">Docker</span>
+            <span class="tag">AWS ECS</span><span class="tag">JWT/RBAC</span><span class="tag">Pytest</span>
+            <span class="tag">RAG</span><span class="tag">ChromaDB</span>
           </div>
         </div>
-      </div>
+      </aside>
 
-      <!-- Timeline -->
       <div class="timeline">
         <div class="tl-line"></div>
 
-        <!-- Job 1 -->
         <div class="tl-item reveal">
           <div class="tl-dot"></div>
           <div class="tl-card">
             <div class="tl-meta">
               <span class="tl-badge">Aug 2024 – Present</span>
-              <span>Pune, Maharashtra</span>
-              <span style="color:var(--accent2)">● current</span>
+              <span>Pune, India</span>
+              <span style="color:var(--accent2);font-weight:500">● current</span>
             </div>
             <div class="tl-company">Biddano Pvt. Ltd.</div>
-            <div class="tl-role">Software Developer</div>
-            <p class="tl-desc">Building scalable microservices and real-time backend infrastructure for digital financial products. Full ownership from architecture to deployment.</p>
+            <div class="tl-role">Software Engineer – Backend</div>
+            <p class="tl-desc">Owned order management, supplier, and logistics API services within a microservices-based B2B pharma platform serving enterprise clients across Android, iOS, and web.</p>
             <ul class="tl-points">
-              <li>Developed secure RESTful microservices with Python, FastAPI, and Django on <strong>AWS EC2/S3</strong> — ensuring <strong>99.9% uptime</strong> for 100+ daily API requests.</li>
-              <li>Built <strong>WebSocket endpoints</strong> for real-time updates handling 50+ concurrent connections with &lt;100ms latency.</li>
-              <li>Optimized <strong>PostgreSQL/MongoDB queries</strong> on AWS RDS — boosted data retrieval by <strong>30%</strong>.</li>
-              <li>Integrated React front-end with backend APIs, improving UX for 50+ daily active users.</li>
-              <li>Implemented <strong>CI/CD pipelines</strong> with Docker and Bitbucket Pipelines for consistent automated deployments.</li>
+              <li>Designed <strong>Redis caching</strong> and <strong>PostgreSQL indexing</strong> across high-volume endpoints, reducing API response latency by <strong>40%</strong>.</li>
+              <li>Architected <strong>Celery + Redis</strong> async pipelines for ERP integrations, scheduled jobs, and reporting — eliminating synchronous bottlenecks.</li>
+              <li>Built <strong>JWT and RBAC</strong> authentication for role-segmented access; containerized services with Docker and automated deployments via <strong>GitHub Actions CI/CD</strong>.</li>
+              <li>Maintained <strong>80%+ Pytest coverage</strong> on critical API services; led production incident debugging and performance improvements.</li>
             </ul>
             <div class="tl-tags">
-              <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Django</span>
-              <span class="tag">AWS</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span>
-              <span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">WebSocket</span>
+              <span class="tag">FastAPI</span><span class="tag">Django REST</span><span class="tag">PostgreSQL</span>
+              <span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">Docker</span><span class="tag">AWS</span>
             </div>
           </div>
         </div>
 
-        <!-- Job 2 -->
         <div class="tl-item reveal">
           <div class="tl-dot dim"></div>
           <div class="tl-card">
             <div class="tl-meta">
-              <span class="tl-badge" style="color:var(--accent2);background:rgba(var(--accent2-rgb),.08);border-color:rgba(var(--accent2-rgb),.18)">Feb 2022 – Mar 2022</span>
-              <span>Pune, Maharashtra</span>
+              <span class="tl-badge" style="color:var(--accent2);background:rgba(var(--accent2-rgb),.08);border-color:rgba(var(--accent2-rgb),.2)">Apr 2023 – Jul 2024</span>
+              <span>Pune, India</span>
             </div>
-            <div class="tl-company">ValueDx Technologies</div>
-            <div class="tl-role">ML Engineer Intern</div>
-            <p class="tl-desc">First hands-on exposure to production ML systems — implementing algorithms, deploying models, and integrating Generative AI concepts into existing pipelines.</p>
+            <div class="tl-company">Shekru Labs India Pvt. Ltd.</div>
+            <div class="tl-role">Python Developer</div>
+            <p class="tl-desc">Designed and owned backend architecture for multiple production products using Django REST Framework and FastAPI across restaurant, HR, and construction domains.</p>
             <ul class="tl-points">
-              <li>Implemented machine learning algorithms and enhanced existing projects using <strong>deep learning</strong> techniques.</li>
-              <li>Gained practical experience with <strong>neural networks and deep learning frameworks</strong> in a production environment.</li>
-              <li>Developed Python-based ML solutions and integrated <strong>Generative AI concepts</strong> into real workflows.</li>
-              <li>Deployed and monitored various ML models end-to-end.</li>
+              <li>Implemented PostgreSQL indexing, Redis caching, and ORM refactoring — improving application performance by <strong>30–40%</strong>.</li>
+              <li>Built <strong>JWT-secured REST APIs</strong> with RBAC, multi-version API support, and third-party payment gateway integrations.</li>
+              <li>Containerized services with Docker, deployed on <strong>AWS EC2/S3</strong> behind Nginx, with <strong>GitHub Actions CI/CD</strong> for automated releases.</li>
+              <li>Developed Celery background tasks for notifications, invoicing, and reports; maintained <strong>75%+ Pytest coverage</strong> on core modules.</li>
             </ul>
             <div class="tl-tags">
-              <span class="tag">Python</span><span class="tag">Machine Learning</span>
-              <span class="tag">Deep Learning</span><span class="tag">Neural Networks</span><span class="tag">Generative AI</span>
+              <span class="tag">Django REST</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span>
+              <span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">Nginx</span><span class="tag">AWS</span>
             </div>
           </div>
         </div>
 
-        <!-- Education -->
-        <div class="tl-item reveal">
+        <div class="tl-item reveal edu-section">
           <div class="tl-dot" style="background:var(--muted);box-shadow:0 0 0 4px var(--bg)"></div>
           <div class="s-label" style="margin-bottom:1rem">EDUCATION</div>
           <div class="edu-card">
-            <div class="edu-deg">B.E. / B.Tech — Computer Science</div>
-            <div class="edu-school">Pune, Maharashtra · Graduated 2024</div>
+            <div class="edu-deg">B.E. – Electronics & Telecommunication</div>
+            <div class="edu-school">Savitribai Phule Pune University, Pune · 2019 – 2023</div>
+            <div class="edu-cgpa">CGPA: 9.02 / 10.0</div>
           </div>
-          <div class="edu-card" style="margin-top:.75rem">
-            <div class="edu-deg">Key Coursework</div>
-            <div class="edu-school" style="margin-top:.5rem">
-              Data Structures · Algorithms · DBMS · OS · Computer Networks · ML Fundamentals · Cloud Computing
-            </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="s-label" style="margin-bottom:1rem">CERTIFICATIONS</div>
+          <div class="cert-grid">
+            <div class="cert-item"><i class="fa-solid fa-certificate"></i><span>Python for Data Science, AI & Development — University of Michigan (Coursera)</span></div>
+            <div class="cert-item"><i class="fa-solid fa-certificate"></i><span>Django Application Development — IBM</span></div>
+            <div class="cert-item"><i class="fa-solid fa-certificate"></i><span>Docker & Kubernetes — IBM</span></div>
           </div>
         </div>
       </div>
@@ -205,11 +215,11 @@
 <footer>
   <div class="container">
     <div class="footer-row">
-      <span class="footer-copy">© 2025 Rohan Tekale · Pune, India</span>
+      <span class="footer-copy">© 2025 Rohan Rajkumar Tekale · Pune, India</span>
       <div class="footer-socials">
-        <a href="https://github.com/RohanTekale" target="_blank"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="mailto:tekalerohan7@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://github.com/RohanTekale" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:tekalerohan2000@gmail.com"><i class="fa-solid fa-envelope"></i></a>
       </div>
     </div>
   </div>

@@ -1,75 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Contact — Rohan Tekale</title>
   <link rel="stylesheet" href="assets/css/theme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; margin-top: 3.5rem; align-items: start; }
-    .contact-cta { font-family: var(--heading); font-size: clamp(1.8rem,3.5vw,2.6rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.25rem; }
-    .contact-cta em { font-style: normal; color: var(--accent); }
-    .contact-sub { color: var(--muted); font-size: .95rem; line-height: 1.85; margin-bottom: 2rem; max-width: 420px; }
-    .contact-links { display: flex; flex-direction: column; gap: .8rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
+    .contact-cta { font-family: var(--heading); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.25rem; }
+    .contact-cta em { font-style: italic; color: var(--accent); }
+    .contact-sub { color: var(--muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 2rem; max-width: 420px; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
     .c-link {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1rem 1.3rem; border-radius: var(--radius);
-      border: 1px solid var(--border); text-decoration: none; color: var(--muted);
-      font-size: .9rem; transition: border-color .3s, color .3s, background .3s, transform .3s;
+      display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem;
+      border-radius: var(--radius); border: 1px solid var(--border);
+      text-decoration: none; color: var(--muted); background: var(--surface);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .c-link:hover { border-color: var(--accent); color: var(--text); background: rgba(var(--accent-rgb),.03); transform: translateX(6px); }
-    .c-link i { color: var(--accent); font-size: 1rem; width: 1.1rem; text-align: center; flex-shrink: 0; }
-    .c-link-val { color: var(--text); font-size: .82rem; margin-top: .1rem; }
+    .c-link:hover { border-color: rgba(var(--accent-rgb), 0.3); transform: translateX(5px); box-shadow: var(--shadow); color: var(--text); }
+    .c-link i { color: var(--accent); font-size: 1rem; width: 1.2rem; text-align: center; }
+    .c-link-val { color: var(--text); font-size: 0.82rem; margin-top: 0.1rem; }
     .availability-card {
       margin-top: 2rem; background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem; transition: border-color .3s;
+      border-radius: var(--radius); padding: 1.25rem;
     }
-    .availability-card:hover { border-color: rgba(var(--accent-rgb),.2); }
-    .av-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
+    .av-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
     .av-row:last-child { margin-bottom: 0; }
-    .av-key { font-family: var(--mono); font-size: .72rem; color: var(--muted); }
-    .av-val { font-family: var(--mono); font-size: .72rem; color: var(--accent); }
-    .av-val.green { color: #22c55e; }
+    .av-key { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+    .av-val { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); }
+    .av-val.green { color: var(--accent2); }
 
-    /* Form */
     .form-wrap {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 2.5rem; transition: border-color .4s, box-shadow .4s;
+      padding: 2.25rem; box-shadow: var(--shadow);
     }
-    .form-wrap:focus-within { border-color: rgba(var(--accent-rgb),.3); box-shadow: 0 0 40px rgba(var(--accent-rgb),.05); }
-    .form-title { font-family: var(--heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .form-wrap:focus-within { border-color: rgba(var(--accent-rgb), 0.25); box-shadow: var(--shadow-lg); }
+    .form-title { font-family: var(--heading); font-size: 1.15rem; font-weight: 700; margin-bottom: 1.5rem; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
-    .form-group.full { grid-column: 1/-1; }
-    .form-group label { font-family: var(--mono); font-size: .68rem; color: var(--muted); letter-spacing: .1em; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; }
     .form-group input, .form-group textarea, .form-group select {
-      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: .85rem 1rem; color: var(--text);
-      font-family: var(--body); font-size: .9rem; outline: none;
-      transition: border-color .3s, box-shadow .3s; resize: none;
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 0.85rem 1rem; color: var(--text); font-family: var(--body); font-size: 0.9rem;
+      outline: none; transition: border-color 0.25s, box-shadow 0.25s; resize: none;
     }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.08);
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
     }
-    .form-group select option { background: var(--surface); }
     .form-group textarea { height: 120px; }
     .btn-send {
-      width: 100%; font-family: var(--mono); font-size: .85rem; letter-spacing: .06em;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: var(--bg); border: none; padding: .95rem;
-      border-radius: var(--radius); cursor: pointer;
-      transition: opacity .3s, transform .2s, box-shadow .3s; font-weight: 500;
-      margin-top: .5rem; position: relative; overflow: hidden;
+      width: 100%; font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.05em;
+      background: var(--accent); color: #fff; border: none; padding: 0.95rem;
+      border-radius: var(--radius); cursor: pointer; font-weight: 500; margin-top: 0.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn-send::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, transparent, rgba(255,255,255,.2), transparent);
-      transform: translateX(-100%); transition: transform .5s;
-    }
-    .btn-send:hover::before { transform: translateX(100%); }
-    .btn-send:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(var(--accent-rgb),.3); }
-    .form-note { font-family: var(--mono); font-size: .68rem; color: var(--muted); text-align: center; margin-top: .75rem; transition: color .3s; }
+    .btn-send:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--glow); }
+    .form-note { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); text-align: center; margin-top: 0.75rem; }
 
     @media (max-width: 860px) {
       .contact-grid { grid-template-columns: 1fr; }
@@ -77,69 +65,70 @@
     }
   </style>
 </head>
-<body class="dev page-in">
-<div id="cursor"></div><div id="cursor-trail"></div><div id="progress"></div>
+<body>
+<div id="progress"></div>
 <div id="mobile-nav">
-  <a href="index.html">Home</a><a href="about.html">About</a>
-  <a href="experience.html">Experience</a><a href="projects.html">Projects</a>
-  <a href="ai.html">AI Work</a><a href="contact.html">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="ai.html">AI Work</a>
+  <a href="contact.html">Contact</a>
 </div>
+
 <nav id="nav">
   <a href="index.html" class="nav-logo">RT<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="about.html">about</a></li>
-    <li><a href="experience.html">experience</a></li>
-    <li><a href="projects.html">projects</a></li>
-    <li><a href="ai.html">ai work</a></li>
-    <li><a href="contact.html" class="active">contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="ai.html">AI Work</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="theme-toggle">
-    <button class="theme-btn" data-mode="dev">⌨ Dev</button>
-    <button class="theme-btn" data-mode="ai">✦ AI</button>
-  </div>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <a href="contact.html" class="nav-cta nav-cta-desktop">Get in touch →</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<section style="padding-top:9rem">
+<section class="page-hero">
   <div class="container">
     <div class="s-label reveal">05 // contact</div>
     <h2 class="s-title reveal">Let's build something <em>great</em></h2>
 
     <div class="contact-grid">
       <div>
-        <p class="contact-cta reveal">Open to roles,<br/>freelance &<br/><em>AI projects.</em></p>
-        <p class="contact-sub reveal">Whether you're hiring a backend engineer, need an AI system built, or want to collaborate — I'd love to hear about it. Response within 24 hours.</p>
+        <p class="contact-cta reveal">Open to<br/><em>Senior Backend / SDE-II</em><br/>roles.</p>
+        <p class="contact-sub reveal">Hiring for backend engineering, AI systems, or technical collaboration? I respond within 24 hours. Based in Pune, open to remote, hybrid, and relocation.</p>
 
         <div class="contact-links reveal">
-          <a href="mailto:tekalerohan7@gmail.com" class="c-link">
+          <a href="mailto:tekalerohan2000@gmail.com" class="c-link">
             <i class="fa-solid fa-envelope"></i>
-            <div><div style="font-size:.78rem;color:var(--muted);margin-bottom:.1rem">EMAIL</div><div class="c-link-val">tekalerohan7@gmail.com</div></div>
-          </a>
-          <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank" class="c-link">
-            <i class="fa-brands fa-linkedin"></i>
-            <div><div style="font-size:.78rem;color:var(--muted);margin-bottom:.1rem">LINKEDIN</div><div class="c-link-val">linkedin.com/in/rohan-tekale</div></div>
-          </a>
-          <a href="https://github.com/RohanTekale" target="_blank" class="c-link">
-            <i class="fa-brands fa-github"></i>
-            <div><div style="font-size:.78rem;color:var(--muted);margin-bottom:.1rem">GITHUB</div><div class="c-link-val">github.com/RohanTekale</div></div>
+            <div><div style="font-size:.76rem;color:var(--muted)">EMAIL</div><div class="c-link-val">tekalerohan2000@gmail.com</div></div>
           </a>
           <a href="tel:+919307802374" class="c-link">
             <i class="fa-solid fa-phone"></i>
-            <div><div style="font-size:.78rem;color:var(--muted);margin-bottom:.1rem">PHONE</div><div class="c-link-val">(+91) 9307802374</div></div>
+            <div><div style="font-size:.76rem;color:var(--muted)">PHONE</div><div class="c-link-val">+91 9307802374</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank" rel="noopener" class="c-link">
+            <i class="fa-brands fa-linkedin"></i>
+            <div><div style="font-size:.76rem;color:var(--muted)">LINKEDIN</div><div class="c-link-val">linkedin.com/in/rohan-tekale</div></div>
+          </a>
+          <a href="https://github.com/RohanTekale" target="_blank" rel="noopener" class="c-link">
+            <i class="fa-brands fa-github"></i>
+            <div><div style="font-size:.76rem;color:var(--muted)">GITHUB</div><div class="c-link-val">github.com/RohanTekale</div></div>
           </a>
         </div>
 
         <div class="availability-card reveal">
           <div class="av-row"><span class="av-key">status</span><span class="av-val green">● open to work</span></div>
+          <div class="av-row"><span class="av-key">seeking</span><span class="av-val">Senior Backend / SDE-II</span></div>
           <div class="av-row"><span class="av-key">location</span><span class="av-val">Pune, Maharashtra</span></div>
           <div class="av-row"><span class="av-key">timezone</span><span class="av-val">IST (UTC+5:30)</span></div>
-          <div class="av-row"><span class="av-key">response time</span><span class="av-val">&lt; 24 hours</span></div>
-          <div class="av-row"><span class="av-key">open to</span><span class="av-val">remote · hybrid · relocation</span></div>
         </div>
       </div>
 
       <div class="form-wrap reveal">
-        <div class="form-title">Send me a message</div>
+        <div class="form-title">Send a message</div>
         <div class="form-grid">
           <div class="form-group">
             <label>YOUR NAME</label>
@@ -153,8 +142,8 @@
             <label>SUBJECT</label>
             <select id="fsubject">
               <option value="">Select a topic...</option>
-              <option>Full-time Backend Role</option>
-              <option>AI / ML Project</option>
+              <option>Senior Backend / SDE-II Role</option>
+              <option>AI / RAG Project</option>
               <option>Freelance Backend Work</option>
               <option>Collaboration</option>
               <option>Other</option>
@@ -162,11 +151,11 @@
           </div>
           <div class="form-group full">
             <label>MESSAGE</label>
-            <textarea placeholder="Tell me about your project, role, or idea..." id="fmessage"></textarea>
+            <textarea placeholder="Tell me about the role or project..." id="fmessage"></textarea>
           </div>
         </div>
-        <button class="btn-send" onclick="handleSend()">Send Message →</button>
-        <div class="form-note" id="form-status">I'll get back to you within 24 hours.</div>
+        <button class="btn-send" type="button" onclick="handleSend()">Send Message →</button>
+        <div class="form-note" id="form-status">Opens your email client — I'll reply within 24 hours.</div>
       </div>
     </div>
   </div>
@@ -175,11 +164,11 @@
 <footer>
   <div class="container">
     <div class="footer-row">
-      <span class="footer-copy">© 2025 Rohan Tekale · Pune, India</span>
+      <span class="footer-copy">© 2025 Rohan Rajkumar Tekale · Pune, India</span>
       <div class="footer-socials">
-        <a href="https://github.com/RohanTekale" target="_blank"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="mailto:tekalerohan7@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://github.com/RohanTekale" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rohan-tekale/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:tekalerohan2000@gmail.com"><i class="fa-solid fa-envelope"></i></a>
       </div>
     </div>
   </div>
@@ -187,20 +176,20 @@
 <script src="assets/js/theme.js"></script>
 <script>
   function handleSend() {
-    const name    = document.getElementById('fname').value.trim();
-    const email   = document.getElementById('femail').value.trim();
+    const name = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
     const subject = document.getElementById('fsubject').value;
-    const msg     = document.getElementById('fmessage').value.trim();
-    const status  = document.getElementById('form-status');
+    const msg = document.getElementById('fmessage').value.trim();
+    const status = document.getElementById('form-status');
     if (!name || !email || !msg) {
-      status.textContent = '⚠ Please fill in all fields.';
-      status.style.color = '#f87171';
+      status.textContent = 'Please fill in name, email, and message.';
+      status.style.color = '#dc2626';
       return;
     }
-    const mailto = `mailto:tekalerohan7@gmail.com?subject=${encodeURIComponent(subject||'Portfolio Inquiry — '+name)}&body=${encodeURIComponent('Hi Rohan,\n\n'+msg+'\n\nFrom: '+name+'\nEmail: '+email)}`;
+    const mailto = `mailto:tekalerohan2000@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio — ' + name)}&body=${encodeURIComponent('Hi Rohan,\n\n' + msg + '\n\nFrom: ' + name + '\nEmail: ' + email)}`;
     window.location.href = mailto;
-    status.textContent = '✓ Opening your mail client...';
-    status.style.color = '#22c55e';
+    status.textContent = 'Opening your mail client…';
+    status.style.color = 'var(--accent2)';
   }
 </script>
 </body>
