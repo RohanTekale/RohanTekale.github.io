@@ -50,8 +50,37 @@
     .h-stat-val { font-family: var(--heading); font-size: 1.75rem; font-weight: 600; color: var(--text); line-height: 1; }
     .h-stat-val span { font-style: italic; color: var(--accent2); font-weight: 500; }
     .h-stat-lbl { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 0.3rem; text-transform: uppercase; }
-    .hero-visual { opacity: 0; transform: translateY(12px); transition: opacity 0.7s 0.25s, transform 0.7s 0.25s; }
+    .hero-visual {
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.7s 0.25s, transform 0.7s 0.25s;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
     .hero-visual.on { opacity: 1; transform: translateY(0); }
+
+    .hero-portrait-block { text-align: center; width: 100%; }
+    .hero-portrait-wrap {
+      position: relative; display: inline-block;
+      padding: 8px; border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+    }
+    .hero-portrait-ring {
+      display: block; padding: 4px; border-radius: 50%;
+      background: var(--surface); border: 1px solid var(--border-h);
+      box-shadow: var(--shadow);
+    }
+    .hero-portrait {
+      display: block; width: min(320px, 72vw); height: min(320px, 72vw);
+      border-radius: 50%; object-fit: cover; object-position: center 18%;
+      border: 3px solid var(--surface);
+    }
+    .hero-portrait-caption {
+      margin-top: 1rem; font-family: var(--mono); font-size: 0.62rem;
+      letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
+    }
+    .hero-portrait-caption strong { color: var(--accent2); font-weight: 500; }
+
+    .hero-side-stack { width: 100%; max-width: 380px; }
     .code-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 1.5rem 1.6rem;
@@ -76,8 +105,11 @@
     .quick-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; margin: 0; }
     .quick-arrow { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); margin-top: 1rem; display: block; letter-spacing: 0.05em; }
     @media (max-width: 860px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-visual { order: -1; }
+      .hero-copy { order: 0; }
+      .hero-portrait { width: min(260px, 70vw); height: min(260px, 70vw); }
+      .hero-side-stack { max-width: 100%; }
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
       .h-stat:nth-child(2) { border-right: none; }
       .h-stat { border-bottom: 1px solid var(--border); }
@@ -138,6 +170,23 @@
     </div>
 
     <div class="hero-visual" id="heroVisual">
+      <div class="hero-portrait-block">
+        <div class="hero-portrait-wrap">
+          <div class="hero-portrait-ring">
+            <img
+              class="hero-portrait"
+              src="images/profile/rohan.jpeg"
+              alt="Rohan Tekale — Backend Python Developer"
+              width="320"
+              height="320"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+        <p class="hero-portrait-caption">Pune, India · <strong>Backend & AI</strong></p>
+      </div>
+      <div class="hero-side-stack">
       <div class="code-card">
         <div class="cc-header">
           <div class="cc-dot" style="background:#ff5f57"></div>
@@ -165,6 +214,7 @@
         <span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">Docker</span>
         <span class="tag">AWS ECS</span><span class="tag">RAG</span><span class="tag">Claude API</span>
         <span class="tag">ChromaDB</span><span class="tag">JWT/RBAC</span>
+      </div>
       </div>
     </div>
   </div>

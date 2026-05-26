@@ -10,10 +10,13 @@
     .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; margin-top: 3rem; }
     .avatar-wrap { position: sticky; top: 7rem; }
     .avatar-box {
-      width: 100%; aspect-ratio: 1; border-radius: var(--radius-lg);
-      background: var(--surface2);
-      border: 1px solid var(--border-h); display: flex; align-items: center; justify-content: center;
-      font-size: 5rem; box-shadow: var(--shadow-lg), 0 0 60px rgba(var(--accent-rgb), 0.08);
+      width: 100%; aspect-ratio: 1; border-radius: 50%;
+      background: var(--surface2); overflow: hidden;
+      border: 1px solid var(--border-h); box-shadow: var(--shadow-lg);
+    }
+    .avatar-img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 18%;
+      display: block;
     }
     .avatar-badge {
       margin-top: 1rem; background: var(--surface); border: 1px solid var(--border);
@@ -106,7 +109,9 @@
 
     <div class="about-grid">
       <div class="avatar-wrap reveal">
-        <div class="avatar-box">👨‍💻</div>
+        <div class="avatar-box">
+          <img src="images/profile/rohan.jpeg" alt="Rohan Tekale" class="avatar-img"/>
+        </div>
         <div class="avatar-badge">
           <div class="badge-row"><span class="badge-key">name</span><span class="badge-val">Rohan R. Tekale</span></div>
           <div class="badge-row"><span class="badge-key">location</span><span class="badge-val">Pune, IN</span></div>
